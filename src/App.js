@@ -1,14 +1,24 @@
-import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Test from './components/Test'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { ConnectedRouter } from 'connected-react-router'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        Hei!
-      </div>
-    );
-  }
+const App = ({ history }) => {
+  return (
+    <ConnectedRouter history={history}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Test} />
+        </Switch>
+      </Router>
+    </ConnectedRouter>
+  )
 }
 
-export default App;
+App.propTypes = {
+  history: PropTypes.object,
+}
+
+export default App
