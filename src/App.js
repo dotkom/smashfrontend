@@ -1,5 +1,5 @@
 import { Route, Switch } from "react-router-dom";
-import './App.css';
+import './styles/App.css';
 import Test from './components/Test'
 import Login from './containers/Login'
 import Navbar from './components/Navbar'

@@ -29,8 +29,8 @@ class Login extends React.Component {
         <div name="login" className="loginContainer" >
           <input className="userInput" type="text" placeholder="Brukernavn" required="required" />
           <input className="userInput" type="password" placeholder="Passord" required="required" />
-          <button className="loginButton" onClick={this.handleSubmit}><div className="buttonText">Logg inn</div></button>
-          <button className="button" onClick={this.current}><div className="tect">Current</div></button>
+          <button className="button" onClick={this.handleSubmit}><div className="buttontext">Logg inn</div></button>
+          <button className="button" onClick={this.current}><div className="buttontext">Current</div></button>
         </div>
       </div>
     )
