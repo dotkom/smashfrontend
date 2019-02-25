@@ -9,6 +9,7 @@ class Login extends React.Component {
   constructor(){
     super();
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.current = this.current.bind(this)
   }
 
   handleSubmit(){
@@ -18,6 +19,10 @@ class Login extends React.Component {
     }
   }
 
+  current(){
+    this.props.postCurrent()
+  }
+
   render(){
     return(
       <div>
@@ -25,6 +30,7 @@ class Login extends React.Component {
           <input className="userInput" type="text" placeholder="Brukernavn" required="required" />
           <input className="userInput" type="password" placeholder="Passord" required="required" />
           <button className="loginButton" onClick={this.handleSubmit}><div className="buttonText">Logg inn</div></button>
+          <button className="button" onClick={this.current}><div className="tect">Current</div></button>
         </div>
       </div>
     )

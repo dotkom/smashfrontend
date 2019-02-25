@@ -9,9 +9,19 @@ import { connect } from 'react-redux'
 import { postCurrent } from './actions/auth'
 import { ConnectedRouter } from 'connected-react-router'
 
-const App = ({ history }) => {
+class App extends React.Component {
+  constructor(){
+    super();
+  }
+
+  componentDidMount(){
+    this.props.postCurrent()
+  }
+
+
+  render() {
   return (
-    <ConnectedRouter history={history}>
+    <ConnectedRouter history={this.props.history}>
         <div>
           <Navbar />
           <Switch>
@@ -21,6 +31,7 @@ const App = ({ history }) => {
         </div>
     </ConnectedRouter>
   )
+}
 }
 
 App.propTypes = {

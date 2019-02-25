@@ -3,7 +3,8 @@ import { push } from 'connected-react-router';
 
 const axios = require('axios');
 
-//axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
+axios.defaults.crossdomain = true
 
 export const POST_USER_REQUEST = 'POST_USER_REQUEST';
 export const POST_USER_SUCCESS = 'POST_USER_SUCCESS';
@@ -66,8 +67,9 @@ export function postUser(username, password) {
 export function postCurrent() {
   return (dispatch) => {
     dispatch(postUserLoading(true));
-    return axios.get(API_ADDRESS + '/current')
+    return axios.get(API_ADDRESS + '/user/current')
       .then((response) => {
+        console.log(response)
         dispatch(postUserLoading(false));
         return response.data;
       })
