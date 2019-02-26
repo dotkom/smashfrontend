@@ -22,7 +22,6 @@ export function postUserLoading(bool) {
   return {
     type: 'POST_USER_REQUEST',
     isLoading: bool,
-    user: null
   };
 }
 export function postUserSuccess(user) {
@@ -69,15 +68,15 @@ export function postCurrent() {
     dispatch(postUserLoading(true));
     return axios.get(API_ADDRESS + '/user/current')
       .then((response) => {
-        console.log(response)
-        dispatch(postUserLoading(false));
         return response.data;
       })
       .then((user) => {
         dispatch(postUserSuccess(user));
+        dispatch(postUserLoading(false));
       })
       .catch(() => {
         dispatch(postUserFailure(true));
+        dispatch(postUserLoading(false));
       });
   };
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
-import { postUser, postCurrent } from '../actions/auth';
+import { postUser } from '../actions/auth';
 
 
 class Login extends React.Component {
@@ -9,7 +9,6 @@ class Login extends React.Component {
   constructor(){
     super();
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.current = this.current.bind(this)
   }
 
   handleSubmit(){
@@ -30,7 +29,7 @@ class Login extends React.Component {
           <input className="userInput" type="text" placeholder="Brukernavn" required="required" />
           <input className="userInput" type="password" placeholder="Passord" required="required" />
           <button className="button" onClick={this.handleSubmit}><div className="buttontext">Logg inn</div></button>
-          <button className="button" onClick={this.current}><div className="buttontext">Current</div></button>
+          <button className="button" onClick={this.props.gotoforgot}><div className="buttontext">forgot</div></button>
         </div>
       </div>
     )
@@ -48,7 +47,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     postUser: (username, password) => dispatch(postUser(username, password)),
-    postCurrent: () => dispatch(postCurrent())
+    gotoforgot: () => dispatch(push('/forgot'))
   };
 };
 

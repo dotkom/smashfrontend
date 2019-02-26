@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #66aadd;
+  background-color: #555555;
   padding: 11px 15px;
   height: 40px;
 }
 
 .navbar button {
-  background-color: #4488aa; /* Green */
+  background-color: #888888; /* Green */
   border: none;
   color: white;
   padding: 10px 15px;

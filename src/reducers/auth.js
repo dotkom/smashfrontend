@@ -4,7 +4,7 @@ import {
   POST_USER_REQUEST,
   POST_USER_SUCCESS
 } from '../actions/auth';
-const initialAuthState = { user: null, isLoading: false };
+const initialAuthState = { user: null, isLoading: true };
 
 
 function auth(state = initialAuthState, action) {

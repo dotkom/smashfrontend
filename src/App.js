@@ -1,7 +1,8 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import './styles/App.css';
 import Test from './components/Test'
 import Login from './containers/Login'
+import Profile from './containers/Profile'
 import Navbar from './components/Navbar'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -14,7 +15,7 @@ class App extends React.Component {
     super();
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.props.postCurrent()
   }
 
@@ -24,10 +25,18 @@ class App extends React.Component {
     <ConnectedRouter history={this.props.history}>
         <div>
           <Navbar />
-          <Switch>
-            <Route exact path="/" component={Test} />
-            <Route exact path ="/login" component={Login} />
-          </Switch>
+          { this.props.isLoading ? (
+            <div> loading... </div>
+          ) : (
+            <Switch>
+              <Route exact path="/" component={Test} />
+              <Route exact path ="/login" component={Login} />
+              <PrivateRoute exact path ="/profile" authed={this.props.user} component={Profile} />
+              <Route path = "/profile/" component={Test} />
+
+            </Switch>
+          )
+          }
         </div>
     </ConnectedRouter>
   )
@@ -36,6 +45,17 @@ class App extends React.Component {
 
 App.propTypes = {
   history: PropTypes.object,
+}
+
+function PrivateRoute ({component: Component, authed, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => authed
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/'}} />}
+    />
+  )
 }
 
 
