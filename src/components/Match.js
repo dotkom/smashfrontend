@@ -53,36 +53,43 @@ class Match extends React.Component {
 
   render(){
     return(
-      <div className="matchComponent">
-        <div className="matchInformation">
-          <MatchPlayer
-            isWinner={this.props.winner===this.props.player1._id}
-            icon={this.props.character1.id}
-            nick={this.props.player1.nick}
-            character={this.props.character1.name}
-          />
-          <MatchPlayer
-            reverse={true}
-            isWinner={this.props.winner===this.props.player2._id}
-            icon={this.props.character2.id}
-            nick={this.props.player2.nick}
-            character={this.props.character2.name}
-          />
-        </div>
-
-        {this.props.isAdmin &&
-          <div className="adminPanel" ref={node => { this.node = node; }}>
-            <button className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
-            {this.state.modalOpen &&
-              <div>
-                <div> Are you sure? </div>
-                <button className="deleteButton" onClick={this.delete}> Yes </button>
-                <button className="deleteButton" onClick={this.closeModal}> No </button>
-
-              </div>
-            }
+      <div className="outerComponent">
+        <div className="winnerbadge">
+          <div className="badgetext">
+          winner
           </div>
-        }
+        </div>
+        <div className="matchComponent">
+          <div className="matchInformation">
+            <MatchPlayer
+              isWinner={this.props.winner===this.props.player1._id}
+              icon={this.props.character1.id}
+              nick={this.props.player1.nick}
+              character={this.props.character1.name}
+            />
+            <MatchPlayer
+              reverse={true}
+              isWinner={this.props.winner===this.props.player2._id}
+              icon={this.props.character2.id}
+              nick={this.props.player2.nick}
+              character={this.props.character2.name}
+            />
+          </div>
+
+          {this.props.isAdmin &&
+            <div className="adminPanel" ref={node => { this.node = node; }}>
+              <button className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
+              {this.state.modalOpen &&
+                <div>
+                  <div> Are you sure? </div>
+                  <button className="deleteButton" onClick={this.delete}> Yes </button>
+                  <button className="deleteButton" onClick={this.closeModal}> No </button>
+
+                </div>
+              }
+            </div>
+          }
+        </div>
       </div>
     )
   }

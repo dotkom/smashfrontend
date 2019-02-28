@@ -2,12 +2,12 @@
   display: flex;
   flex: 1;
   flex-direction: row;
-  margin: 20px;
+  margin: 20px 0px;
   background-color: #ffffff;
   min-width: 550px;
   padding: 10px;
   border-radius: 10px;
-  border-right: 20px solid #00aa44;
+  border-left: 25px solid #00aa44;
 
 }
 
@@ -16,4 +16,23 @@
   flex-direction: row;
   justify-content: space-between;
   flex:1;
+}
+
+.outerComponent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+
+.badgetext {
+-webkit-transform: rotate(-90deg);
+-moz-transform: rotate(-90deg);
+-ms-transform: rotate(-90deg);
+-o-transform: rotate(-90deg);
+transform: rotate(-90deg);
+margin-right: -36px;
+font-family: sans-serif;
+color: #00ea00;
 }
