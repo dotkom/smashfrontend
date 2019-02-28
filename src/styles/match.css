@@ -1,3 +1,8 @@
+.matchWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 .matchComponent {
   display: flex;
   flex: 1;
@@ -67,4 +72,42 @@ font-family: sans-serif;
 color: #00ea00;
 right: 0;
 margin-right: -11px;
+}
+
+.matchWrapper .adminPanel {
+  margin: auto 15px;
+}
+
+.matchWrapper .adminPanel .deleteButton {
+  background-color: #dd4444; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: sans-serif;
+
+}
+
+.matchWrapper .adminPanel {
+  position: relative;
+}
+
+.matchWrapper .matchModal {
+
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  position: absolute;
+  top:-20px;
+  background-color: white;
+  z-index: 2;
+
+}
+
+.matchWrapper .buttons {
+  display: flex;
+  flex-direction: row;
 }
