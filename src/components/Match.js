@@ -77,7 +77,7 @@ class Match extends React.Component {
             />
           </div>
 
-          {this.props.isAdmin && false &&
+          {this.props.isAdmin &&
             <div className="adminPanel" ref={node => { this.node = node; }}>
               <button className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
               {this.state.modalOpen &&
