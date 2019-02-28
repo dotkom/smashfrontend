@@ -13,6 +13,7 @@ function auth(state = initialAuthState, action) {
     return {
       ...state,
       hasErrored: action.hasErrored,
+      isLoading: action.isLoading
     };
   case POST_USER_REQUEST:
     return {

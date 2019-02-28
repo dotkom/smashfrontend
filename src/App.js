@@ -23,8 +23,9 @@ class App extends React.Component {
         <div>
           <Navbar />
           { this.props.isLoading ? (
-            <div> loading... </div>
+            <div> logging in... </div>
           ) : (
+            <div className="mainContainer">
             <Switch>
               <Route exact path="/" component={Test} />
               <Route exact path ="/login" component={Login} />
@@ -32,6 +33,7 @@ class App extends React.Component {
               <Route path = "/profile/" component={Test} />
 
             </Switch>
+            </div>
           )
           }
         </div>

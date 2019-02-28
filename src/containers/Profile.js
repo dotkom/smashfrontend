@@ -1,8 +1,10 @@
 import React from 'react';
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
+import '../styles/profile.css';
 import { getMatches, deleteMatch } from '../actions/matches';
 import Match from '../components/Match'
+
 
 
 class Profile extends React.Component {
@@ -20,24 +22,26 @@ class Profile extends React.Component {
   render(){
     return(
       <div className="profileContainer">
-      { (this.props.matches) ? (
-          this.props.matches.map((item) =>
-          <Match
-            key={item._id}
-            id={item._id}
-            isAdmin={this.props.user.isAdmin}
-            player1={item.player1}
-            player2={item.player2}
-            character1={item.character1}
-            character2={item.character2}
-            winner={item.winner}
-            deleteMatch={this.props.deleteMatch}
-          />
-        )
-      ) : (
-        <div> There are no matches </div>
-      )
-      }
+        <div className="matchContainer">
+          { (this.props.matches) ? (
+              this.props.matches.map((item) =>
+              <Match
+                key={item._id}
+                id={item._id}
+                isAdmin={this.props.user.isAdmin}
+                player1={item.player1}
+                player2={item.player2}
+                character1={item.character1}
+                character2={item.character2}
+                winner={item.winner}
+                deleteMatch={this.props.deleteMatch}
+              />
+            )
+          ) : (
+            <div> There are no matches </div>
+          )
+          }
+        </div>
       </div>
     )
   }

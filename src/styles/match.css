@@ -1,0 +1,19 @@
+.matchComponent {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin: 20px;
+  background-color: #ffffff;
+  min-width: 550px;
+  padding: 10px;
+  border-radius: 10px;
+  border-right: 20px solid #00aa44;
+
+}
+
+.matchInformation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex:1;
+}

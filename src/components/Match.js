@@ -1,4 +1,6 @@
 import React from 'react';
+import '../styles/match.css';
+import MatchPlayer from './MatchPlayer'
 
 
 class Match extends React.Component {
@@ -51,25 +53,25 @@ class Match extends React.Component {
 
   render(){
     return(
-      <div className="matchContainer">
-        <div className={"player " + (this.props.winner===this.props.player1 ? "winner" : "loser")}>
-          <div className="nick">
-            {this.props.player1.nick}
-          </div>
-          <div className="character">
-            {this.props.character1.name}
-          </div>
+      <div className="matchComponent">
+        <div className="matchInformation">
+          <MatchPlayer
+            isWinner={this.props.winner===this.props.player1._id}
+            icon={this.props.character1.id}
+            nick={this.props.player1.nick}
+            character={this.props.character1.name}
+          />
+          <MatchPlayer
+            reverse={true}
+            isWinner={this.props.winner===this.props.player2._id}
+            icon={this.props.character2.id}
+            nick={this.props.player2.nick}
+            character={this.props.character2.name}
+          />
         </div>
-        <div className={"player " + (this.props.winner===this.props.player2 ? "winner" : "loser")}>
-          <div className="nick">
-            {this.props.player2.nick}
-          </div>
-          <div className="character">
-            {this.props.character2.name}
-          </div>
-        </div>
+
         {this.props.isAdmin &&
-          <div ref={node => { this.node = node; }}>
+          <div className="adminPanel" ref={node => { this.node = node; }}>
             <button className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
             {this.state.modalOpen &&
               <div>

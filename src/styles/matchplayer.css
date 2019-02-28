@@ -1,0 +1,21 @@
+.matchPlayer {
+    display: flex;
+    flex-direction: row;
+    color: #333333;
+    font-family: sans-serif;
+}
+
+.matchPlayer .iconContainer {
+  justify-content: center;
+  text-align: center;
+}
+
+.matchPlayer.reverse {
+  flex-direction: row-reverse;
+}
+
+.matchPlayer img {
+  height: 80px;
+  width: 80px;
+  margin: -10px 0;
+}
