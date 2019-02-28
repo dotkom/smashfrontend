@@ -7,7 +7,19 @@
   min-width: 550px;
   padding: 10px;
   border-radius: 10px;
+
+}
+
+.matchComponent.left {
+  /*border-right: 25px solid #ffffff;*/
+  margin-right: 25px;
   border-left: 25px solid #00aa44;
+}
+
+.matchComponent.right {
+  margin-left: 25px;
+  /*border-left: 25px solid #ffffff;*/
+  border-right: 25px solid #00aa44;
 
 }
 
@@ -19,20 +31,40 @@
 }
 
 .outerComponent {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-
-
 .badgetext {
+}
+
+
+.badgetext.left {
+position: absolute;
 -webkit-transform: rotate(-90deg);
 -moz-transform: rotate(-90deg);
 -ms-transform: rotate(-90deg);
 -o-transform: rotate(-90deg);
 transform: rotate(-90deg);
-margin-right: -36px;
 font-family: sans-serif;
 color: #00ea00;
+margin-top: auto;
+margin-bottom: auto;
+margin-left: -11px;
+left: 0;
+}
+
+.badgetext.right {
+position: absolute;
+-webkit-transform: rotate(90deg);
+-moz-transform: rotate(90deg);
+-ms-transform: rotate(90deg);
+-o-transform: rotate(90deg);
+transform: rotate(90deg);
+font-family: sans-serif;
+color: #00ea00;
+right: 0;
+margin-right: -11px;
 }

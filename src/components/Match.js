@@ -54,12 +54,12 @@ class Match extends React.Component {
   render(){
     return(
       <div className="outerComponent">
-        <div className="winnerbadge">
-          <div className="badgetext">
-          winner
+        {this.props.winner === this.props.player1._id &&
+          <div className="badgetext left">
+            winner
           </div>
-        </div>
-        <div className="matchComponent">
+        }
+        <div className={"matchComponent "+(this.props.winner===this.props.player1._id ? "left" : "right")}>
           <div className="matchInformation">
             <MatchPlayer
               isWinner={this.props.winner===this.props.player1._id}
@@ -67,6 +67,7 @@ class Match extends React.Component {
               nick={this.props.player1.nick}
               character={this.props.character1.name}
             />
+            <div> VS </div>
             <MatchPlayer
               reverse={true}
               isWinner={this.props.winner===this.props.player2._id}
@@ -76,7 +77,7 @@ class Match extends React.Component {
             />
           </div>
 
-          {this.props.isAdmin &&
+          {this.props.isAdmin && false &&
             <div className="adminPanel" ref={node => { this.node = node; }}>
               <button className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
               {this.state.modalOpen &&
@@ -90,6 +91,11 @@ class Match extends React.Component {
             </div>
           }
         </div>
+        {this.props.winner === this.props.player2._id &&
+          <div className="badgetext right">
+            winner
+          </div>
+        }
       </div>
     )
   }
