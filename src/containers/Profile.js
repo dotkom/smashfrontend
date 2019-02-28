@@ -1,15 +1,13 @@
 import React from 'react';
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
-import { getMatches } from '../actions/matches';
+import { getMatches, deleteMatch } from '../actions/matches';
 import Match from '../components/Match'
 
 
 class Profile extends React.Component {
 
-  constructor(){
-    super()
-  }
+
 
   componentDidMount() {
     let id = this.props.user._id
@@ -26,12 +24,14 @@ class Profile extends React.Component {
           this.props.matches.map((item) =>
           <Match
             key={item._id}
+            id={item._id}
             isAdmin={this.props.user.isAdmin}
             player1={item.player1}
             player2={item.player2}
             character1={item.character1}
             character2={item.character2}
             winner={item.winner}
+            deleteMatch={this.props.deleteMatch}
           />
         )
       ) : (
@@ -56,7 +56,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getMatches: (id, page) => dispatch(getMatches(id, page)),
-    toHome: () => dispatch(push('/'))
+    toHome: () => dispatch(push('/')),
+    deleteMatch: (id) => dispatch(deleteMatch(id))
 
 
   };

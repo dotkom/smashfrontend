@@ -2,7 +2,8 @@ import {
   POST_MATCH_FAILURE,
   POST_MATCH_REQUEST,
   POST_MATCH_SUCCESS,
-  PAGE_INCREMENT
+  PAGE_INCREMENT,
+  DELETE_MATCH_SUCCESS
 } from '../actions/matches';
 const initialMatchState = { page: 1, matches: null, isLoading: false };
 
@@ -24,6 +25,15 @@ function matches(state = initialMatchState, action) {
       ...state,
       hasErrored: false,
       matches: action.matches,
+    }
+  case DELETE_MATCH_SUCCESS:
+    return {
+      ...state,
+      hasErrored: false,
+      matches: state.matches.filter((match) => {
+        return match._id !== action.match._id
+      })
+
     }
   case PAGE_INCREMENT:
     return {

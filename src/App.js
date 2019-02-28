@@ -11,9 +11,6 @@ import { postCurrent } from './actions/auth'
 import { ConnectedRouter } from 'connected-react-router'
 
 class App extends React.Component {
-  constructor(){
-    super();
-  }
 
   componentWillMount(){
     this.props.postCurrent()
