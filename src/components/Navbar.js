@@ -5,7 +5,7 @@ import { logout } from '../actions/auth'
 import { push } from 'connected-react-router';
 import '../styles/navbar.css'
 
-const Navbar = ({user, isLoading, logout, gotologin}) => (
+const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
   <div className="navbar">
     <div className="links">
       <Link to="/">Home</Link>
@@ -18,7 +18,10 @@ const Navbar = ({user, isLoading, logout, gotologin}) => (
           <button className="button" onClick={logout}><div className="buttontext">Logout</div></button>
         </div>
       ) : (
+        <div>
+          <button className="button" onClick={gotoregister}><div className="buttontext">Register</div></button>
           <button className="button" onClick={gotologin}><div className="buttontext">Login</div></button>
+        </div>
       )
       }
     </div>
@@ -32,7 +35,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  gotologin: () => dispatch(push('/login'))
+  gotologin: () => dispatch(push('/login')),
+  gotoregister: () => dispatch(push('/register'))
 
 })
 

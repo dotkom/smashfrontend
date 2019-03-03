@@ -2,6 +2,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import './styles/App.css';
 import Test from './components/Test'
 import Login from './containers/Login'
+import Register from './containers/Register'
 import Profile from './containers/Profile'
 import Navbar from './components/Navbar'
 import React from 'react'
@@ -22,20 +23,16 @@ class App extends React.Component {
     <ConnectedRouter history={this.props.history}>
         <div>
           <Navbar />
-          { this.props.isLoading ? (
-            <div> logging in... </div>
-          ) : (
             <div className="mainContainer">
             <Switch>
               <Route exact path="/" component={Test} />
               <Route exact path ="/login" component={Login} />
+              <Route exact path ="/register" component={Register} />
               <PrivateRoute exact path ="/profile" authed={this.props.user} component={Profile} />
               <Route path = "/profile/" component={Test} />
 
             </Switch>
             </div>
-          )
-          }
         </div>
     </ConnectedRouter>
   )
@@ -60,8 +57,6 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
 
 const mapStateToProps = (state) => {
   return {
-    isLoading: state.auth.isLoading,
-    hasErrored: state.auth.hasErrored,
     user: state.auth.user,
   };
 };

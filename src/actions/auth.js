@@ -11,11 +11,12 @@ export const POST_USER_SUCCESS = 'POST_USER_SUCCESS';
 export const POST_USER_FAILURE = 'POST_USER_FAILURE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 
-export function postUserFailure(bool) {
+export function postUserFailure(string) {
   return {
     type: 'POST_USER_FAILURE',
-    hasErrored: bool,
+    errorMessage: string,
   };
 }
 export function postUserLoading(bool) {
@@ -38,6 +39,33 @@ export function logoutSuccess(bool) {
   };
 }
 
+export function registerSuccess() {
+  return {
+    type: 'REGISTER_SUCCESS'
+  }
+}
+
+export function registerUser(name, nick, email, password, password2) {
+  return (dispatch) => {
+    dispatch(postUserLoading(true));
+    return axios.post(API_ADDRESS + '/user/register', {
+      name: name,
+      nick: nick,
+      email: email,
+      password: password,
+      password2: password2,
+    }
+  )
+  .then((response) => {
+    dispatch(postUserLoading(false));
+    dispatch(push('/login'))
+  })
+  .catch(err => {
+    dispatch(postUserFailure((err.response.data)))
+  })
+  }
+}
+
 
 export function postUser(username, password) {
   return (dispatch) => {
@@ -55,8 +83,8 @@ export function postUser(username, password) {
         dispatch(postUserSuccess(user));
         dispatch(push('/'))
       })
-      .catch(() => {
-        dispatch(postUserFailure(true));
+      .catch((err) => {
+        dispatch(postUserFailure(err.response.data));
       });
   };
 }
@@ -74,9 +102,8 @@ export function postCurrent() {
         dispatch(postUserSuccess(user));
         dispatch(postUserLoading(false));
       })
-      .catch(() => {
-        dispatch(postUserFailure(true));
-        dispatch(postUserLoading(false));
+      .catch((err) => {
+        dispatch(postUserFailure(err.response.data));
       });
   };
 }
@@ -89,9 +116,8 @@ export function logout() {
         dispatch(postUserLoading(false));
         dispatch(logoutSuccess());
       })
-      .catch(() => {
-        dispatch(postUserLoading(false))
-        dispatch(postUserFailure(true))
+      .catch((err) => {
+        dispatch(postUserFailure(err.response.data))
       });
   };
 }

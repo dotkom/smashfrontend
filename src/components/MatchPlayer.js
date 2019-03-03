@@ -5,9 +5,7 @@ import '../styles/matchplayer.css';
 class MatchPlayer extends React.Component {
 
 
-  constructor(props){
-    super(props)
-  }
+
 
 
   render(){

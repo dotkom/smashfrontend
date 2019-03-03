@@ -2,9 +2,10 @@ import {
   POST_USER_FAILURE,
   LOGOUT_SUCCESS,
   POST_USER_REQUEST,
-  POST_USER_SUCCESS
+  POST_USER_SUCCESS,
+  REGISTER_SUCCESS
 } from '../actions/auth';
-const initialAuthState = { user: null, isLoading: false };
+const initialAuthState = { user: null, isLoading: false, errorMessage: null };
 
 
 function auth(state = initialAuthState, action) {
@@ -12,27 +13,28 @@ function auth(state = initialAuthState, action) {
   case POST_USER_FAILURE:
     return {
       ...state,
-      hasErrored: action.hasErrored,
-      isLoading: action.isLoading
+      isLoading: action.isLoading,
+      errorMessage: action.errorMessage
     };
   case POST_USER_REQUEST:
     return {
       ...state,
-      hasErrored: false,
       isLoading: action.isLoading,
     };
   case POST_USER_SUCCESS:
     return {
       ...state,
-      hasErrored: false,
       user: action.user,
+      errorMessage: null
     };
   case LOGOUT_SUCCESS:
     return {
       ...state,
-      hasErrored: false,
       user: action.user,
+      errorMessage: null
     };
+  case REGISTER_SUCCESS:
+    return {}
   default:
     return state;
   }

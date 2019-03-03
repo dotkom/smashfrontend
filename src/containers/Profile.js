@@ -46,7 +46,6 @@ class Profile extends React.Component {
 const mapStateToProps = (state) => {
   return {
     isLoading: state.matches.isLoading,
-    hasErrored: state.matches.hasErrored,
     user: state.auth.user,
     matches: state.matches.matches,
     page: state.matches.page,

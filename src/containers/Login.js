@@ -2,6 +2,9 @@ import React from 'react';
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import { postUser } from '../actions/auth';
+import ErrorMessage from '../components/ErrorMessage'
+import '../styles/login.css'
+import '../styles/authform.css'
 
 
 class Login extends React.Component {
@@ -24,13 +27,14 @@ class Login extends React.Component {
 
   render(){
     return(
-      <div>
-        <div name="login" className="loginContainer" >
+      <div className="loginContainer">
+        <div className="authform" >
           <input className="userInput" type="text" placeholder="Brukernavn" required="required" />
           <input className="userInput" type="password" placeholder="Passord" required="required" />
-          <button className="button" onClick={this.handleSubmit}><div className="buttontext">Logg inn</div></button>
-          <button className="button" onClick={this.props.gotoforgot}><div className="buttontext">forgot</div></button>
+          <button className="button" onClick={this.handleSubmit}><div className="buttontext">Login</div></button>
+          <button className="button gray" onClick={this.props.gotoforgot}><div className="buttontext">Forgot password</div></button>
         </div>
+        <ErrorMessage/>
       </div>
     )
   }
@@ -38,8 +42,6 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isLoading: state.auth.isLoading,
-    hasErrored: state.auth.hasErrored,
     user: state.auth.user,
   };
 };

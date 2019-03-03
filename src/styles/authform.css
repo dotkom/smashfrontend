@@ -1,0 +1,36 @@
+.authform {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.authform .userInput {
+  outline: none;
+  border-radius: 5px;
+  border: solid #888888 2px;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: 'Open Sans',sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.1em;
+  font-weight: 400;
+}
+
+.authform button {
+  background-color: #44aa44; /* Green */
+  border: none;
+  color: white;
+  width: 50%;
+  align-self: center;
+  margin: 10px 0 0 0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.authform .gray {
+  background-color: gray;
+}
