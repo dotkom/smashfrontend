@@ -5,7 +5,7 @@ import {
   PAGE_INCREMENT,
   DELETE_MATCH_SUCCESS
 } from '../actions/matches';
-const initialMatchState = { page: 1, matches: null, isLoading: false };
+const initialMatchState = { page: 1, matches: [], isLoading: false };
 
 function matches(state = initialMatchState, action) {
   switch (action.type) {

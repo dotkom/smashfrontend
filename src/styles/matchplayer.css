@@ -1,13 +1,16 @@
+
+
 .matchPlayer {
-    display: flex;
-    flex-direction: row;
-    color: #333333;
-    font-family: sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+
+
 }
 
 .matchPlayer .iconContainer {
-  justify-content: center;
-  text-align: center;
+
 }
 
 .matchPlayer.reverse {
@@ -18,4 +21,13 @@
   height: 80px;
   width: 80px;
   margin: -10px 0;
+}
+
+.matchPlayer .information {
+  white-space: nowrap;
+  margin: 0 10px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
 }

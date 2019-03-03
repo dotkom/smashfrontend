@@ -23,12 +23,11 @@ class Profile extends React.Component {
     return(
       <div className="profileContainer">
         <div className="matchContainer">
-          { (this.props.matches) ? (
-              this.props.matches.map((item) =>
+          { this.props.matches.map((item) =>(
               <Match
                 key={item._id}
                 id={item._id}
-                isAdmin={this.props.user.isAdmin}
+                showAdmin={false}
                 player1={item.player1}
                 player2={item.player2}
                 character1={item.character1}
@@ -36,10 +35,7 @@ class Profile extends React.Component {
                 winner={item.winner}
                 deleteMatch={this.props.deleteMatch}
               />
-            )
-          ) : (
-            <div> There are no matches </div>
-          )
+            ))
           }
         </div>
       </div>
