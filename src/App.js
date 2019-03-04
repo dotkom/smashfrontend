@@ -5,6 +5,7 @@ import Login from './containers/Login'
 import Register from './containers/Register'
 import Profile from './containers/Profile'
 import Navbar from './components/Navbar'
+import Admin from './containers/Admin'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -29,6 +30,7 @@ class App extends React.Component {
               <Route exact path ="/login" component={Login} />
               <Route exact path ="/register" component={Register} />
               <PrivateRoute exact path ="/profile" authed={this.props.user} component={Profile} />
+              <PrivateRoute exact path ="/admin" admin={this.props.user} component={Admin} />
               <Route path = "/profile/" component={Test} />
 
             </Switch>
@@ -43,13 +45,16 @@ App.propTypes = {
   history: PropTypes.object,
 }
 
-function PrivateRoute ({component: Component, authed, ...rest}) {
+function PrivateRoute ({component: Component, authed, admin, ...rest}) {
   return (
     <Route
       {...rest}
-      render={(props) => authed
+      render={
+        (props) => admin ? (admin.isAdmin ? <Component {...props} />
+        : <Redirect to={{pathname: '/'}} />) :
+        (authed
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/'}} />}
+        : <Redirect to={{pathname: '/'}} />)}
     />
   )
 }

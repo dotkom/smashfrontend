@@ -14,6 +14,9 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
       <div className="actions">
       {user ? (
         <div>
+          {user.isAdmin &&
+          <Link to="/admin">Admin</Link>
+          }
           <Link to="/profile">Profile</Link>
           <button className="button" onClick={logout}><div className="buttontext">Logout</div></button>
         </div>
