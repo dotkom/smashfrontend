@@ -8,15 +8,17 @@
   margin: 20px 0px;
   background-color: #ffffff;
   padding: 15px 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
 }
 
 .matchComponent .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  margin: 0px 25px;
 }
 
 
@@ -25,10 +27,12 @@
   /*border-right: 25px solid #ffffff;*/
   margin-right: 25px;
   border-left: 25px solid #00aa44;
+  border-radius: 3px;
 }
 
 .matchComponent.right {
   margin-left: 25px;
+  border-radius: 3px;
   /*border-left: 25px solid #ffffff;*/
   border-right: 25px solid #00aa44;
 
@@ -46,14 +50,16 @@
 
 .matchInformation .vs {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
+  font-style: italic;
 }
 
 .matchInformation .date {
   font-size: 14px;
-  color: #aaaaaa;
+  color: #cacaca;
   white-space: nowrap;
+  align-self: center;
 }
 
 .outerComponent {
@@ -78,7 +84,7 @@ font-family: sans-serif;
 color: #00ea00;
 margin-top: auto;
 margin-bottom: auto;
-margin-left: -11px;
+margin-left: -12px;
 left: 0;
 }
 
@@ -92,7 +98,7 @@ transform: rotate(90deg);
 font-family: sans-serif;
 color: #00ea00;
 right: 0;
-margin-right: -11px;
+margin-right: -12px;
 }
 
 .matchWrapper .adminPanel {

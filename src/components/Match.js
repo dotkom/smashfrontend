@@ -69,10 +69,10 @@ class Match extends React.Component {
                 character={this.props.character1.name}
               />
               <div className="center">
-                <span>
+                 <div/>
                  <div className="vs">VS</div>
-                 <div className="date"> February 20. 2019 </div>
-                </span>
+                 <div className="date"> {new Date(this.props.date).toLocaleDateString("no-NO")} </div>
+
                </div>
               <MatchPlayer
                 reverse={true}

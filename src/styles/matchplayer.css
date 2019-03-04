@@ -25,9 +25,11 @@
 
 .matchPlayer .information {
   white-space: nowrap;
-  margin: 0 10px;
   font-size: 18px;
   display: flex;
   align-items: center;
   letter-spacing: 1px;
+}
+
+.matchPlayer .nick {
 }

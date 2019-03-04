@@ -2,7 +2,6 @@ import {
   POST_TEMPUSER_FAILURE,
   POST_TEMPUSER_REQUEST,
   POST_TEMPUSER_SUCCESS,
-  PAGE_INCREMENT,
   UPDATE_TEMPUSER_SUCCESS
 } from '../actions/admin';
 const initialTempUserState = { page: 1, tempusers: [], isLoading: false };

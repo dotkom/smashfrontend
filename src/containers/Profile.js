@@ -34,6 +34,7 @@ class Profile extends React.Component {
                 character2={item.character2}
                 winner={item.winner}
                 deleteMatch={this.props.deleteMatch}
+                date={item.date}
               />
             ))
           }
