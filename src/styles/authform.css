@@ -1,19 +1,21 @@
 .authform {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  min-width: 350px;
 }
 
 .authform .userInput {
   outline: none;
   border-radius: 5px;
-  border: solid #888888 2px;
-  padding: 10px;
-  margin: 10px 0;
+  border: solid #aaaaaa 1.8px;
+  padding: 12px;
+  margin: 12px 0;
   font-family: 'Open Sans',sans-serif;
-  letter-spacing: 1px;
   font-size: 1.1em;
-  font-weight: 400;
+}
+
+.authform .userInput::placeholder {
+  color: #cacaca;
 }
 
 .authform button {

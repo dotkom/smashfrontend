@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { registerUser } from '../actions/auth';
+import { registerUser, resetError } from '../actions/auth';
 import ErrorMessage from '../components/ErrorMessage'
 import '../styles/register.css'
 import '../styles/authform.css'
@@ -8,6 +8,10 @@ import '../styles/authform.css'
 
 
 class Register extends React.Component {
+
+  componentWillMount() {
+    this.props.resetError()
+  }
 
   constructor(){
     super();
@@ -25,11 +29,11 @@ class Register extends React.Component {
     return(
       <div className="registerContainer">
         <div className="authform" >
-          <input className="userInput" type="text" placeholder="Name" required="required" />
-          <input className="userInput" type="text" placeholder="Smash nick" required="required" />
-          <input className="userInput" type="email" placeholder="Email" required="required" />
-          <input className="userInput" type="password" placeholder="Password" required="required" />
-          <input className="userInput" type="password" placeholder="Confirm password" required="required" />
+          <input className="userInput" type="text" placeholder="name" required="required" />
+          <input className="userInput" type="text" placeholder="smash nick" required="required" />
+          <input className="userInput" type="email" placeholder="email" required="required" />
+          <input className="userInput" type="password" placeholder="password" required="required" />
+          <input className="userInput" type="password" placeholder="confirm password" required="required" />
           <button className="button" onClick={this.handleSubmit}><div className="buttontext">Register</div></button>
         </div>
           <ErrorMessage/>
@@ -46,6 +50,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     registerUser: (name, nick, email, password, password2) => dispatch(registerUser(name, nick, email, password, password2)),
+    resetError: () => dispatch(resetError())
   };
 };
 

@@ -11,7 +11,8 @@ export const POST_USER_SUCCESS = 'POST_USER_SUCCESS';
 export const POST_USER_FAILURE = 'POST_USER_FAILURE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const RESET_USER_ERROR = 'RESET_USER_ERROR';
 
 export function postUserFailure(string) {
   return {
@@ -19,6 +20,12 @@ export function postUserFailure(string) {
     errorMessage: string,
   };
 }
+export function resetError(){
+  return {
+    type: 'RESET_USER_ERROR',
+  }
+}
+
 export function postUserLoading(bool) {
   return {
     type: 'POST_USER_REQUEST',
