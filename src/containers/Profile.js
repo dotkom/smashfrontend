@@ -2,7 +2,7 @@ import React from 'react';
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import '../styles/profile.css';
-import { getMatches, deleteMatch } from '../actions/matches';
+import { getMatches, deleteMatch, pageReset } from '../actions/matches';
 import Match from '../components/Match'
 
 
@@ -12,6 +12,7 @@ class Profile extends React.Component {
 
 
   componentDidMount() {
+    this.props.pageReset()
     let id = this.props.user._id
     let page = this.props.page
     this.props.getMatches(id,page)
@@ -55,6 +56,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    pageReset: () => dispatch(pageReset()),
     getMatches: (id, page) => dispatch(getMatches(id, page)),
     toHome: () => dispatch(push('/')),
     deleteMatch: (id) => dispatch(deleteMatch(id))

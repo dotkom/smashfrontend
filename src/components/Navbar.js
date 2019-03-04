@@ -9,6 +9,7 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
   <div className="navbar">
     <div className="links">
       <Link to="/">Home</Link>
+      <Link to="/matches"> Matches </Link>
       <Link to="/leaderboard">Leaderboard</Link>
     </div>
       <div className="actions">

@@ -10,6 +10,7 @@ export const POST_MATCH_SUCCESS = 'POST_MATCH_SUCCESS';
 export const POST_MATCH_FAILURE = 'POST_MATCH_FAILURE';
 export const DELETE_MATCH_SUCCESS = 'DELETE_MATCH_SUCCESS'
 export const PAGE_INCREMENT = 'PAGE_INCREMENT';
+export const PAGE_RESET = 'PAGE_RESET';
 
 export function postMatchFailure(bool) {
   return {
@@ -42,10 +43,33 @@ export function pageIncrement() {
   }
 }
 
+export function pageReset() {
+  return {
+    type: PAGE_RESET,
+  }
+}
+
 export function getMatches(id, page) {
   return (dispatch) => {
     dispatch(postMatchLoading(true))
     return axios.get(API_ADDRESS+'/match/user/'+id+'/page/'+page)
+    .then((response) => {
+      dispatch(postMatchLoading(false))
+      return response.data
+    })
+    .then((matches) => {
+      dispatch(postMatchSuccess(matches))
+    })
+    .catch(() => {
+      dispatch(postMatchFailure(true))
+    })
+  }
+}
+
+export function getAllMatches(page) {
+  return (dispatch) => {
+    dispatch(postMatchLoading(true))
+    return axios.get(API_ADDRESS+'/match/page/'+page)
     .then((response) => {
       dispatch(postMatchLoading(false))
       return response.data

@@ -3,7 +3,8 @@ import {
   POST_MATCH_REQUEST,
   POST_MATCH_SUCCESS,
   PAGE_INCREMENT,
-  DELETE_MATCH_SUCCESS
+  DELETE_MATCH_SUCCESS,
+  PAGE_RESET
 } from '../actions/matches';
 const initialMatchState = { page: 1, matches: [], isLoading: false };
 
@@ -39,6 +40,12 @@ function matches(state = initialMatchState, action) {
     return {
       ...state,
       page: state.page+1
+    }
+  case PAGE_RESET:
+    return {
+      ...state,
+      page: 1,
+      matches: []
     }
   default:
     return state;
