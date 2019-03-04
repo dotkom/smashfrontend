@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import '../styles/matches.css';
 import { getAllMatches, deleteMatch, pageReset } from '../actions/matches';
 import Match from '../components/Match'
+import MatchRegister from '../components/MatchRegister'
 
 
 
@@ -22,6 +23,7 @@ class Matches extends React.Component {
   render(){
     return(
       <div className="matchesPage">
+        <MatchRegister />
         <div className="matchContainer">
           { this.props.matches.map((item) =>(
               <Match

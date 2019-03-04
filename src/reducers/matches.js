@@ -4,8 +4,9 @@ import {
   POST_MATCH_SUCCESS,
   PAGE_INCREMENT,
   DELETE_MATCH_SUCCESS,
-  PAGE_RESET
+  PAGE_RESET,
 } from '../actions/matches';
+import { ADD_MATCH_SUCCESS } from '../actions/matchregister'
 const initialMatchState = { page: 1, matches: [], isLoading: false };
 
 function matches(state = initialMatchState, action) {
@@ -26,6 +27,12 @@ function matches(state = initialMatchState, action) {
       ...state,
       hasErrored: false,
       matches: action.matches,
+    }
+  case ADD_MATCH_SUCCESS:
+    return {
+      ...state,
+      hasErrored: false,
+      matches: state.matches.concat(action.match)
     }
   case DELETE_MATCH_SUCCESS:
     return {

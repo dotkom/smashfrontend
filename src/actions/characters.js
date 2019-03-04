@@ -32,7 +32,7 @@ export function postCharacterSuccess(characters) {
 export function getCharacters() {
   return (dispatch) => {
     dispatch(postCharacterLoading(true))
-    return axios.get(API_ADDRESS+'/character/all)
+    return axios.get(API_ADDRESS+'/character/all')
     .then((response) => {
       dispatch(postCharacterLoading(false))
       return response.data

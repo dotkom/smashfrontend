@@ -32,7 +32,7 @@ export function postUserSuccess(users) {
 export function getUsers() {
   return (dispatch) => {
     dispatch(postUserLoading(true))
-    return axios.get(API_ADDRESS+'/user/all)
+    return axios.get(API_ADDRESS+'/user/all')
     .then((response) => {
       dispatch(postUserLoading(false))
       return response.data

@@ -3,7 +3,7 @@ import {
   POST_CHARACTER_REQUEST,
   POST_CHARACTER_SUCCESS,
 } from '../actions/characters';
-const initialCharacterState = { page: 1, characters: [], isLoading: false };
+const initialCharacterState = { characters: [], isLoading: false };
 
 function characters(state = initialCharacterState, action) {
   switch (action.type) {

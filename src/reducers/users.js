@@ -3,7 +3,7 @@ import {
   POST_USER_REQUEST,
   POST_USER_SUCCESS,
 } from '../actions/users';
-const initialUserState = { page: 1, users: [], isLoading: false };
+const initialUserState = { users: [], isLoading: false };
 
 function users(state = initialUserState, action) {
   switch (action.type) {

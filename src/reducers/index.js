@@ -5,6 +5,7 @@ import matches from './matches'
 import admin from './admin'
 import characters from './characters'
 import users from './users'
+import matchregister from './matchregister'
 
 const rootReducer = (history) => combineReducers({
   router: connectRouter(history),
@@ -12,7 +13,8 @@ const rootReducer = (history) => combineReducers({
   matches,
   admin,
   users,
-  characters
+  characters,
+  matchregister
 })
 
 export default rootReducer
