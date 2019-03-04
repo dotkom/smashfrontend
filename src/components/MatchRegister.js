@@ -22,6 +22,14 @@ class MatchRegister extends React.Component {
   render(){
     return(
       <div className="matchRegister">
+        <div className="player1" >
+          <button className={"button"+ (this.props.winner===1 ? " winner" : "")} onClick={()=>this.props.setWinner(1)}><div className="buttontext">winner</div></button>
+        </div>
+        <div className="vs"> VS </div>
+        <div className="player2" >
+          <button className={"button"+ (this.props.winner===2 ? " winner" : "")} onClick={()=>this.props.setWinner(2)}><div className="buttontext">winner</div></button>
+
+        </div>
       </div>
     )
   }
@@ -45,6 +53,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getUsers: () => dispatch(getUsers()),
     getCharacters: () => dispatch(getCharacters()),
+    setWinner: (int) => dispatch(setWinner(int))
 
 
   };
