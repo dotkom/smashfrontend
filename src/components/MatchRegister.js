@@ -5,6 +5,7 @@ import '../styles/matches.css';
 import { postMatch, setWinner, setPlayer1, setPlayer2, setCharacter1, setCharacter2 } from '../actions/matchregister';
 import { getCharacters } from '../actions/characters'
 import { getUsers } from '../actions/users'
+import CharacterPicker from './CharacterPicker'
 
 
 
@@ -24,11 +25,18 @@ class MatchRegister extends React.Component {
       <div className="matchRegister">
         <div className="player1" >
           <button className={"button"+ (this.props.winner===1 ? " winner" : "")} onClick={()=>this.props.setWinner(1)}><div className="buttontext">winner</div></button>
+          <CharacterPicker
+            setCharacter={this.props.setCharacter1}
+            currentCharacter={this.props.character1}
+          />
         </div>
         <div className="vs"> VS </div>
         <div className="player2" >
           <button className={"button"+ (this.props.winner===2 ? " winner" : "")} onClick={()=>this.props.setWinner(2)}><div className="buttontext">winner</div></button>
-
+          <CharacterPicker
+            setCharacter={this.props.setCharacter2}
+            currentCharacter={this.props.character2}
+          />
         </div>
       </div>
     )
@@ -53,7 +61,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getUsers: () => dispatch(getUsers()),
     getCharacters: () => dispatch(getCharacters()),
-    setWinner: (int) => dispatch(setWinner(int))
+    setWinner: (int) => dispatch(setWinner(int)),
+    setPlayer1: (nick) => dispatch(setPlayer1(nick)),
+    setPlayer2: (nick) => dispatch(setPlayer2(nick)),
+    setCharacter1: (id) => dispatch(setCharacter1(id)),
+    setCharacter2: (id) => dispatch(setCharacter2(id)),
 
 
   };
