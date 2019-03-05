@@ -3,7 +3,6 @@ import {
   LOGOUT_SUCCESS,
   POST_USER_REQUEST,
   POST_USER_SUCCESS,
-  REGISTER_SUCCESS,
   RESET_USER_ERROR,
 } from '../actions/auth';
 const initialAuthState = { user: null, isLoading: false, errorMessage: null };
@@ -34,8 +33,6 @@ function auth(state = initialAuthState, action) {
       user: action.user,
       errorMessage: null
     };
-  case REGISTER_SUCCESS:
-    return {}
   case RESET_USER_ERROR:
     return {
       ...state,
