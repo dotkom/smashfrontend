@@ -12,9 +12,8 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
       <Link to="/matches"> Matches </Link>
       <Link to="/leaderboard">Leaderboard</Link>
     </div>
-      <div className="actions">
       {user ? (
-        <div>
+        <div className="actions">
           {user.isAdmin &&
           <Link to="/admin">Admin</Link>
           }
@@ -22,14 +21,16 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
           <button className="button" onClick={logout}><div className="buttontext">Logout</div></button>
         </div>
       ) : (
-        <div>
-          <button className="button" onClick={gotoregister}><div className="buttontext">Register</div></button>
-          <button className="button" onClick={gotologin}><div className="buttontext">Login</div></button>
-          <a href="http://localhost:8080/login">OWLOGIN</a>
+        <div className="actions">
+          <a href="http://localhost:8080/login">
+            <div className="loginButton">
+            <img src='./icons/owf-logo.png'/>
+              <div className="loginText"> Logg inn </div>
+            </div>
+          </a>
         </div>
       )
       }
-    </div>
   </div>
 )
 
