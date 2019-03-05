@@ -25,6 +25,7 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
         <div>
           <button className="button" onClick={gotoregister}><div className="buttontext">Register</div></button>
           <button className="button" onClick={gotologin}><div className="buttontext">Login</div></button>
+          <a href="http://localhost:8080/login">OWLOGIN</a>
         </div>
       )
       }

@@ -107,6 +107,7 @@ export function postCurrent() {
       })
       .then((user) => {
         dispatch(postUserSuccess(user));
+        console.log(user)
         dispatch(postUserLoading(false));
       })
       .catch((err) => {
