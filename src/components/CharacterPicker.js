@@ -14,6 +14,10 @@ class CharacterPicker extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.setCharacter = this.setCharacter.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    let localcharacter = localStorage.getItem(this.props.localitem)
+    if(localcharacter){
+      this.setCharacter(localcharacter)
+    }
   }
 
   componentWillUnmount() {
@@ -45,6 +49,7 @@ class CharacterPicker extends React.Component {
 
   setCharacter(id) {
     this.closeModal()
+    localStorage.setItem(this.props.localitem, id)
     this.props.setCharacter(id)
   }
 
@@ -58,7 +63,7 @@ class CharacterPicker extends React.Component {
           {this.props.currentCharacter ? (
           <img src={`/icons/characters/${(this.props.currentCharacter==55 || this.props.currentCharacter==56) ? 54 : this.props.currentCharacter}.png`}/>
         ) : (
-          <div className="imgalt"> char </div>
+          <div className="imgalt"> ? </div>
         )} </button>
         {this.state.modalOpen &&
           <div className="characterModal">

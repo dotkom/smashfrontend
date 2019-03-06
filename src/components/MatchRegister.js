@@ -31,29 +31,36 @@ class MatchRegister extends React.Component {
           <CharacterPicker
             setCharacter={this.props.setCharacter1}
             currentCharacter={this.props.character1}
+            localitem="character1"
           />
           </div>
           <UserPicker
             setPlayer={this.props.setPlayer1}
             player={this.props.player1}
+            placeholder="player 1"
+            localitem="player1"
            />
         </div>
-        <div className="vs"> VS </div>
+        <div className="vs"> <div>VS</div> </div>
         <div className="player2" >
+        <UserPicker
+          setPlayer={this.props.setPlayer2}
+          player={this.props.player2}
+          placeholder="player 2"
+          localitem="player2"
+         />
           <div className="buttonContainer reverse">
-
-            <button className={"button"+ (this.props.winner===2 ? " winner" : "")} onClick={()=>this.props.setWinner(2)}><div className="buttontext">{(this.props.winner===1 ? " winner" : "loser")}</div></button>
-
-
           <CharacterPicker
             setCharacter={this.props.setCharacter2}
             currentCharacter={this.props.character2}
+            localitem="character2"
           />
+
+            <button className={"button"+ (this.props.winner===2 ? " winner" : "")} onClick={()=>this.props.setWinner(2)}><div className="buttontext">{(this.props.winner===2 ? " winner" : "loser")}</div></button>
+
+
+
           </div>
-          <UserPicker
-            setPlayer={this.props.setPlayer2}
-            player={this.props.player2}
-           />
         </div>
       </div>
     )

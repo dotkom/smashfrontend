@@ -8,6 +8,10 @@ class UserPicker extends React.Component {
   constructor(props){
     super(props)
     this.setPlayer = this.setPlayer.bind(this);
+    let localplayer = localStorage.getItem(this.props.localitem)
+    if(localplayer){
+      this.setPlayer(localplayer)
+    }
   }
 
   componentWillUnmount() {
@@ -26,11 +30,15 @@ class UserPicker extends React.Component {
   render(){
     return(
       <div className="userPicker">
-        <input type="text" value={this.props.player} onChange={(event) => this.setPlayer(event.target.value)} />
+        <input placeholder={this.props.placeholder} type="text" value={this.props.player} onChange={(event) => this.setPlayer(event.target.value)} />
         <div className="scrollerContainer">
           <div className="userScroller">
             { this.props.users.filter((user) => {
+              if (this.props.player == "") {
+                localStorage.setItem(this.props.localitem, "")
+              }
               if (user.nick ==this.props.player) {
+                localStorage.setItem(this.props.localitem, user.nick)
                 return 0
               }
               return user.nick.includes(this.props.player)
