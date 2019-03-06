@@ -6,10 +6,13 @@
   padding: 10px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
+  background-color: #445566;
+  margin-bottom: 40px;
 }
 
 .registerButton button {
-  background-color: #2244cc;
+  cursor: pointer;
+  background-color: #556677;
   outline: none;
   border:none;
   color: white;
@@ -40,6 +43,7 @@
   font-family: sans-serif;
   font-style: italic;
   justify-content: center;
+  color:white;
 
 }
 
@@ -55,6 +59,8 @@
 }
 
 .matchRegister .button {
+  outline: none;
+  cursor: pointer;
   margin: 12px 10px;
   border: none;
   border-radius: 4px;

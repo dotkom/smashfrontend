@@ -73,7 +73,7 @@ class CharacterPicker extends React.Component {
           <div className="characterModal">
             { this.props.characters.map((char) => (
               <button key={char.id} className="characterButton" onClick={()=> this.setCharacter(char.id)}>
-                <img src={`/icons/characters/${(char.id==55 || char.id==56) ? 54 : char.id}.png`}/>
+                <img title={char.name} src={`/icons/characters/${(char.id==55 || char.id==56) ? 54 : char.id}.png`}/>
               </button>
             ))}
           </div>

@@ -4,6 +4,7 @@
 }
 
 .currentCharacter {
+  cursor: pointer;
   background: none;
   outline: none;
   text-decoration: none;
@@ -35,12 +36,20 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   padding: 10px;
   top:75px;
-  left: 20%;
+  left: 27%;
   background: white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+@media screen and (max-width: 1100px) {
+  .characterModal {
+    left: 10%;
+
+  }
+}
+
 .characterButton {
+  cursor: pointer;
   max-width: 60px;
   background: none;
   outline: none;

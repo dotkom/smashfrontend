@@ -5,25 +5,38 @@
 
 .userPicker input {
   font-size: 18px;
-  border: 1.2px solid #999999;
+  border: 1.2px solid #556677;
   outline: none;
   padding: 5px;
   border-radius: 4px;
+  background: none;
+  color:#ddd;
+
+}
+.userPicker input::placeholder {
+  color:#667788;
 
 }
 
 .userScroller button {
+  cursor: pointer;
   background: none;
   border: none;
   outline: none;
+  margin: 3px;
   font-weight: 500;
-  color: #888888;
+  color: #cccccc;
+}
+
+.userScroller button:hover {
+  background: #556677;
 }
 
 .scrollerContainer {
   margin: 10px;
-  max-height: 200px;
-  overflow: scroll;
+  height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .userScroller {
@@ -39,15 +52,16 @@
   width: 5px;
 }
 .scrollerContainer:hover::-webkit-scrollbar-thumb {
-  background: #999;
+  background: #556677;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: none;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #fff;
+  background: #556677;
+  border-radius: 3px;
 }

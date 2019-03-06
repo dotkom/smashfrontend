@@ -5,9 +5,9 @@
 .matchComponent {
   display: flex;
   flex: 1;
-  margin: 20px 0px;
-  background-color: #ffffff;
-  padding: 15px 10px;
+  margin: 10px 0px;
+  background-color: #445566;
+  padding: 10px 10px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
@@ -27,12 +27,12 @@
   /*border-right: 25px solid #ffffff;*/
   margin-right: 25px;
   border-left: 25px solid #00aa44;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .matchComponent.right {
   margin-left: 25px;
-  border-radius: 3px;
+  border-radius: 5px;
   /*border-left: 25px solid #ffffff;*/
   border-right: 25px solid #00aa44;
 
@@ -42,7 +42,7 @@
   display: grid;
   flex: 1;
   grid-template-columns: 2fr auto 2fr;
-  color: #555;
+  color: #cccccc;
   font-family: sans-serif;
 
 }
@@ -53,11 +53,12 @@
   font-size: 20px;
   text-align: center;
   font-style: italic;
+  color: #cccccc;
 }
 
 .matchInformation .date {
   font-size: 14px;
-  color: #cacaca;
+  color: #888;
   white-space: nowrap;
   align-self: center;
 }
