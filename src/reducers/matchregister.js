@@ -20,11 +20,14 @@ function matchregister(state = initialMatchregisterState, action) {
   case POST_MATCHREGISTER_REQUEST:
     return {
       ...state,
-      hasErrored: null,
+      errorMessage: null,
       isLoading: action.isLoading,
     }
   case POST_MATCHREGISTER_SUCCESS:
     return {
+      ...state,
+      errorMessage: null,
+      isLoading: false,
     }
   case SET_PLAYER_ONE:
     return {

@@ -78,12 +78,12 @@ export function setCharacter2(string) {
 export function postMatch(player1, player2, character1, character2, winner) {
   return (dispatch) => {
     dispatch(postMatchregisterLoading(true))
-    return axios.post(API_ADDRESS+'/match/register',{
-      player1: player1,
-      player2: player2,
-      character1: character1,
-      character2: character2,
-      winner: winner==1 ? player1 : (winner==2 ? player2 : null)
+    return axios.post(API_ADDRESS+'/match/new',{
+      player1id: player1,
+      player2id: player2,
+      character1id: character1,
+      character2id: character2,
+      winnerid: winner==1 ? player1 : (winner==2 ? player2 : null)
 
     })
     .then((response) => {

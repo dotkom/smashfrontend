@@ -14,15 +14,19 @@ class CharacterPicker extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.setCharacter = this.setCharacter.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
-    let localcharacter = localStorage.getItem(this.props.localitem)
-    if(localcharacter){
-      this.setCharacter(localcharacter)
-    }
+
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleOutsideClick, false);
 
+  }
+
+  componentDidMount(){
+    let localcharacter = localStorage.getItem(this.props.localitem)
+    if(localcharacter){
+      this.setCharacter(localcharacter)
+    }
   }
 
   closeModal() {

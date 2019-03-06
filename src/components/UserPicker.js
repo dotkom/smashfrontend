@@ -48,7 +48,7 @@ class UserPicker extends React.Component {
               return ('' + a.nick).localeCompare(b.nick)
             })
             .map((user) => (
-              <button onClick={() => this.setPlayer(user.nick)}> {user.nick} </button>
+              <button key={user._id} onClick={() => this.setPlayer(user.nick)}> {user.nick} </button>
             ))}
           </div>
         </div>
