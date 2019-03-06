@@ -13,7 +13,7 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
       <Link to="/leaderboard">Leaderboard</Link>
     </div>
       {user ? (
-        <div className="actions">
+        <div className="links">
           {user.isAdmin &&
           <Link to="/admin">Admin</Link>
           }
@@ -24,8 +24,8 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
         <div className="actions">
           <a href="http://localhost:8080/login">
             <div className="loginButton">
-            <img src='./icons/owf-logo.png'/>
-              <div className="loginText"> Logg inn </div>
+              <img src='./icons/owf-logo.png'/>
+              <div className="loginText"> Sign in </div>
             </div>
           </a>
         </div>

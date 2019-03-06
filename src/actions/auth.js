@@ -66,6 +66,7 @@ export function postCurrent() {
 
 export function logout() {
   return (dispatch) => {
+    console.log("Logout")
     dispatch(postUserLoading(true));
     return axios.get(API_ADDRESS + '/logout')
       .then(() => {

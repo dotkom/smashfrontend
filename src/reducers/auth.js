@@ -30,7 +30,7 @@ function auth(state = initialAuthState, action) {
   case LOGOUT_SUCCESS:
     return {
       ...state,
-      user: action.user,
+      user: null,
       errorMessage: null
     };
   case RESET_USER_ERROR:
