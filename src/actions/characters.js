@@ -37,8 +37,8 @@ export function getCharacters() {
       dispatch(postCharacterLoading(false))
       return response.data
     })
-    .then((matches) => {
-      dispatch(postCharacterSuccess(matches))
+    .then((characters) => {
+      dispatch(postCharacterSuccess(characters))
     })
     .catch(() => {
       dispatch(postCharacterFailure(true))

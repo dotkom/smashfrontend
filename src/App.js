@@ -1,8 +1,6 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import './styles/App.css';
 import Test from './components/Test'
-import Login from './containers/Login'
-import Register from './containers/Register'
 import Profile from './containers/Profile'
 import Navbar from './components/Navbar'
 import Admin from './containers/Admin'
@@ -29,8 +27,6 @@ class App extends React.Component {
             <div className="mainContainer">
             <Switch>
               <Route exact path="/" component={Test} />
-              <Route exact path ="/login" component={Login} />
-              <Route exact path ="/register" component={Register} />
               <Route exact path ="/leaderboard" component={Leaderboard} />
               <Route exact path ="/matches" component={Matches} />
               <PrivateRoute exact path ="/profile" authed={this.props.user} component={Profile} />

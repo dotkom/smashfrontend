@@ -14,11 +14,19 @@ class CharacterPicker extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.setCharacter = this.setCharacter.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
+
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleOutsideClick, false);
 
+  }
+
+  componentDidMount(){
+    let localcharacter = localStorage.getItem(this.props.localitem)
+    if(localcharacter){
+      this.setCharacter(localcharacter)
+    }
   }
 
   closeModal() {
@@ -45,6 +53,7 @@ class CharacterPicker extends React.Component {
 
   setCharacter(id) {
     this.closeModal()
+    localStorage.setItem(this.props.localitem, id)
     this.props.setCharacter(id)
   }
 
@@ -58,13 +67,13 @@ class CharacterPicker extends React.Component {
           {this.props.currentCharacter ? (
           <img src={`/icons/characters/${(this.props.currentCharacter==55 || this.props.currentCharacter==56) ? 54 : this.props.currentCharacter}.png`}/>
         ) : (
-          <div> char </div>
+          <div className="imgalt"> ? </div>
         )} </button>
         {this.state.modalOpen &&
           <div className="characterModal">
             { this.props.characters.map((char) => (
               <button key={char.id} className="characterButton" onClick={()=> this.setCharacter(char.id)}>
-                <img src={`/icons/characters/${(char.id==55 || char.id==56) ? 54 : char.id}.png`}/>
+                <img title={char.name} src={`/icons/characters/${(char.id==55 || char.id==56) ? 54 : char.id}.png`}/>
               </button>
             ))}
           </div>
@@ -78,7 +87,6 @@ class CharacterPicker extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users.users,
     characters: state.characters.characters,
   };
 };
