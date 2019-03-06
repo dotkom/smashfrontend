@@ -1,4 +1,47 @@
 .userPicker {
   display: flex;
+  margin-top: 11px;
   flex-direction: column;
+}
+
+.userPicker input {
+  font-size: 16px;
+  padding: 5px;
+  border: 1.2px solid #999999;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.userScroller button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 4px;
+  font-weight: 500;
+  color: #888888;
+}
+
+.scrollerContainer {
+  height: 100px;
+  overflow: scroll;
+}
+
+.userScroller {
+  display: flex;
+  flex-direction: column;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
 }

@@ -27,12 +27,23 @@ class UserPicker extends React.Component {
     return(
       <div className="userPicker">
         <input type="text" value={this.props.player} onChange={(event) => this.setPlayer(event.target.value)} />
-        { this.props.users.filter((user) => {
-          return user.nick.includes(this.props.player)
-        })
-        .map((user) => (
-          <button onClick={() => this.setPlayer(user.nick)}> {user.nick} </button>
-        ))}
+        <div className="scrollerContainer">
+          <div className="userScroller">
+            { this.props.users.filter((user) => {
+              if (user.nick ==this.props.player) {
+                return 0
+              }
+              return user.nick.includes(this.props.player)
+
+            })
+            .sort((a,b) => {
+              return ('' + a.nick).localeCompare(b.nick)
+            })
+            .map((user) => (
+              <button onClick={() => this.setPlayer(user.nick)}> {user.nick} </button>
+            ))}
+          </div>
+        </div>
       </div>
     )
   }

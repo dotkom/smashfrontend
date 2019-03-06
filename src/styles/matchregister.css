@@ -8,7 +8,41 @@
   flex-direction: row;
 }
 
+.matchRegister .vs {
+  margin-top: 14px;
+  padding: 0 20px;
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 20px;
+}
+
 .player2 {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.buttonContainer {
+  align-items: center;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonContainer.reverse {
+flex-direction: row-reverse;
+}
+
+.matchRegister .button {
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  width: 50px;
+  color: #ef2222;
+  background-color: #aa0044;
+}
+
+.matchRegister .button.winner {
+  background-color: #00aa44;
+  color: #00ea00;
+  border: none;
 }

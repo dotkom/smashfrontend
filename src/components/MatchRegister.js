@@ -25,11 +25,14 @@ class MatchRegister extends React.Component {
     return(
       <div className="matchRegister">
         <div className="player1" >
-          <button className={"button"+ (this.props.winner===1 ? " winner" : "")} onClick={()=>this.props.setWinner(1)}><div className="buttontext">winner</div></button>
+          <div className="buttonContainer">
+          <button className={"button"+ (this.props.winner===1 ? " winner" : "")} onClick={()=>this.props.setWinner(1)}><div className="buttontext">{(this.props.winner===1 ? " winner" : "loser")}</div></button>
+
           <CharacterPicker
             setCharacter={this.props.setCharacter1}
             currentCharacter={this.props.character1}
           />
+          </div>
           <UserPicker
             setPlayer={this.props.setPlayer1}
             player={this.props.player1}
@@ -37,11 +40,16 @@ class MatchRegister extends React.Component {
         </div>
         <div className="vs"> VS </div>
         <div className="player2" >
-          <button className={"button"+ (this.props.winner===2 ? " winner" : "")} onClick={()=>this.props.setWinner(2)}><div className="buttontext">winner</div></button>
+          <div className="buttonContainer reverse">
+
+            <button className={"button"+ (this.props.winner===2 ? " winner" : "")} onClick={()=>this.props.setWinner(2)}><div className="buttontext">{(this.props.winner===2 ? " winner" : "loser")}</div></button>
+
+
           <CharacterPicker
             setCharacter={this.props.setCharacter2}
             currentCharacter={this.props.character2}
           />
+          </div>
           <UserPicker
             setPlayer={this.props.setPlayer2}
             player={this.props.player2}

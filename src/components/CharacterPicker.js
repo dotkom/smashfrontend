@@ -58,7 +58,7 @@ class CharacterPicker extends React.Component {
           {this.props.currentCharacter ? (
           <img src={`/icons/characters/${(this.props.currentCharacter==55 || this.props.currentCharacter==56) ? 54 : this.props.currentCharacter}.png`}/>
         ) : (
-          <div> char </div>
+          <div className="imgalt"> char </div>
         )} </button>
         {this.state.modalOpen &&
           <div className="characterModal">
