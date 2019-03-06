@@ -1,0 +1,16 @@
+.characterPicker {
+  position: relative;
+}
+
+
+
+.characterModal {
+  position: absolute;
+  width: 200px;
+
+}
+
+.characterPicker img {
+  height: 30px;
+  width: 30px;
+}

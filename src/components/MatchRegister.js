@@ -1,11 +1,12 @@
 import React from 'react';
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
-import '../styles/matches.css';
+import '../styles/matchregister.css';
 import { postMatch, setWinner, setPlayer1, setPlayer2, setCharacter1, setCharacter2 } from '../actions/matchregister';
 import { getCharacters } from '../actions/characters'
 import { getUsers } from '../actions/users'
 import CharacterPicker from './CharacterPicker'
+import UserPicker from './UserPicker'
 
 
 
@@ -29,6 +30,10 @@ class MatchRegister extends React.Component {
             setCharacter={this.props.setCharacter1}
             currentCharacter={this.props.character1}
           />
+          <UserPicker
+            setPlayer={this.props.setPlayer1}
+            player={this.props.player1}
+           />
         </div>
         <div className="vs"> VS </div>
         <div className="player2" >
@@ -37,6 +42,10 @@ class MatchRegister extends React.Component {
             setCharacter={this.props.setCharacter2}
             currentCharacter={this.props.character2}
           />
+          <UserPicker
+            setPlayer={this.props.setPlayer2}
+            player={this.props.player2}
+           />
         </div>
       </div>
     )

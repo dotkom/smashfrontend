@@ -78,7 +78,6 @@ class CharacterPicker extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users.users,
     characters: state.characters.characters,
   };
 };
