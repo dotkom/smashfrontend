@@ -42,7 +42,7 @@ class MatchRegister extends React.Component {
         <div className="player2" >
           <div className="buttonContainer reverse">
 
-            <button className={"button"+ (this.props.winner===2 ? " winner" : "")} onClick={()=>this.props.setWinner(2)}><div className="buttontext">{(this.props.winner===2 ? " winner" : "loser")}</div></button>
+            <button className={"button"+ (this.props.winner===2 ? " winner" : "")} onClick={()=>this.props.setWinner(2)}><div className="buttontext">{(this.props.winner===1 ? " winner" : "loser")}</div></button>
 
 
           <CharacterPicker
