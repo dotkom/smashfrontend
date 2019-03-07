@@ -38,7 +38,7 @@ class Matches extends React.Component {
                 winner={item.winner}
                 deleteMatch={this.props.deleteMatch}
                 date={item.date}
-                showAdmin={this.props.user.isAdmin && false}
+                showAdmin={this.props.user && this.props.user.isAdmin && false}
               />
             ))
           }

@@ -24,7 +24,7 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
         <div className="actions">
           <a href="http://localhost:8080/login">
             <div className="loginButton">
-              <img src='./icons/owf-logo.png'/>
+              <img src='/icons/owf-logo.png'/>
               <div className="loginText"> Sign in </div>
             </div>
           </a>

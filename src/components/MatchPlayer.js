@@ -19,7 +19,7 @@ class MatchPlayer extends React.Component {
         <div className="information">
           <div/>
           <div className="nick">
-            <a href={"/profile/"+this.props.id}>{this.props.nick}</a>
+            <Link to={"/profile/"+this.props.id}>{this.props.nick}</Link>
           </div>
           <div className="rating">
             {Math.round(this.props.oldrank) + "->"+Math.round(this.props.newrank)}

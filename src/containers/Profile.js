@@ -12,12 +12,11 @@ import Match from '../components/Match'
 class Profile extends React.Component {
 
 
-
   async componentDidMount() {
     await this.props.pageReset()
     await this.props.resetProfile()
     let id
-    let urlid = window.location.href.split("profile/", 2)[1]
+    let urlid = this.props.match.params.id
     if (urlid && urlid.length ==24 ) {
       id = urlid
     } else {
@@ -34,7 +33,7 @@ class Profile extends React.Component {
   render(){
     return(
       <div className="profileContainer">
-        {this.props.profile && this.props.profile._id == this.props.user._id &&
+        {this.props.user && this.props.profile && this.props.profile._id == this.props.user._id &&
           <div className="changeNick">
             <input className="nickInput"/>
             <button onClick={
