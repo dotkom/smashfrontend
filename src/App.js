@@ -1,6 +1,5 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import './styles/App.css';
-import Test from './components/Test'
 import Profile from './containers/Profile'
 import Navbar from './components/Navbar'
 import Admin from './containers/Admin'

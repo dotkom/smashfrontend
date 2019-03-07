@@ -1,5 +1,4 @@
 import React from 'react';
-import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import '../styles/matches.css';
 import { getAllMatches, deleteMatch, pageReset } from '../actions/matches';

@@ -65,7 +65,7 @@ class CharacterPicker extends React.Component {
       <div className="characterPicker" ref={node => { this.node = node; }}>
         <button className="currentCharacter" onClick={this.modalOpen ? this.closeModal : this.openModal}>
           {this.props.currentCharacter ? (
-          <img src={`/icons/characters/${(this.props.currentCharacter==55 || this.props.currentCharacter==56) ? 54 : this.props.currentCharacter}.png`}/>
+          <img alt="char" src={`/icons/characters/${(this.props.currentCharacter===55 || this.props.currentCharacter===56) ? 54 : this.props.currentCharacter}.png`}/>
         ) : (
           <div className="imgalt"> ? </div>
         )} </button>
@@ -73,7 +73,7 @@ class CharacterPicker extends React.Component {
           <div className="characterModal">
             { this.props.characters.map((char) => (
               <button key={char.id} className="characterButton" onClick={()=> this.setCharacter(char.id)}>
-                <img title={char.name} src={`/icons/characters/${(char.id==55 || char.id==56) ? 54 : char.id}.png`}/>
+                <img alt="char" title={char.name} src={`/icons/characters/${(char.id===55 || char.id===56) ? 54 : char.id}.png`}/>
               </button>
             ))}
           </div>

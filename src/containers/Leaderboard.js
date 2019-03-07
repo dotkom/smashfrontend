@@ -1,5 +1,4 @@
 import React from 'react';
-import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import '../styles/leaderboard.css';
 import { getLeaderboard, pageReset } from '../actions/leaderboard';

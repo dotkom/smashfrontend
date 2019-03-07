@@ -34,10 +34,10 @@ class UserPicker extends React.Component {
         <div className="scrollerContainer">
           <div className="userScroller">
             { this.props.users.filter((user) => {
-              if (this.props.player == "") {
+              if (this.props.player === "") {
                 localStorage.setItem(this.props.localitem, "")
               }
-              if (user.nick.toLowerCase() ==this.props.player.toLowerCase()) {
+              if (user.nick.toLowerCase() === this.props.player.toLowerCase()) {
                 localStorage.setItem(this.props.localitem, user.nick)
               }
               return user.nick.toLowerCase().includes(this.props.player.toLowerCase())

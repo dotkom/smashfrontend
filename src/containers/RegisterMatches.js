@@ -1,8 +1,7 @@
 import React from 'react';
-import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import '../styles/matches.css';
-import { getAllMatches, deleteMatch, pageReset } from '../actions/matches';
+import {  deleteMatch } from '../actions/matches';
 import Match from '../components/Match'
 import MatchRegister from '../components/MatchRegister'
 

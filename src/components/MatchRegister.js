@@ -1,5 +1,4 @@
 import React from 'react';
-import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import '../styles/matchregister.css';
 import { postMatch, setWinner, setPlayer1, setPlayer2, setCharacter1, setCharacter2 } from '../actions/matchregister';
@@ -27,18 +26,18 @@ class MatchRegister extends React.Component {
     let c2 = this.props.character2
 
     this.props.users.forEach(function(user){
-      if(user.nick==p1){
+      if(user.nick===p1){
         p1 = user._id
       }
-      if(user.nick==p2){
+      if(user.nick===p2){
         p2 = user._id
       }
     })
     this.props.characters.forEach(function(char){
-      if(char.id==c1){
+      if(char.id===c1){
         c1 = char._id
       }
-      if(char.id==c2){
+      if(char.id===c2){
         c2 = char._id
       }
     })

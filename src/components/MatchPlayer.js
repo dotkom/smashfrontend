@@ -14,7 +14,7 @@ class MatchPlayer extends React.Component {
       <div className={(this.props.reverse ? "reverse " : "") +"matchPlayer " + (this.props.isWinner ? "winner" : "loser")}>
 
         <div className="iconContainer">
-          <img src={`/icons/characters/${this.props.icon}.png`}/>
+          <img alt="icon" src={`/icons/characters/${this.props.icon}.png`}/>
         </div>
         <div className="information">
           <div/>

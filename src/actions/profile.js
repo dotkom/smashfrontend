@@ -1,5 +1,4 @@
 import { API_ADDRESS } from '../config/connections';
-import { push } from 'connected-react-router';
 
 const axios = require('axios');
 

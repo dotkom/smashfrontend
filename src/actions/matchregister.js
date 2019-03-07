@@ -87,7 +87,7 @@ export function postMatch(player1, player2, character1, character2, winner) {
       player2id: player2,
       character1id: character1,
       character2id: character2,
-      winnerid: winner==1 ? player1 : (winner==2 ? player2 : null)
+      winnerid: winner===1 ? player1 : (winner===2 ? player2 : null)
 
     })
     .then((response) => {
