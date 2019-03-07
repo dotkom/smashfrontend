@@ -13,7 +13,13 @@ class Profile extends React.Component {
 
   async componentDidMount() {
     await this.props.pageReset()
-    let id = this.props.user._id
+    let id
+    let urlid = window.location.href.split("profile/", 2)[1]
+    if (urlid && urlid.length ==24 ) {
+      id = urlid
+    } else {
+      id = this.props.user._id
+    }
     let page = this.props.page
     this.props.getMatches(id,page)
   }

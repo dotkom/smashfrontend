@@ -37,10 +37,10 @@ class UserPicker extends React.Component {
               if (this.props.player == "") {
                 localStorage.setItem(this.props.localitem, "")
               }
-              if (user.nick ==this.props.player) {
+              if (user.nick.toLowerCase() ==this.props.player.toLowerCase()) {
                 localStorage.setItem(this.props.localitem, user.nick)
               }
-              return user.nick.includes(this.props.player)
+              return user.nick.toLowerCase().includes(this.props.player.toLowerCase())
 
             })
             .sort((a,b) => {
