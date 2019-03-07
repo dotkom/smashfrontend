@@ -23,7 +23,8 @@
   border-radius: 100%;
   height: 50px;
   width: 50px;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  font-size: 30px;
 
 }
 
@@ -50,7 +51,7 @@
 
 .characterButton {
   cursor: pointer;
-  max-width: 60px;
+  max-width: 55px;
   background: none;
   outline: none;
   text-decoration: none;

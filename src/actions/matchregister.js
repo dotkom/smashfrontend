@@ -14,6 +14,7 @@ export const SET_PLAYER_TWO = 'SET_PLAYER_TWO'
 export const SET_CHARACTER_ONE = 'SET_CHARACTER_ONE'
 export const SET_CHARACTER_TWO = 'SET_CHARACTER_TWO'
 export const ADD_MATCH_SUCCESS = 'ADD_MATCH_SUCCESS'
+export const RESET_MATCHREGISTER = 'RESET_MATCHREGISTER'
 
 
 export function postMatchregisterFailure(string) {
@@ -70,6 +71,9 @@ export function setCharacter2(string) {
     character2: string,
   }
 }
+export function resetMatchregister() {
+
+}
 
 
 
@@ -90,8 +94,9 @@ export function postMatch(player1, player2, character1, character2, winner) {
       dispatch(postMatchregisterLoading(false))
       return response.data
     })
-    .then((matches) => {
-      dispatch(postMatchregisterSuccess(matches))
+    .then((match) => {
+      console.log(match)
+      dispatch(postMatchregisterSuccess(match))
     })
     .catch(() => {
       dispatch(postMatchregisterFailure(true))

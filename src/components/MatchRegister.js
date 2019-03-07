@@ -35,7 +35,6 @@ class MatchRegister extends React.Component {
       }
     })
     this.props.characters.forEach(function(char){
-      console.log(char)
       if(char.id==c1){
         c1 = char._id
       }

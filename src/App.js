@@ -5,6 +5,7 @@ import Profile from './containers/Profile'
 import Navbar from './components/Navbar'
 import Admin from './containers/Admin'
 import Matches from './containers/Matches'
+import RegisterMatches from './containers/RegisterMatches'
 import Leaderboard from './containers/Leaderboard'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -29,6 +30,7 @@ class App extends React.Component {
               <Route exact path="/" component={Test} />
               <Route exact path ="/leaderboard" component={Leaderboard} />
               <Route exact path ="/matches" component={Matches} />
+              <Route exact path ="/registermatch" component={RegisterMatches} />
               <PrivateRoute exact path ="/profile" authed={this.props.user} component={Profile} />
               <PrivateRoute exact path ="/admin" admin={this.props.user} component={Admin} />
               <Route path = "/profile/" component={Test} />
