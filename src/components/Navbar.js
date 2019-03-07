@@ -9,7 +9,7 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
   <div className="navbar">
     <div className="links">
     <Link to="/registermatch"> New match </Link>
-      <Link to="/matches"> Matches </Link>
+      <Link to="/matches"> Recent matches </Link>
       <Link to="/leaderboard">Leaderboard</Link>
     </div>
       {user ? (

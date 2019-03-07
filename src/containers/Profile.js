@@ -44,7 +44,7 @@ class Profile extends React.Component {
         {this.props.profile &&
           <div className="statistics">
           <div>{"Nick: " + this.props.profile.nick}</div>
-          <div>{"Rating: " + this.props.profile.rating}</div>
+          <div>{"Rating: " + Math.round(this.props.profile.rating)}</div>
           <div>{"Matches: " + this.props.profile.matches}</div>
           <div>{"Wins: " + this.props.profile.wins}</div>
           <div>{"Rank: " + this.props.profile.rank}</div>

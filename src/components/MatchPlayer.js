@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/matchplayer.css';
+import { Link } from 'react-router-dom'
 
 
 class MatchPlayer extends React.Component {
@@ -18,7 +19,7 @@ class MatchPlayer extends React.Component {
         <div className="information">
           <div/>
           <div className="nick">
-            {this.props.nick}
+            <a href={"/profile/"+this.props.id}>{this.props.nick}</a>
           </div>
           <div className="rating">
             {Math.round(this.props.oldrank) + "->"+Math.round(this.props.newrank)}

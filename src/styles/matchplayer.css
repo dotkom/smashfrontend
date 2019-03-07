@@ -34,6 +34,12 @@
   margin: 0 0;
 }
 
+.matchPlayer .nick a {
+  text-decoration: none;
+  text-emphasis: none;
+  color: #cccccc;
+}
+
 .matchPlayer.reverse .nick {
   text-align: right;
 
