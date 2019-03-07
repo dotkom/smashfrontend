@@ -41,7 +41,7 @@ class Leaderboard extends React.Component {
           ))
         }
         </div>
-        {!this.props.allLoaded &&
+        {!this.props.allLoaded && this.props.users.length > 0 &&
         <button onClick={() => this.props.getLeaderboard(this.props.page)}> load more </button>
       }
       </div>

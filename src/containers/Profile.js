@@ -71,7 +71,7 @@ class Profile extends React.Component {
             ))
           }
         </div>
-        { !this.props.allLoaded &&
+        { !this.props.allLoaded && this.props.matches.length > 0 &&
           <button onClick={() => this.props.getMatches(this.id,this.props.page)}> Get matches </button>
         }
       </div>
