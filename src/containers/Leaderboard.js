@@ -2,8 +2,8 @@ import React from 'react';
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import '../styles/profile.css';
-import { getMatches, deleteMatch, pageReset } from '../actions/matches';
-import Match from '../components/Match'
+import { getLeaderboard, pageReset } from '../actions/leaderboard';
+import User from '../components/User'
 
 
 
@@ -11,11 +11,10 @@ class Leaderboard extends React.Component {
 
 
 
-  componentDidMount() {
-    this.props.pageReset()
-    let id = this.props.user._id
+  async componentDidMount() {
+    await this.props.pageReset()
     let page = this.props.page
-    this.props.getMatches(page)
+    this.props.getLeaderboard(page)
   }
 
 
@@ -24,7 +23,21 @@ class Leaderboard extends React.Component {
     return(
       <div className="leaderboardContainer">
         <div className="userContainer">
+        { this.props.users.map((item, index) =>(
+            <User
+              number={index+1}
+              nick={item.nick}
+              id={item._id}
+              rating={item.rating}
+
+
+            />
+          ))
+        }
         </div>
+        {!this.props.allLoaded &&
+        <button onClick={() => this.props.getLeaderboard(this.props.page)}> load more </button>
+      }
       </div>
     )
   }
@@ -33,14 +46,16 @@ class Leaderboard extends React.Component {
 const mapStateToProps = (state) => {
   return {
     isLoading: state.leaderboard.isLoading,
-    user: state.auth.user,
     page: state.leaderboard.page,
-    users: state.leaderboard.users
+    users: state.leaderboard.users,
+    allLoaded: state.leaderboard.allLoaded
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getLeaderboard: (page) => dispatch(getLeaderboard(page)),
+    pageReset: () => dispatch(pageReset())
 
 
   };
