@@ -30,6 +30,10 @@ class Profile extends React.Component {
   render(){
     return(
       <div className="profileContainer">
+      <div className="statistics">
+        <div>{"Nick: " + this.props.user.nick}</div>
+        <div>{"Rating: " + this.props.user.rating}</div>
+       </div>
         <div className="matchContainer">
           { this.props.matches.map((item) =>(
               <Match
