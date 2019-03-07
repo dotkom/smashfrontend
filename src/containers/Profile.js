@@ -20,6 +20,7 @@ class Profile extends React.Component {
     } else {
       id = this.props.user._id
     }
+    this.id = id
     let page = this.props.page
     this.props.getMatches(id,page)
   }
@@ -50,6 +51,9 @@ class Profile extends React.Component {
             ))
           }
         </div>
+        { !this.props.allLoaded &&
+          <button onClick={() => this.props.getMatches(this.id,this.props.page)}> Get matches </button>
+        }
       </div>
     )
   }
@@ -61,6 +65,7 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
     matches: state.matches.matches,
     page: state.matches.page,
+    allLoaded: state.matches.allLoaded,
   };
 };
 
