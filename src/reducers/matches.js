@@ -22,7 +22,6 @@ function matches(state = initialMatchState, action) {
       isLoading: action.isLoading,
     }
   case POST_MATCH_SUCCESS:
-  console.log(action.allLoaded)
     return {
       ...state,
       hasErrored: false,

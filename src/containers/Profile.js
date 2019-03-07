@@ -11,8 +11,8 @@ class Profile extends React.Component {
 
 
 
-  componentDidMount() {
-    this.props.pageReset()
+  async componentDidMount() {
+    await this.props.pageReset()
     let id = this.props.user._id
     let page = this.props.page
     this.props.getMatches(id,page)
