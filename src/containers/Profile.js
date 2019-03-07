@@ -11,6 +11,17 @@ import Match from '../components/Match'
 
 class Profile extends React.Component {
 
+  async componentWillReceiveProps(nextProps) {
+      if(nextProps.match.params.id != this.props.match.params.id) {
+        let id = nextProps.match.params.id
+        await this.props.pageReset()
+        let page = nextProps.page
+        this.props.getProfile(id)
+        this.props.getMatches(id,page)
+
+      }
+  }
+
 
   async componentDidMount() {
     await this.props.pageReset()
