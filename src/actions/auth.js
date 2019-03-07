@@ -1,5 +1,6 @@
 import { API_ADDRESS } from '../config/connections';
 import { push } from 'connected-react-router';
+import {postNickSuccess} from './profile'
 
 const axios = require('axios');
 
@@ -75,4 +76,25 @@ export function logout() {
         dispatch(postUserFailure(err.response.data))
       });
   };
+}
+
+export function changeNick(string) {
+  return (dispatch) => {
+    dispatch(postUserLoading(true))
+    return axios.post(API_ADDRESS+'/user/changenick',{
+      nick: string
+    })
+    .then((response) => {
+      dispatch(postUserLoading(false))
+      return response.data
+    })
+    .then((user) => {
+      dispatch(postUserSuccess(user))
+      dispatch(postNickSuccess(user.nick))
+    })
+    .catch((err) => {
+      console.log(err)
+      dispatch(postUserFailure(err.response.data))
+    })
+  }
 }

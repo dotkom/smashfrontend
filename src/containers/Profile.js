@@ -3,6 +3,8 @@ import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import '../styles/profile.css';
 import { getMatches, deleteMatch, pageReset } from '../actions/matches';
+import { getUser, resetProfile } from '../actions/profile'
+import { changeNick } from '../actions/auth'
 import Match from '../components/Match'
 
 
@@ -13,6 +15,7 @@ class Profile extends React.Component {
 
   async componentDidMount() {
     await this.props.pageReset()
+    await this.props.resetProfile()
     let id
     let urlid = window.location.href.split("profile/", 2)[1]
     if (urlid && urlid.length ==24 ) {
@@ -22,6 +25,7 @@ class Profile extends React.Component {
     }
     this.id = id
     let page = this.props.page
+    this.props.getProfile(id)
     this.props.getMatches(id,page)
   }
 
@@ -30,10 +34,22 @@ class Profile extends React.Component {
   render(){
     return(
       <div className="profileContainer">
-      <div className="statistics">
-        <div>{"Nick: " + this.props.user.nick}</div>
-        <div>{"Rating: " + this.props.user.rating}</div>
-       </div>
+        {this.props.profile && this.props.profile._id == this.props.user._id &&
+          <div className="changeNick">
+            <input className="nickInput"/>
+            <button onClick={
+              () => this.props.changeNick(document.querySelectorAll('.nickInput')[0].value)}> Change nick </button>
+          </div>
+        }
+        {this.props.profile &&
+          <div className="statistics">
+          <div>{"Nick: " + this.props.profile.nick}</div>
+          <div>{"Rating: " + this.props.profile.rating}</div>
+          <div>{"Matches: " + this.props.profile.matches}</div>
+          <div>{"Wins: " + this.props.profile.wins}</div>
+          <div>{"Rank: " + this.props.profile.rank}</div>
+         </div>
+       }
         <div className="matchContainer">
           { this.props.matches.map((item) =>(
               <Match
@@ -70,6 +86,8 @@ const mapStateToProps = (state) => {
     matches: state.matches.matches,
     page: state.matches.page,
     allLoaded: state.matches.allLoaded,
+    profile: state.profile.user,
+    profileError: state.profile.errorMessage
   };
 };
 
@@ -78,7 +96,10 @@ const mapDispatchToProps = (dispatch) => {
     pageReset: () => dispatch(pageReset()),
     getMatches: (id, page) => dispatch(getMatches(id, page)),
     toHome: () => dispatch(push('/')),
-    deleteMatch: (id) => dispatch(deleteMatch(id))
+    deleteMatch: (id) => dispatch(deleteMatch(id)),
+    getProfile: (id) => dispatch(getUser(id)),
+    resetProfile: () => dispatch(resetProfile()),
+    changeNick: (string) => dispatch(changeNick(string))
 
 
   };

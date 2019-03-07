@@ -27,7 +27,7 @@ class App extends React.Component {
           <Navbar />
             <div className="mainContainer">
             <Switch>
-              <Route exact path="/" component={Test} />
+              <PrivateRoute authed={this.props.user} exact path="/" component={RegisterMatches} />
               <Route exact path ="/leaderboard" component={Leaderboard} />
               <Route exact path ="/matches" component={Matches} />
               <Route exact path ="/registermatch" component={RegisterMatches} />
@@ -56,7 +56,7 @@ function PrivateRoute ({component: Component, authed, admin, ...rest}) {
         : <Redirect to={{pathname: '/'}} />) :
         (authed
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/'}} />)}
+        : <Redirect to={{pathname: '/leaderboard'}} />)}
     />
   )
 }
