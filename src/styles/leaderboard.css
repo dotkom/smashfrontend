@@ -7,6 +7,14 @@
 }
 
 .leaderboardContainer button {
+  background: #556677;
+  padding: 15px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 0 40px 0;
+  color: white;
+  cursor: pointer;
 }
 
 

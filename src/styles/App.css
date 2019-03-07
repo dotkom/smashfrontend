@@ -1,12 +1,12 @@
 
 .mainContainer {
-  margin: 20px 15%;
+  margin: 80px 15%;
 
 }
 
 @media screen and (max-width: 1100px) {
   .mainContainer {
-    margin: 20px 2%;
+    margin: 80px 2%;
 
   }
 }

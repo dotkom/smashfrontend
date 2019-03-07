@@ -39,7 +39,6 @@ class UserPicker extends React.Component {
               }
               if (user.nick ==this.props.player) {
                 localStorage.setItem(this.props.localitem, user.nick)
-                return 0
               }
               return user.nick.includes(this.props.player)
 

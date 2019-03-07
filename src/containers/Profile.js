@@ -28,6 +28,10 @@ class Profile extends React.Component {
               <Match
                 key={item._id}
                 id={item._id}
+                oldrank1={item.oldrank1}
+                oldrank2={item.oldrank2}
+                newrank1={item.newrank1}
+                newrank2={item.newrank2}
                 showAdmin={false}
                 player1={item.player1}
                 player2={item.player2}
