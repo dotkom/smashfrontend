@@ -6,8 +6,7 @@ import {
   DELETE_MATCH_SUCCESS,
   PAGE_RESET,
 } from '../actions/matches';
-import { ADD_MATCH_SUCCESS } from '../actions/matchregister'
-const initialMatchState = { page: 1, matches: [], isLoading: false };
+const initialMatchState = { page: 1, matches: [], isLoading: false, allLoaded: false };
 
 function matches(state = initialMatchState, action) {
   switch (action.type) {
@@ -23,16 +22,12 @@ function matches(state = initialMatchState, action) {
       isLoading: action.isLoading,
     }
   case POST_MATCH_SUCCESS:
+  console.log(action.allLoaded)
     return {
       ...state,
       hasErrored: false,
-      matches: action.matches,
-    }
-  case ADD_MATCH_SUCCESS:
-    return {
-      ...state,
-      hasErrored: false,
-      matches: state.matches.concat(action.match)
+      allLoaded: action.allLoaded,
+      matches: state.matches.concat(action.matches),
     }
   case DELETE_MATCH_SUCCESS:
     return {
@@ -52,7 +47,8 @@ function matches(state = initialMatchState, action) {
     return {
       ...state,
       page: 1,
-      matches: []
+      matches: [],
+      allLoaded: false,
     }
   default:
     return state;

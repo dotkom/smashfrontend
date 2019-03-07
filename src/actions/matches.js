@@ -24,10 +24,11 @@ export function postMatchLoading(bool) {
     isLoading: bool,
   }
 }
-export function postMatchSuccess(matches) {
+export function postMatchSuccess(matches, allLoaded) {
   return {
     type: POST_MATCH_SUCCESS,
     matches,
+    allLoaded,
   }
 }
 export function deleteMatchSuccess(match) {
@@ -58,7 +59,14 @@ export function getMatches(id, page) {
       return response.data
     })
     .then((matches) => {
-      dispatch(postMatchSuccess(matches))
+      let allLoaded = false
+      if(matches.length > 9){
+        dispatch(pageIncrement())
+      }
+      else {
+        allLoaded = true
+      }
+      dispatch(postMatchSuccess(matches, allLoaded))
     })
     .catch(() => {
       dispatch(postMatchFailure(true))
@@ -75,7 +83,14 @@ export function getAllMatches(page) {
       return response.data
     })
     .then((matches) => {
-      dispatch(postMatchSuccess(matches))
+      let allLoaded = false
+      if(matches.length > 9){
+        dispatch(pageIncrement())
+      }
+      else {
+        allLoaded = true
+      }
+      dispatch(postMatchSuccess(matches, allLoaded))
     })
     .catch(() => {
       dispatch(postMatchFailure(true))

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import '../styles/matches.css';
 import { getAllMatches, deleteMatch, pageReset } from '../actions/matches';
 import Match from '../components/Match'
-import MatchRegister from '../components/MatchRegister'
 
 
 
@@ -12,8 +11,8 @@ class Matches extends React.Component {
 
 
 
-  componentDidMount() {
-    this.props.pageReset()
+  async componentDidMount() {
+    await this.props.pageReset()
     let page = this.props.page
     this.props.getMatches(page)
   }
@@ -23,7 +22,6 @@ class Matches extends React.Component {
   render(){
     return(
       <div className="matchesPage">
-        <MatchRegister />
         <div className="matchContainer">
           { this.props.matches.map((item) =>(
               <Match
@@ -40,6 +38,9 @@ class Matches extends React.Component {
             ))
           }
         </div>
+        { !this.props.allLoaded &&
+          <button onClick={() => this.props.getMatches(this.props.page)}> Get matches </button>
+        }
       </div>
     )
   }
@@ -51,6 +52,7 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
     matches: state.matches.matches,
     page: state.matches.page,
+    allLoaded: state.matches.allLoaded
   };
 };
 
