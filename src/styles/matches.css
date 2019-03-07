@@ -2,10 +2,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 30px;
 }
 
 .matchContainer{
   margin: 0 auto;
 
+}
+
+.matchesPage > button {
+  background: #556677;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 0 40px 0;
 }

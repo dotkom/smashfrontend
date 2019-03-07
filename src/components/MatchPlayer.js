@@ -16,8 +16,12 @@ class MatchPlayer extends React.Component {
           <img src={`/icons/characters/${this.props.icon}.png`}/>
         </div>
         <div className="information">
+          <div/>
           <div className="nick">
             {this.props.nick}
+          </div>
+          <div className="rating">
+            {Math.round(this.props.oldrank) + "->"+Math.round(this.props.newrank)}
           </div>
           {/*<div className="character">
             {this.props.character}

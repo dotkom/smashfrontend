@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/match.css';
+import '../styles/user.css';
 
 
 class User extends React.Component {
@@ -7,10 +7,10 @@ class User extends React.Component {
 
   render(){
     return(
-      <div className="userContainer">
-        <div> {this.props.number} </div>
-        <div> {this.props.rating} </div>
-        <div> {this.props.nick} </div>
+      <div className="user">
+        <div className="number"> {this.props.number} </div>
+        <div className="rating"> {Math.round(this.props.rating)} </div>
+        <div className="nick"> {this.props.nick} </div>
         <div> </div>
 
       </div>

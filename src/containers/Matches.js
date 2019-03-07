@@ -28,12 +28,17 @@ class Matches extends React.Component {
                 key={item._id}
                 id={item._id}
                 player1={item.player1}
+                oldrank1={item.oldrank1}
+                oldrank2={item.oldrank2}
+                newrank1={item.newrank1}
+                newrank2={item.newrank2}
                 player2={item.player2}
                 character1={item.character1}
                 character2={item.character2}
                 winner={item.winner}
                 deleteMatch={this.props.deleteMatch}
                 date={item.date}
+                showAdmin={this.props.user.isAdmin && false}
               />
             ))
           }

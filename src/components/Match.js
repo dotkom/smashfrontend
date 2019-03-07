@@ -63,6 +63,8 @@ class Match extends React.Component {
           <div className={"matchComponent "+(this.props.winner===this.props.player1._id ? "left" : "right")}>
             <div className="matchInformation">
               <MatchPlayer
+                newrank={this.props.newrank1}
+                oldrank={this.props.oldrank1}
                 isWinner={this.props.winner===this.props.player1._id}
                 icon={this.props.character1.id}
                 nick={this.props.player1.nick}
@@ -75,6 +77,8 @@ class Match extends React.Component {
 
                </div>
               <MatchPlayer
+                newrank={this.props.newrank2}
+                oldrank={this.props.oldrank2}
                 reverse={true}
                 isWinner={this.props.winner===this.props.player2._id}
                 icon={this.props.character2.id}

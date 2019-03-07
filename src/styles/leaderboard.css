@@ -1,0 +1,20 @@
+.leaderboardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.leaderboardContainer button {
+}
+
+
+.labels {
+display: grid;
+grid-template-columns: 40px 40px 250px;
+text-align: center;
+font-family: sans-serif;
+color: #777799;
+
+}
