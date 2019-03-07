@@ -77,7 +77,7 @@ class Profile extends React.Component {
                 oldrank2={item.oldrank2}
                 newrank1={item.newrank1}
                 newrank2={item.newrank2}
-                showAdmin={false}
+                showAdmin={(this.props.toggleAdmin &&this.props.user&& this.props.user.isAdmin)}
                 player1={item.player1}
                 player2={item.player2}
                 character1={item.character1}
@@ -105,7 +105,8 @@ const mapStateToProps = (state) => {
     page: state.matches.page,
     allLoaded: state.matches.allLoaded,
     profile: state.profile.user,
-    profileError: state.profile.errorMessage
+    profileError: state.profile.errorMessage,
+    toggleAdmin: state.auth.toggleAdmin
   };
 };
 

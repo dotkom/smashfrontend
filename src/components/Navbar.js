@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { logout } from '../actions/auth'
+import { logout, toggleAdmin } from '../actions/auth'
 import { push } from 'connected-react-router';
 import '../styles/navbar.css'
 
-const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
+const Navbar = ({user, isLoading, logout, gotologin, gotoregister, toggleAdmin}) => (
   <div className="navbar">
     <div className="links">
     <Link to="/registermatch"> New match </Link>
@@ -14,8 +14,8 @@ const Navbar = ({user, isLoading, logout, gotologin, gotoregister}) => (
     </div>
       {user ? (
         <div className="links">
-          {user.isAdmin && false &&
-          <Link to="/admin">Admin</Link>
+          {user.isAdmin &&
+          <button className="button" onClick={toggleAdmin}>toggle Admin</button>
           }
           <Link to="/profile">Profile</Link>
           <button className="button" onClick={logout}><div className="buttontext">Logout</div></button>
@@ -42,7 +42,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   gotologin: () => dispatch(push('/login')),
-  gotoregister: () => dispatch(push('/register'))
+  gotoregister: () => dispatch(push('/register')),
+  toggleAdmin: () => dispatch(toggleAdmin())
 
 })
 

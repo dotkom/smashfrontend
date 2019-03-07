@@ -31,6 +31,7 @@ class RegisterMatches extends React.Component {
                 newrank2={item.newrank2}
                 player1={item.player1}
                 player2={item.player2}
+                showAdmin={(this.props.toggleAdmin &&this.props.user&& this.props.user.isAdmin)}
                 character1={item.character1}
                 character2={item.character2}
                 winner={item.winner}
@@ -52,6 +53,7 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
     matches: state.matchregister.matches,
     page: state.matches.page,
+    toggleAdmin: state.auth.toggleAdmin
   };
 };
 

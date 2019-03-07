@@ -12,6 +12,7 @@ export const POST_USER_FAILURE = 'POST_USER_FAILURE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const RESET_USER_ERROR = 'RESET_USER_ERROR';
+export const TOGGLE_ADMIN = 'TOGGLE_ADMIN';
 
 export function postUserFailure(string) {
   return {
@@ -43,6 +44,12 @@ export function logoutSuccess(bool) {
     type: 'LOGOUT_SUCCESS',
     user: null,
   };
+}
+
+export function toggleAdmin() {
+  return {
+    type: TOGGLE_ADMIN,
+  }
 }
 
 

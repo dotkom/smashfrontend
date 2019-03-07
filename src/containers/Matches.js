@@ -37,7 +37,7 @@ class Matches extends React.Component {
                 winner={item.winner}
                 deleteMatch={this.props.deleteMatch}
                 date={item.date}
-                showAdmin={this.props.user && this.props.user.isAdmin && false}
+                showAdmin={(this.props.toggleAdmin && this.props.user && this.props.user.isAdmin)}
               />
             ))
           }
@@ -56,7 +56,8 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
     matches: state.matches.matches,
     page: state.matches.page,
-    allLoaded: state.matches.allLoaded
+    allLoaded: state.matches.allLoaded,
+    toggleAdmin: state.auth.toggleAdmin
   };
 };
 
