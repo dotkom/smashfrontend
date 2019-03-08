@@ -1,15 +1,15 @@
-import { combineReducers } from 'redux'
-import { connectRouter } from 'connected-react-router'
-import auth from './auth'
-import matches from './matches'
-import admin from './admin'
-import characters from './characters'
-import users from './users'
-import matchregister from './matchregister'
-import leaderboard from './leaderboard'
-import profile from './profile'
+import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
+import auth from './auth';
+import matches from './matches';
+import admin from './admin';
+import characters from './characters';
+import users from './users';
+import matchregister from './matchregister';
+import leaderboard from './leaderboard';
+import profile from './profile';
 
-const rootReducer = (history) => combineReducers({
+const rootReducer = history => combineReducers({
   router: connectRouter(history),
   auth,
   matches,
@@ -18,7 +18,7 @@ const rootReducer = (history) => combineReducers({
   characters,
   matchregister,
   leaderboard,
-  profile
-})
+  profile,
+});
 
-export default rootReducer
+export default rootReducer;

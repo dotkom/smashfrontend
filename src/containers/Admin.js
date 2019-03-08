@@ -1,26 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import '../styles/profile.css';
-import { getTempUsers, activateTempUser, deleteTempUser } from '../actions/admin'
-import TempUser from '../components/TempUser'
-
+import { getTempUsers, activateTempUser, deleteTempUser } from '../actions/admin';
+import TempUser from '../components/TempUser';
 
 
 class Admin extends React.Component {
-
-
-
   componentDidMount() {
-    this.props.getUsers()
+    this.props.getUsers();
   }
 
 
-
-  render(){
-    return(
+  render() {
+    return (
       <div className="profileContainer">
         <div className="tempUserContainer">
-        { this.props.tempusers.map((user) =>(
+          { this.props.tempusers.map(user => (
             <TempUser
               key={user._id}
               id={user._id}
@@ -29,37 +24,31 @@ class Admin extends React.Component {
               nick={user.nick}
               activate={this.props.activate}
               delete={this.props.delete}
-
-
             />
           ))
         }
         </div>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isLoading: state.admin.isLoading,
-    tempusers: state.admin.tempusers,
-    errorMessage: state.admin.errorMessage
-  };
-};
+const mapStateToProps = state => ({
+  isLoading: state.admin.isLoading,
+  tempusers: state.admin.tempusers,
+  errorMessage: state.admin.errorMessage,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getUsers: () => dispatch(getTempUsers()),
-    activate: (id) => dispatch(activateTempUser(id)),
-    delete: (id) => dispatch(deleteTempUser(id)),
+const mapDispatchToProps = dispatch => ({
+  getUsers: () => dispatch(getTempUsers()),
+  activate: id => dispatch(activateTempUser(id)),
+  delete: id => dispatch(deleteTempUser(id)),
 
 
-  };
-};
+});
 
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(Admin)
+  mapDispatchToProps,
+)(Admin);

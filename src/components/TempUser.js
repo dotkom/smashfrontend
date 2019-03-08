@@ -3,13 +3,11 @@ import '../styles/tempuser.css';
 
 
 class TempUser extends React.Component {
-
-
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      modalOpen: false
-    }
+      modalOpen: false,
+    };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.delete = this.delete.bind(this);
@@ -19,30 +17,28 @@ class TempUser extends React.Component {
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleOutsideClick, false);
-
   }
 
   closeModal() {
     document.removeEventListener('click', this.handleOutsideClick, false);
     this.setState({
-      modalOpen: false
+      modalOpen: false,
     });
   }
 
   delete(id) {
-    this.props.delete(this.props.id)
-
+    this.props.delete(this.props.id);
   }
 
   activate(id) {
-    this.props.activate(this.props.id)
+    this.props.activate(this.props.id);
   }
 
   openModal() {
     document.addEventListener('click', this.handleOutsideClick, false);
     this.setState({
-      modalOpen: true
-    })
+      modalOpen: true,
+    });
   }
 
   handleOutsideClick(e) {
@@ -54,25 +50,25 @@ class TempUser extends React.Component {
   }
 
 
-
-  render(){
-    return(
+  render() {
+    return (
       <div className="tempUserContainer">
-          <div className="information">
-            <div className="name">
-              {this.props.name}
-            </div>
-            <div className="nick">
-              {this.props.nick}
-            </div>
-            <div className="email">
-              {this.props.email}
-            </div>
+        <div className="information">
+          <div className="name">
+            {this.props.name}
           </div>
-          <div className="adminPanel" ref={node => { this.node = node; }}>
-            <button className="deleteButton" onClick={this.activate}> Activate </button>
-            <button className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
-            {this.state.modalOpen &&
+          <div className="nick">
+            {this.props.nick}
+          </div>
+          <div className="email">
+            {this.props.email}
+          </div>
+        </div>
+        <div className="adminPanel" ref={(node) => { this.node = node; }}>
+          <button className="deleteButton" onClick={this.activate}> Activate </button>
+          <button className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
+          {this.state.modalOpen
+              && (
               <div className="matchModal">
                 <div> Are you sure? </div>
                 <div className="buttons">
@@ -80,14 +76,13 @@ class TempUser extends React.Component {
                   <button className="deleteButton" onClick={this.closeModal}> No </button>
                 </div>
               </div>
+              )
             }
-          </div>
+        </div>
       </div>
-    )
+    );
   }
 }
 
 
-
-
-export default TempUser
+export default TempUser;

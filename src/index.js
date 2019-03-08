@@ -1,11 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import App from './App'
-import configureStore, { history } from './store'
+import App from './App';
+import configureStore, { history } from './store';
 
-const store = configureStore()
+const store = configureStore();
 const render = () => {
   ReactDOM.render(
     <div>
@@ -13,8 +13,8 @@ const render = () => {
         <App history={history} />
       </Provider>
     </div>,
-    document.getElementById('root')
-  )
-}
+    document.getElementById('root'),
+  );
+};
 
-render()
+render();

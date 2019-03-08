@@ -5,41 +5,42 @@ import {
   POST_USER_SUCCESS,
   RESET_USER_ERROR,
 } from '../actions/auth';
+
 const initialAuthState = { user: null, isLoading: false, errorMessage: null };
 
 
 function auth(state = initialAuthState, action) {
   switch (action.type) {
-  case POST_USER_FAILURE:
-    return {
-      ...state,
-      isLoading: action.isLoading,
-      errorMessage: action.errorMessage
-    };
-  case POST_USER_REQUEST:
-    return {
-      ...state,
-      isLoading: action.isLoading,
-    };
-  case POST_USER_SUCCESS:
-    return {
-      ...state,
-      user: action.user,
-      errorMessage: null
-    };
-  case LOGOUT_SUCCESS:
-    return {
-      ...state,
-      user: null,
-      errorMessage: null
-    };
-  case RESET_USER_ERROR:
-    return {
-      ...state,
-      errorMessage: null,
-    }
-  default:
-    return state;
+    case POST_USER_FAILURE:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+        errorMessage: action.errorMessage,
+      };
+    case POST_USER_REQUEST:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+      };
+    case POST_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.user,
+        errorMessage: null,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        user: null,
+        errorMessage: null,
+      };
+    case RESET_USER_ERROR:
+      return {
+        ...state,
+        errorMessage: null,
+      };
+    default:
+      return state;
   }
 }
 

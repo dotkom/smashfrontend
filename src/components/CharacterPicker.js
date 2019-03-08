@@ -1,46 +1,43 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import '../styles/characterpicker.css';
 
 
 class CharacterPicker extends React.Component {
-
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      modalOpen: false
-    }
+      modalOpen: false,
+    };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.setCharacter = this.setCharacter.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
-
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleOutsideClick, false);
-
   }
 
-  componentDidMount(){
-    let localcharacter = localStorage.getItem(this.props.localitem)
-    if(localcharacter){
-      this.setCharacter(localcharacter)
+  componentDidMount() {
+    const localcharacter = localStorage.getItem(this.props.localitem);
+    if (localcharacter) {
+      this.setCharacter(localcharacter);
     }
   }
 
   closeModal() {
     document.removeEventListener('click', this.handleOutsideClick, false);
     this.setState({
-      modalOpen: false
+      modalOpen: false,
     });
   }
 
   openModal() {
     document.addEventListener('click', this.handleOutsideClick, false);
     this.setState({
-      modalOpen: true
-    })
+      modalOpen: true,
+    });
   }
 
   handleOutsideClick(e) {
@@ -52,54 +49,52 @@ class CharacterPicker extends React.Component {
   }
 
   setCharacter(id) {
-    this.closeModal()
-    localStorage.setItem(this.props.localitem, id)
-    this.props.setCharacter(id)
+    this.closeModal();
+    localStorage.setItem(this.props.localitem, id);
+    this.props.setCharacter(id);
   }
 
 
-
-
-  render(){
-    return(
-      <div className="characterPicker" ref={node => { this.node = node; }}>
+  render() {
+    return (
+      <div className="characterPicker" ref={(node) => { this.node = node; }}>
         <button className="currentCharacter" onClick={this.modalOpen ? this.closeModal : this.openModal}>
           {this.props.currentCharacter ? (
-          <img src={`/icons/characters/${(this.props.currentCharacter==55 || this.props.currentCharacter==56) ? 54 : this.props.currentCharacter}.png`}/>
-        ) : (
-          <div className="imgalt"> ? </div>
-        )} </button>
-        {this.state.modalOpen &&
+            <img src={`/icons/characters/${(this.props.currentCharacter == 55 || this.props.currentCharacter == 56) ? 54 : this.props.currentCharacter}.png`} />
+          ) : (
+            <div className="imgalt"> ? </div>
+          )}
+          {' '}
+
+        </button>
+        {this.state.modalOpen
+          && (
           <div className="characterModal">
-            { this.props.characters.map((char) => (
-              <button key={char.id} className="characterButton" onClick={()=> this.setCharacter(char.id)}>
-                <img title={char.name} src={`/icons/characters/${(char.id==55 || char.id==56) ? 54 : char.id}.png`}/>
+            { this.props.characters.map(char => (
+              <button key={char.id} className="characterButton" onClick={() => this.setCharacter(char.id)}>
+                <img title={char.name} src={`/icons/characters/${(char.id == 55 || char.id == 56) ? 54 : char.id}.png`} />
               </button>
             ))}
           </div>
+          )
         }
       </div>
-    )
+    );
   }
 }
 
 
+const mapStateToProps = state => ({
+  characters: state.characters.characters,
+});
 
-const mapStateToProps = (state) => {
-  return {
-    characters: state.characters.characters,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => ({
 
 
-  };
-};
+});
 
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(CharacterPicker)
+  mapDispatchToProps,
+)(CharacterPicker);
