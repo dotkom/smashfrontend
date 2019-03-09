@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import API_ADDRESS from '../config/connections';
-=======
-import { API_ADDRESS } from '../config/connections';
->>>>>>> 553124f87eceeed4022a6cc1ced1ca0de7f3d832
 
 const axios = require('axios');
 
