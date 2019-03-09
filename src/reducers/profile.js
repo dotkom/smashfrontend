@@ -6,7 +6,7 @@ import {
   POST_NICK_SUCCESS,
 } from '../actions/profile';
 
-const initialProfileState = { user: null, isLoading: false, errorMessage: null };
+const initialProfileState = { user: {}, isLoading: false, errorMessage: '' };
 
 
 function profile(state = initialProfileState, action) {
@@ -26,10 +26,13 @@ function profile(state = initialProfileState, action) {
       return {
         ...state,
         user: action.user,
-        errorMessage: null,
+        errorMessage: '',
       };
     case RESET_PROFILE:
       return {
+        user: {},
+        isLoading: false,
+        errorMessage: '',
       };
     case POST_NICK_SUCCESS:
       return {

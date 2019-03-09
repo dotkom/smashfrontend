@@ -23,6 +23,7 @@ class Profile extends React.Component {
     changeNick: PropTypes.func.isRequired,
     matches: PropTypes.array.isRequired,
     allLoaded: PropTypes.bool.isRequired,
+    toggleAdmin: PropTypes.bool.isRequired,
   };
 
   async componentDidMount() {
@@ -65,7 +66,7 @@ class Profile extends React.Component {
             <div>Matches</div>
             <div>Wins</div>
             <div>{this.props.profile.rank}</div>
-            <div>{Math.round(this.props.profile.rating)}</div>
+            <div>{this.props.profile.rating && Math.round(this.props.profile.rating)}</div>
             <div>{this.props.profile.matches}</div>
             <div>{this.props.profile.wins}</div>
 
@@ -97,7 +98,7 @@ Change nick
               oldrank2={item.oldrank2}
               newrank1={item.newrank1}
               newrank2={item.newrank2}
-              showAdmin={false}
+              showAdmin={(this.props.toggleAdmin && this.props.user && this.props.user.isAdmin)}
               player1={item.player1}
               player2={item.player2}
               character1={item.character1}
@@ -125,6 +126,7 @@ const mapStateToProps = state => ({
   allLoaded: state.matches.allLoaded,
   profile: state.profile.user,
   profileError: state.profile.errorMessage,
+  toggleAdmin: state.auth.toggleAdmin,
 });
 
 const mapDispatchToProps = dispatch => ({

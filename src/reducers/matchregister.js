@@ -11,7 +11,7 @@ import {
 } from '../actions/matchregister';
 
 const initialMatchregisterState = {
-  matches: [], character1: null, character2: null, player1: '', player2: '', winner: 1, isLoading: false, errorMessage: null,
+  matches: [], character1: 0, character2: 0, player1: '', player2: '', winner: 1, isLoading: false, errorMessage: null,
 };
 
 function matchregister(state = initialMatchregisterState, action) {

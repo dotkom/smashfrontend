@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 class CharacterPicker extends React.Component {
   static propTypes = {
-    localitem: PropTypes.number.isRequired,
+    localitem: PropTypes.string.isRequired,
     setCharacter: PropTypes.func.isRequired,
     currentCharacter: PropTypes.number.isRequired,
     characters: PropTypes.array.isRequired,
@@ -25,7 +25,7 @@ class CharacterPicker extends React.Component {
 
 
   componentDidMount() {
-    const localcharacter = localStorage.getItem(this.props.localitem);
+    const localcharacter = parseInt(localStorage.getItem(this.props.localitem), 10);
     if (localcharacter) {
       this.setCharacter(localcharacter);
     }
@@ -68,7 +68,7 @@ class CharacterPicker extends React.Component {
     return (
       <div className="characterPicker" ref={(node) => { this.node = node; }}>
         <button type="button" className="currentCharacter" onClick={this.modalOpen ? this.closeModal : this.openModal}>
-          {this.props.currentCharacter ? (
+          {this.props.currentCharacter !== 0 ? (
             <img alt="char" src={`/icons/characters/${(this.props.currentCharacter === 55 || this.props.currentCharacter === 56) ? 54 : this.props.currentCharacter}.png`} />
           ) : (
             <div className="imgalt"> ? </div>

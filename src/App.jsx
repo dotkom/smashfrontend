@@ -20,6 +20,7 @@ class App extends React.Component {
 
   }
 
+
   componentWillMount() {
     this.props.postCurrent();
   }
@@ -57,7 +58,7 @@ function PrivateRoute({
       render={
         props => (admin ? (admin.isAdmin ? <Component {...props} />
           : <Redirect to={{ pathname: '/' }} />)
-          : (authed
+          : (authed._id
             ? <Component {...props} />
             : <Redirect to={{ pathname: '/leaderboard' }} />))}
     />
@@ -65,9 +66,9 @@ function PrivateRoute({
 }
 
 PrivateRoute.propTypes = {
-  component: PropTypes.object.isRequired,
-  authed: PropTypes.object,
-  admin: PropTypes.object,
+  component: PropTypes.func.isRequired,
+  authed: PropTypes.any,
+  admin: PropTypes.any,
 };
 
 PrivateRoute.defaultProps = {

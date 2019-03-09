@@ -28,13 +28,17 @@ const MatchPlayer = ({
 );
 
 MatchPlayer.propTypes = {
-  reverse: PropTypes.bool.isRequired,
+  reverse: PropTypes.bool,
   isWinner: PropTypes.bool.isRequired,
   icon: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   nick: PropTypes.string.isRequired,
   oldrank: PropTypes.number.isRequired,
   newrank: PropTypes.number.isRequired,
+};
+
+MatchPlayer.defaultProps = {
+  reverse: false,
 };
 
 

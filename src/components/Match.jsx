@@ -17,7 +17,7 @@ class Match extends React.Component {
     oldrank2: PropTypes.number.isRequired,
     character1: PropTypes.object.isRequired,
     character2: PropTypes.object.isRequired,
-    date: PropTypes.object.isRequired,
+    date: PropTypes.string.isRequired,
     showAdmin: PropTypes.bool.isRequired,
   }
 

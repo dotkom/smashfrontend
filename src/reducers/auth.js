@@ -8,7 +8,7 @@ import {
 } from '../actions/auth';
 
 const initialAuthState = {
-  toggleAdmin: false, user: null, isLoading: false, errorMessage: null,
+  toggleAdmin: false, user: {}, isLoading: false, errorMessage: '',
 };
 
 
@@ -29,18 +29,18 @@ function auth(state = initialAuthState, action) {
       return {
         ...state,
         user: action.user,
-        errorMessage: null,
+        errorMessage: '',
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        user: null,
-        errorMessage: null,
+        user: {},
+        errorMessage: '',
       };
     case RESET_USER_ERROR:
       return {
         ...state,
-        errorMessage: null,
+        errorMessage: '',
       };
     case TOGGLE_ADMIN:
       return {

@@ -42,13 +42,13 @@ export function postUserSuccess(user) {
 export function logoutSuccess(bool) {
   return {
     type: 'LOGOUT_SUCCESS',
-    user: null,
+    user: {},
   };
 }
 
 export function toggleAdmin() {
   return {
-    type: TOGGLE_ADMIN,
+    type: 'TOGGLE_ADMIN',
   };
 }
 
@@ -59,7 +59,7 @@ export function postCurrent() {
     return axios.get(`${API_ADDRESS}/user/current`)
       .then(response => response.data)
       .then((user) => {
-        dispatch(postUserSuccess(user));
+        dispatch(postUserSuccess(user || {}));
         dispatch(postUserLoading(false));
       })
       .catch((err) => {

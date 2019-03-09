@@ -14,8 +14,8 @@ class Matches extends React.Component {
     matches: PropTypes.array.isRequired,
     deleteMatch: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
-    isAdmin: PropTypes.bool.isRequired,
     allLoaded: PropTypes.bool.isRequired,
+    toggleAdmin: PropTypes.bool.isRequired,
   }
 
   async componentDidMount() {
@@ -42,7 +42,7 @@ class Matches extends React.Component {
               winner={item.winner}
               deleteMatch={this.props.deleteMatch}
               date={item.date}
-              showAdmin={this.props.user && this.props.user.isAdmin && false}
+              showAdmin={(this.props.toggleAdmin && this.props.user && this.props.user.isAdmin)}
             />
           ))
           }
@@ -61,6 +61,7 @@ const mapStateToProps = state => ({
   matches: state.matches.matches,
   page: state.matches.page,
   allLoaded: state.matches.allLoaded,
+  toggleAdmin: state.auth.toggleAdmin,
 });
 
 const mapDispatchToProps = dispatch => ({
