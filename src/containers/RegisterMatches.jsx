@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import '../styles/matches.css';
+import '../styles/registermatches.css';
 import PropTypes from 'prop-types';
 import { deleteMatch } from '../actions/matches';
 import Match from '../components/Match';
@@ -24,6 +24,9 @@ class RegisterMatches extends React.Component {
   render() {
     return (
       <div className="matchesPage">
+        <div className="gamerules">
+          Regler: Avtal at det er ranked - 8 minutes - 3 stocks - Omega stage
+        </div>
         <MatchRegister />
         <div className="matchContainer">
           { this.props.matches.map(item => (
