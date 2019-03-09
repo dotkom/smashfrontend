@@ -47,7 +47,7 @@ class Profile extends React.Component {
       const { id } = nextProps.match.params;
       await this.props.pageReset();
       const { page } = nextProps;
-      this.props.getProfile(id);
+      await this.props.getProfile(id);
       this.props.getMatches(id, page);
     }
   }
@@ -112,7 +112,7 @@ Change nick
           }
         </div>
         { !this.props.allLoaded && this.props.matches.length > 0
-          && <button type="button" onClick={() => getMatches(this.id, this.props.page)}> Get matches </button>
+          && <button type="button" onClick={() => this.props.getMatches(this.id, this.props.page)}> Get matches </button>
         }
       </div>
     );
