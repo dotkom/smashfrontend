@@ -56,7 +56,7 @@ export function postCurrent() {
         dispatch(postUserLoading(false));
       })
       .catch((err) => {
-        dispatch(postUserFailure(err.response.data));
+        dispatch(postUserFailure(err.response ? err.response.data : 'No connection'));
       });
   };
 }
@@ -70,7 +70,7 @@ export function logout() {
         dispatch(logoutSuccess());
       })
       .catch((err) => {
-        dispatch(postUserFailure(err.response.data));
+        dispatch(postUserFailure(err.response ? err.response.data : 'No connection'));
       });
   };
 }
@@ -90,7 +90,7 @@ export function changeNick(string) {
         dispatch(postNickSuccess(user.nick));
       })
       .catch((err) => {
-        dispatch(postUserFailure(err.response.data));
+        dispatch(postUserFailure(err.response ? err.response.data : 'No connection'));
       });
   };
 }
