@@ -4,9 +4,12 @@ import {
   POST_USER_REQUEST,
   POST_USER_SUCCESS,
   RESET_USER_ERROR,
+  TOGGLE_ADMIN,
 } from '../actions/auth';
 
-const initialAuthState = { user: null, isLoading: false, errorMessage: null };
+const initialAuthState = {
+  toggleAdmin: false, user: null, isLoading: false, errorMessage: null,
+};
 
 
 function auth(state = initialAuthState, action) {
@@ -38,6 +41,11 @@ function auth(state = initialAuthState, action) {
       return {
         ...state,
         errorMessage: null,
+      };
+    case TOGGLE_ADMIN:
+      return {
+        ...state,
+        toggleAdmin: !state.toggleAdmin,
       };
     default:
       return state;

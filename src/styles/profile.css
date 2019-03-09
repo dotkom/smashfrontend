@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .profileContainer {
   display: flex;
   flex-direction: column;
@@ -16,3 +17,64 @@
   color: white;
   cursor: pointer;
 }
+=======
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.profileContainer > button {
+  background: #556677;
+  padding: 15px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 0 40px 0;
+  color: white;
+  cursor: pointer;
+}
+
+.profileNick {
+  font-size: 30px;
+  font-family: sans-serif;
+  text-align: center;
+  margin-bottom: 20px ;
+
+}
+
+.changeNick {
+  margin: 10px;
+}
+
+.nickInput {
+  font-size: 16px;
+  outline: none;
+  padding: 5px;
+}
+
+.changeNick button {
+  background: #556677;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #dddddd;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.statistics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 30px 30px;
+  font-size: 16px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.statistics div {
+}
+>>>>>>> 553124f87eceeed4022a6cc1ced1ca0de7f3d832
