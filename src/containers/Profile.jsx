@@ -54,7 +54,23 @@ class Profile extends React.Component {
   render() {
     return (
       <div className="profileContainer">
-        {this.props.user && this.props.profile && this.props.profile._id === this.props.user._id
+        {this.props.profile
+        && (
+        <div>
+          <div className="profileNick">{this.props.profile.nick}</div>
+
+          <div className="statistics">
+            <div>Rank</div>
+            <div>Rating</div>
+            <div>Matches</div>
+            <div>Wins</div>
+            <div>{this.props.profile.rank}</div>
+            <div>{Math.round(this.props.profile.rating)}</div>
+            <div>{this.props.profile.matches}</div>
+            <div>{this.props.profile.wins}</div>
+
+          </div>
+          {this.props.user && this.props.profile._id === this.props.user._id
           && (
           <div className="changeNick">
             <input className="nickInput" />
@@ -64,22 +80,14 @@ class Profile extends React.Component {
               () => this.props.changeNick(document.querySelectorAll('.nickInput')[0].value)}
             >
               {' '}
-                Change nick
+Change nick
             </button>
           </div>
           )
         }
-        {this.props.profile
-          && (
-          <div className="statistics">
-            <div>{`Nick: ${this.props.profile.nick}`}</div>
-            <div>{`Rating: ${Math.round(this.props.profile.rating)}`}</div>
-            <div>{`Matches: ${this.props.profile.matches}`}</div>
-            <div>{`Wins: ${this.props.profile.wins}`}</div>
-            <div>{`Rank: ${this.props.profile.rank}`}</div>
-          </div>
-          )
-       }
+        </div>
+        )
+     }
         <div className="matchContainer">
           { this.props.matches.map(item => (
             <Match
