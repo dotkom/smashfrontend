@@ -6,7 +6,7 @@ import { logout, toggleAdmin } from '../actions/auth';
 import '../styles/navbar.css';
 
 const Navbar = ({
-  user, isLoading, logoutUser, toggleAdminPanels,
+  user, isLoading, logoutUser, toggleAdminPanels, toggleAdminStatus,
 }) => (
   <div className="navbar">
     <div className="links">
@@ -17,7 +17,7 @@ const Navbar = ({
     {user._id ? (
       <div className="links">
         {user.isAdmin
-          && <button type="button" className="button" onClick={toggleAdminPanels}>toggle Admin</button>
+          && <button type="button" className="adminStatusButton" onClick={toggleAdminPanels}>{`admin: ${toggleAdminStatus ? 'on' : 'off'}`}</button>
       }
         <Link to="/profile">Profile</Link>
         <button type="button" className="button" onClick={logoutUser}><div className="buttontext">Logout</div></button>
@@ -41,12 +41,14 @@ Navbar.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   logoutUser: PropTypes.func.isRequired,
   toggleAdminPanels: PropTypes.func.isRequired,
+  toggleAdminStatus: PropTypes.bool.isRequired,
 
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
   isLoading: state.auth.isLoading,
+  toggleAdminStatus: state.auth.toggleAdmin,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -13,7 +13,7 @@
 }
 
 .navbar button {
-  background-color: #dd4444; /* Green */
+  background-color: #0060a3; 
   border: none;
   color: white;
   margin: 0 5px;
@@ -23,6 +23,14 @@
   text-decoration: none;
   font-size: 18px;
   font-family: sans-serif;
+}
+
+button.adminStatusButton {
+  background-color: #dddddd;
+  padding: 8px 10px;
+  margin-right: 20px;
+  font-size: 14px;
+
 }
 
 .navbar a {
