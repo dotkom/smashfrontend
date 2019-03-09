@@ -1,7 +1,7 @@
 import React from 'react';
-import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import '../styles/matchregister.css';
+import PropTypes from 'prop-types';
 import {
   postMatch, setWinner, setPlayer1, setPlayer2, setCharacter1, setCharacter2,
 } from '../actions/matchregister';
@@ -12,9 +12,33 @@ import UserPicker from './UserPicker';
 
 
 class MatchRegister extends React.Component {
+  static propTypes = {
+    getCharacters: PropTypes.func.isRequired,
+    getUsers: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    player1: PropTypes.object.isRequired,
+    player2: PropTypes.object.isRequired,
+    character1: PropTypes.object.isRequired,
+    character2: PropTypes.object.isRequired,
+    users: PropTypes.array.isRequired,
+    characters: PropTypes.array.isRequired,
+    winner: PropTypes.number.isRequired,
+    registerMatch: PropTypes.func.isRequired,
+    setWinner: PropTypes.func.isRequired,
+    setCharacter1: PropTypes.func.isRequired,
+    setPlayer1: PropTypes.func.isRequired,
+    setCharacter2: PropTypes.func.isRequired,
+    setPlayer2: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.register = this.register.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getCharacters();
+    this.props.getUsers();
   }
 
   register() {
@@ -27,18 +51,18 @@ class MatchRegister extends React.Component {
     let c2 = this.props.character2;
 
     this.props.users.forEach((user) => {
-      if (user.nick == p1) {
+      if (user.nick === p1) {
         p1 = user._id;
       }
-      if (user.nick == p2) {
+      if (user.nick === p2) {
         p2 = user._id;
       }
     });
     this.props.characters.forEach((char) => {
-      if (char.id == c1) {
+      if (char.id === c1) {
         c1 = char._id;
       }
-      if (char.id == c2) {
+      if (char.id === c2) {
         c2 = char._id;
       }
     });
@@ -49,19 +73,13 @@ class MatchRegister extends React.Component {
   }
 
 
-  componentDidMount() {
-    this.props.getCharacters();
-    this.props.getUsers();
-  }
-
-
   render() {
     return (
       <div className="matchRegisterContainer">
         <div className="matchRegister">
           <div className="player1">
             <div className="buttonContainer">
-              <button className={`button${this.props.winner === 1 ? ' winner' : ''}`} onClick={() => this.props.setWinner(1)}><div className="buttontext">{(this.props.winner === 1 ? ' winner' : 'loser')}</div></button>
+              <button type="button" className={`button${this.props.winner === 1 ? ' winner' : ''}`} onClick={() => this.props.setWinner(1)}><div className="buttontext">{(this.props.winner === 1 ? ' winner' : 'loser')}</div></button>
 
               <CharacterPicker
                 setCharacter={this.props.setCharacter1}
@@ -95,14 +113,14 @@ class MatchRegister extends React.Component {
                 localitem="character2"
               />
 
-              <button className={`button${this.props.winner === 2 ? ' winner' : ''}`} onClick={() => this.props.setWinner(2)}><div className="buttontext">{(this.props.winner === 2 ? ' winner' : 'loser')}</div></button>
+              <button type="button" className={`button${this.props.winner === 2 ? ' winner' : ''}`} onClick={() => this.props.setWinner(2)}><div className="buttontext">{(this.props.winner === 2 ? ' winner' : 'loser')}</div></button>
 
 
             </div>
           </div>
         </div>
         <div className="registerButton">
-          <button onClick={this.register}><div className="buttontext">Register match</div></button>
+          <button type="button" onClick={this.register}><div className="buttontext">Register match</div></button>
 
         </div>
       </div>

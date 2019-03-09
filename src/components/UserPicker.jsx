@@ -1,9 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/userpicker.css';
+import PropTypes from 'prop-types';
 
 
 class UserPicker extends React.Component {
+  static propTypes = {
+    localitem: PropTypes.string.isRequired,
+    setPlayer: PropTypes.func.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    player: PropTypes.string.isRequired,
+    users: PropTypes.array.isRequired,
+
+  }
+
   constructor(props) {
     super(props);
     this.setPlayer = this.setPlayer.bind(this);
@@ -30,17 +40,17 @@ class UserPicker extends React.Component {
         <div className="scrollerContainer">
           <div className="userScroller">
             { this.props.users.filter((user) => {
-              if (this.props.player == '') {
+              if (this.props.player === '') {
                 localStorage.setItem(this.props.localitem, '');
               }
-              if (user.nick.toLowerCase() == this.props.player.toLowerCase()) {
+              if (user.nick.toLowerCase() === this.props.player.toLowerCase()) {
                 localStorage.setItem(this.props.localitem, user.nick);
               }
               return user.nick.toLowerCase().includes(this.props.player.toLowerCase());
             })
               .sort((a, b) => (`${a.nick}`).localeCompare(b.nick))
               .map(user => (
-                <button key={user._id} onClick={() => this.setPlayer(user.nick)}>
+                <button type="button" key={user._id} onClick={() => this.setPlayer(user.nick)}>
                   {' '}
                   {user.nick}
                   {' '}

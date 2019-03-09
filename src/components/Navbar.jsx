@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { push } from 'connected-react-router';
+import PropTypes from 'prop-types';
 import { logout } from '../actions/auth';
 import '../styles/navbar.css';
 
 const Navbar = ({
-  user, isLoading, logout, gotologin, gotoregister,
+  user, isLoading, logoutUser,
 }) => (
   <div className="navbar">
     <div className="links">
@@ -20,13 +20,13 @@ const Navbar = ({
           && <Link to="/admin">Admin</Link>
           }
         <Link to="/profile">Profile</Link>
-        <button className="button" onClick={logout}><div className="buttontext">Logout</div></button>
+        <button type="button" className="button" onClick={logoutUser}><div className="buttontext">Logout</div></button>
       </div>
     ) : (
       <div className="actions">
         <a href="http://localhost:8080/login">
           <div className="loginButton">
-            <img src="/icons/owf-logo.png" />
+            <img alt="owlogo" src="/icons/owf-logo.png" />
             <div className="loginText"> Sign in </div>
           </div>
         </a>
@@ -36,15 +36,20 @@ const Navbar = ({
   </div>
 );
 
+Navbar.propTypes = {
+  user: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+
+};
+
 const mapStateToProps = state => ({
   user: state.auth.user,
   isLoading: state.auth.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
-  gotologin: () => dispatch(push('/login')),
-  gotoregister: () => dispatch(push('/register')),
+  logoutUser: () => dispatch(logout()),
 
 });
 

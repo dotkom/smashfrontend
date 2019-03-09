@@ -1,4 +1,3 @@
-import { push } from 'connected-react-router';
 import { API_ADDRESS } from '../config/connections';
 import { postNickSuccess } from './profile';
 
@@ -91,7 +90,6 @@ export function changeNick(string) {
         dispatch(postNickSuccess(user.nick));
       })
       .catch((err) => {
-        console.log(err);
         dispatch(postUserFailure(err.response.data));
       });
   };

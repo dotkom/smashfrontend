@@ -1,9 +1,26 @@
 import React from 'react';
 import '../styles/match.css';
+import PropTypes from 'prop-types';
 import MatchPlayer from './MatchPlayer';
 
 
 class Match extends React.Component {
+  static propTypes = {
+    deleteMatch: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    winner: PropTypes.string.isRequired,
+    player1: PropTypes.object.isRequired,
+    player2: PropTypes.object.isRequired,
+    newrank1: PropTypes.number.isRequired,
+    newrank2: PropTypes.number.isRequired,
+    oldrank1: PropTypes.number.isRequired,
+    oldrank2: PropTypes.number.isRequired,
+    character1: PropTypes.object.isRequired,
+    character2: PropTypes.object.isRequired,
+    date: PropTypes.object.isRequired,
+    showAdmin: PropTypes.bool.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -104,14 +121,14 @@ class Match extends React.Component {
         {this.props.showAdmin
           && (
           <div className="adminPanel" ref={(node) => { this.node = node; }}>
-            <button className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
+            <button type="button" className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
             {this.state.modalOpen
               && (
               <div className="matchModal">
                 <div> Are you sure? </div>
                 <div className="buttons">
-                  <button className="deleteButton" onClick={this.delete}> Yes </button>
-                  <button className="deleteButton" onClick={this.closeModal}> No </button>
+                  <button type="button" className="deleteButton" onClick={this.delete}> Yes </button>
+                  <button type="button" className="deleteButton" onClick={this.closeModal}> No </button>
                 </div>
               </div>
               )

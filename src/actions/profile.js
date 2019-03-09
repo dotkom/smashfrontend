@@ -1,4 +1,3 @@
-import { push } from 'connected-react-router';
 import { API_ADDRESS } from '../config/connections';
 
 const axios = require('axios');
@@ -51,7 +50,6 @@ export function getUser(id) {
     return axios.get(`${API_ADDRESS}/user/id/${id}`)
       .then(response => response.data)
       .then((user) => {
-        console.log(user);
         dispatch(postProfileSuccess(user));
         dispatch(postProfileLoading(false));
       })

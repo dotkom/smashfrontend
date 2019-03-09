@@ -1,9 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/characterpicker.css';
+import PropTypes from 'prop-types';
 
 
 class CharacterPicker extends React.Component {
+  static propTypes = {
+    localitem: PropTypes.number.isRequired,
+    setCharacter: PropTypes.func.isRequired,
+    currentCharacter: PropTypes.number.isRequired,
+    characters: PropTypes.array.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,15 +23,22 @@ class CharacterPicker extends React.Component {
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleOutsideClick, false);
-  }
 
   componentDidMount() {
     const localcharacter = localStorage.getItem(this.props.localitem);
     if (localcharacter) {
       this.setCharacter(localcharacter);
     }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleOutsideClick, false);
+  }
+
+  setCharacter(id) {
+    this.closeModal();
+    localStorage.setItem(this.props.localitem, id);
+    this.props.setCharacter(id);
   }
 
   closeModal() {
@@ -48,19 +63,13 @@ class CharacterPicker extends React.Component {
     this.closeModal();
   }
 
-  setCharacter(id) {
-    this.closeModal();
-    localStorage.setItem(this.props.localitem, id);
-    this.props.setCharacter(id);
-  }
-
 
   render() {
     return (
       <div className="characterPicker" ref={(node) => { this.node = node; }}>
-        <button className="currentCharacter" onClick={this.modalOpen ? this.closeModal : this.openModal}>
+        <button type="button" className="currentCharacter" onClick={this.modalOpen ? this.closeModal : this.openModal}>
           {this.props.currentCharacter ? (
-            <img src={`/icons/characters/${(this.props.currentCharacter == 55 || this.props.currentCharacter == 56) ? 54 : this.props.currentCharacter}.png`} />
+            <img alt="char" src={`/icons/characters/${(this.props.currentCharacter === 55 || this.props.currentCharacter === 56) ? 54 : this.props.currentCharacter}.png`} />
           ) : (
             <div className="imgalt"> ? </div>
           )}
@@ -71,8 +80,8 @@ class CharacterPicker extends React.Component {
           && (
           <div className="characterModal">
             { this.props.characters.map(char => (
-              <button key={char.id} className="characterButton" onClick={() => this.setCharacter(char.id)}>
-                <img title={char.name} src={`/icons/characters/${(char.id == 55 || char.id == 56) ? 54 : char.id}.png`} />
+              <button type="button" key={char.id} className="characterButton" onClick={() => this.setCharacter(char.id)}>
+                <img alt="char" title={char.name} src={`/icons/characters/${(char.id === 55 || char.id === 56) ? 54 : char.id}.png`} />
               </button>
             ))}
           </div>
