@@ -24,7 +24,7 @@ class Profile extends React.Component {
     matches: PropTypes.array.isRequired,
     allLoaded: PropTypes.bool.isRequired,
     toggleAdmin: PropTypes.bool.isRequired,
-    delete: PropTypes.bool.isRequired,
+    delete: PropTypes.func.isRequired,
   };
 
   async componentDidMount() {

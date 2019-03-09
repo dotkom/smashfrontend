@@ -41,7 +41,7 @@ class RegisterMatches extends React.Component {
               winner={item.winner}
               deleteMatch={this.props.deleteMatch}
               date={item.date}
-              showAdmin={(this.props.toggleAdmin && this.props.user && this.props.user.isAdmin)}
+              showAdmin={this.props.toggleAdmin && this.props.user && this.props.user.isAdmin}
             />
           ))
           }
