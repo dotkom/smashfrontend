@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import RouterPropTypes from 'react-router-prop-types';
 import Profile from './containers/Profile';
 import Navbar from './components/Navbar';
 import Matches from './containers/Matches';
@@ -12,6 +13,13 @@ import Leaderboard from './containers/Leaderboard';
 import { postCurrent } from './actions/auth';
 
 class App extends React.Component {
+  static propTypes = {
+    postCurrent: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    history: RouterPropTypes.history.isRequired,
+
+  }
+
   componentWillMount() {
     this.props.postCurrent();
   }
@@ -39,9 +47,6 @@ class App extends React.Component {
   }
 }
 
-App.propTypes = {
-  history: PropTypes.object,
-};
 
 function PrivateRoute({
   component: Component, authed, admin, ...rest
@@ -58,6 +63,17 @@ function PrivateRoute({
     />
   );
 }
+
+PrivateRoute.propTypes = {
+  component: PropTypes.object.isRequired,
+  authed: PropTypes.object,
+  admin: PropTypes.object,
+};
+
+PrivateRoute.defaultProps = {
+  authed: false,
+  admin: false,
+};
 
 
 const mapStateToProps = state => ({
