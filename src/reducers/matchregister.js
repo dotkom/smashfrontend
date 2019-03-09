@@ -10,8 +10,12 @@ import {
   RESET_MATCHREGISTER,
 } from '../actions/matchregister';
 
+import {
+  DELETE_MATCH_SUCCESS,
+} from '../actions/matches';
+
 const initialMatchregisterState = {
-  matches: [], character1: 0, character2: 0, player1: '', player2: '', winner: 1, isLoading: false, errorMessage: null,
+  matches: [], character1: 0, character2: 0, player1: '', player2: '', winner: 1, isLoading: false, errorMessage: '',
 };
 
 function matchregister(state = initialMatchregisterState, action) {
@@ -63,6 +67,13 @@ function matchregister(state = initialMatchregisterState, action) {
       return {
         ...state,
         winner: action.winner,
+      };
+    case DELETE_MATCH_SUCCESS:
+      return {
+        ...state,
+        errorMessage: '',
+        hasErrored: false,
+        matches: state.matches.filter(match => match._id !== action.match._id),
       };
     default:
       return state;

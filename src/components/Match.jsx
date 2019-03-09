@@ -43,7 +43,7 @@ class Match extends React.Component {
     });
   }
 
-  delete(id) {
+  delete() {
     this.props.deleteMatch(this.props.id);
   }
 

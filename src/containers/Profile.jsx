@@ -24,6 +24,7 @@ class Profile extends React.Component {
     matches: PropTypes.array.isRequired,
     allLoaded: PropTypes.bool.isRequired,
     toggleAdmin: PropTypes.bool.isRequired,
+    delete: PropTypes.bool.isRequired,
   };
 
   async componentDidMount() {
@@ -104,7 +105,7 @@ Change nick
               character1={item.character1}
               character2={item.character2}
               winner={item.winner}
-              deleteMatch={deleteMatch}
+              deleteMatch={this.props.delete}
               date={item.date}
             />
           ))
@@ -133,7 +134,7 @@ const mapDispatchToProps = dispatch => ({
   pageReset: () => dispatch(pageReset()),
   getMatches: (id, page) => dispatch(getMatches(id, page)),
   toHome: () => dispatch(push('/')),
-  deleteMatch: id => dispatch(deleteMatch(id)),
+  delete: id => dispatch(deleteMatch(id)),
   getProfile: id => dispatch(getUser(id)),
   resetProfile: () => dispatch(resetProfile()),
   changeNick: string => dispatch(changeNick(string)),
