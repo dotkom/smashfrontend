@@ -1,4 +1,4 @@
-import { API_ADDRESS } from '../config/connections';
+import API_ADDRESS from '../config/connections';
 import { postNickSuccess } from './profile';
 
 const axios = require('axios');
