@@ -36,7 +36,7 @@ class App extends React.Component {
               <PrivateRoute authed={this.props.user} exact path="/" component={RegisterMatches} />
               <Route exact path="/leaderboard" component={Leaderboard} />
               <Route exact path="/matches" component={Matches} />
-              <Route exact path="/registermatch" component={RegisterMatches} />
+              <PrivateRoute authed={this.props.user} exact path="/registermatch" component={RegisterMatches} />
               <PrivateRoute exact path="/profile" authed={this.props.user} component={Profile} />
               <Route path="/profile/:id" component={Profile} />
 

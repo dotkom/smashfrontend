@@ -10,7 +10,9 @@ const Navbar = ({
 }) => (
   <div className="navbar">
     <div className="links">
-      <Link to="/registermatch"> New match </Link>
+      {user._id
+      && <Link to="/registermatch"> New match </Link>
+      }
       <Link to="/matches"> Recent matches </Link>
       <Link to="/leaderboard">Leaderboard</Link>
     </div>
