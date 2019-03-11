@@ -13,8 +13,9 @@
 }
 
 .navbar button {
-  background-color: #0060a3; 
+  background-color: #0060a3;
   border: none;
+  cursor: pointer;
   color: white;
   margin: 0 5px;
   padding: 10px 15px;
@@ -30,6 +31,8 @@ button.adminStatusButton {
   padding: 8px 10px;
   margin-right: 20px;
   font-size: 14px;
+  outline: none;
+  cursor: pointer;
 
 }
 
