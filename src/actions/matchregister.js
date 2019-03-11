@@ -96,6 +96,7 @@ export function postMatch(player1, player2, character1, character2, winner) {
       })
       .catch(() => {
         dispatch(postMatchregisterFailure(true));
+        dispatch(postMatchregisterLoading(false));
       });
   };
 }
