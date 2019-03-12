@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout, toggleAdmin } from '../actions/auth';
+import API_ADDRESS from '../config/connections';
 import '../styles/navbar.css';
 
 const Navbar = ({
@@ -26,7 +27,7 @@ const Navbar = ({
       </div>
     ) : (
       <div className="actions">
-        <a href="http://localhost:8080/login">
+        <a href={`${API_ADDRESS}/login`}>
           <div className="loginButton">
             <img alt="owlogo" src="/icons/owf-logo.png" />
             <div className="loginText"> Sign in </div>
