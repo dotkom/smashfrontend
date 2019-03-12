@@ -12,6 +12,5 @@ pipeline:
     when:
       event: push
       branch: master
-      status: success
     script:
       - /srv/www/smashrank/deploy.sh
