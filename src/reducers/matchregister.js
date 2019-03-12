@@ -23,19 +23,20 @@ function matchregister(state = initialMatchregisterState, action) {
     case POST_MATCHREGISTER_FAILURE:
       return {
         ...state,
+        isLoading: false,
         errorMessage: action.errorMessage,
       };
     case POST_MATCHREGISTER_REQUEST:
       return {
         ...state,
-        errorMessage: null,
+        errorMessage: '',
         isLoading: action.isLoading,
       };
     case POST_MATCHREGISTER_SUCCESS:
       return {
         ...state,
-        errorMessage: null,
         isLoading: false,
+        errorMessage: '',
         matches: state.matches.concat(action.match),
       };
     case RESET_MATCHREGISTER:
