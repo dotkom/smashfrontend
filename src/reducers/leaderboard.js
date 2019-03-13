@@ -7,7 +7,7 @@ import {
 } from '../actions/leaderboard';
 
 const initialLeaderboardState = {
-  page: 1, users: [], isLoading: false, allLoaded: false,
+  page: 1, users: [], isLoading: false, allLoaded: false, errorMessage: '',
 };
 
 function leaderboard(state = initialLeaderboardState, action) {
@@ -15,18 +15,18 @@ function leaderboard(state = initialLeaderboardState, action) {
     case POST_LEADERBOARD_FAILURE:
       return {
         ...state,
-        hasErrored: action.hasErrored,
+        errorMessage: action.errorMessage,
       };
     case POST_LEADERBOARD_REQUEST:
       return {
         ...state,
-        hasErrored: false,
+        errorMessage: '',
         isLoading: action.isLoading,
       };
     case POST_LEADERBOARD_SUCCESS:
       return {
         ...state,
-        hasErrored: false,
+        errorMessage: '',
         allLoaded: action.allLoaded,
         users: state.users.concat(action.users),
       };
@@ -39,6 +39,7 @@ function leaderboard(state = initialLeaderboardState, action) {
     case LEADERBOARD_PAGE_RESET:
       return {
         ...state,
+        errorMessage: '',
         page: 1,
         users: [],
         allLoaded: false,
