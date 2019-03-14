@@ -67,8 +67,8 @@ export function getMatches(id, page) {
         }
         dispatch(postMatchSuccess(matches, allLoaded));
       })
-      .catch(() => {
-        dispatch(postMatchFailure(true));
+      .catch((err) => {
+        dispatch(postMatchFailure(err.response ? err.response.data : 'Something went wrong'));
       });
   };
 }
@@ -90,8 +90,8 @@ export function getAllMatches(page) {
         }
         dispatch(postMatchSuccess(matches, allLoaded));
       })
-      .catch(() => {
-        dispatch(postMatchFailure(true));
+      .catch((err) => {
+        dispatch(postMatchFailure(err.response ? err.response.data : 'Something went wrong'));
       });
   };
 }
@@ -109,8 +109,8 @@ export function deleteMatch(id) {
       .then((match) => {
         dispatch(deleteMatchSuccess(match));
       })
-      .catch(() => {
-        dispatch(postMatchFailure(true));
+      .catch((err) => {
+        dispatch(postMatchFailure(err.response ? err.response.data : 'Something went wrong'));
       });
   };
 }

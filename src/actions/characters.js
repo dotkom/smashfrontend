@@ -40,8 +40,8 @@ export function getCharacters() {
       .then((characters) => {
         dispatch(postCharacterSuccess(characters));
       })
-      .catch(() => {
-        dispatch(postCharacterFailure(true));
+      .catch((err) => {
+        dispatch(postCharacterFailure(err.response ? err.response.data : 'Something went wrong'));
       });
   };
 }

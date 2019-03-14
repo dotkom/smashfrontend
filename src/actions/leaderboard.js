@@ -62,8 +62,8 @@ export function getLeaderboard(page) {
         }
         dispatch(postLeaderboardSuccess(users, allLoaded));
       })
-      .catch(() => {
-        dispatch(postLeaderboardFailure(true));
+      .catch((err) => {
+        dispatch(postLeaderboardFailure(err.response ? err.response.data : 'Something went wrong'));
       });
   };
 }

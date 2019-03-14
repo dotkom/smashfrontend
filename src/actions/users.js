@@ -40,8 +40,8 @@ export function getUsers() {
       .then((matches) => {
         dispatch(postUsersSuccess(matches));
       })
-      .catch(() => {
-        dispatch(postUsersFailure(true));
+      .catch((err) => {
+        dispatch(postUsersFailure(err.response ? err.response.data : 'Something went wrong'));
       });
   };
 }
