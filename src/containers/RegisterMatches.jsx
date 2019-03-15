@@ -13,6 +13,7 @@ class RegisterMatches extends React.Component {
     deleteMatch: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     toggleAdmin: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string.isRequired,
 
   }
 
@@ -23,11 +24,14 @@ class RegisterMatches extends React.Component {
 
   render() {
     return (
-      <div className="matchesPage">
+      <div className="registerMatchesPage">
         <div className="gamerules">
           Regler: Avtal at det er ranked - 8 minutes - 3 stocks - Omega stage
         </div>
         <MatchRegister />
+        <div className="errorMessage">
+          {this.props.errorMessage}
+        </div>
         <div className="matchContainer">
           { this.props.matches.map(item => (
             <Match

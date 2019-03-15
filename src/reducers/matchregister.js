@@ -37,7 +37,7 @@ function matchregister(state = initialMatchregisterState, action) {
         ...state,
         isLoading: false,
         errorMessage: '',
-        matches: state.matches.concat(action.match),
+        matches: [action.match].concat(state.matches),
       };
     case RESET_MATCHREGISTER:
       return {
