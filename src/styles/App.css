@@ -4,6 +4,11 @@
 
 }
 
+.errorMessage {
+  font-family: sans-serif;
+  color: red;
+}
+
 @media screen and (max-width: 1100px) {
   .mainContainer {
     margin: 80px 2%;

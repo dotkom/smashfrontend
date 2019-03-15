@@ -54,7 +54,7 @@ export function getUser(id) {
         dispatch(postProfileLoading(false));
       })
       .catch((err) => {
-        dispatch(postProfileFailure(err.response.data));
+        dispatch(postProfileFailure(err.response ? err.response.data : 'Something went wrong'));
       });
   };
 }

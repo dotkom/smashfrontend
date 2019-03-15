@@ -14,7 +14,7 @@ function profile(state = initialProfileState, action) {
     case POST_PROFILE_FAILURE:
       return {
         ...state,
-        isLoading: action.isLoading,
+        isLoading: false,
         errorMessage: action.errorMessage,
       };
     case POST_PROFILE_REQUEST:

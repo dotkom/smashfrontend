@@ -4,25 +4,25 @@ import {
   POST_USERS_SUCCESS,
 } from '../actions/users';
 
-const initialUserState = { users: [], isLoading: false };
+const initialUserState = { users: [], isLoading: false, errorMessage: '' };
 
 function users(state = initialUserState, action) {
   switch (action.type) {
     case POST_USERS_FAILURE:
       return {
         ...state,
-        hasErrored: action.hasErrored,
+        errorMessage: action.errorMessage,
       };
     case POST_USERS_REQUEST:
       return {
         ...state,
-        hasErrored: false,
+        errorMessage: '',
         isLoading: action.isLoading,
       };
     case POST_USERS_SUCCESS:
       return {
         ...state,
-        hasErrored: false,
+        errorMessage: '',
         users: action.users,
       };
     default:

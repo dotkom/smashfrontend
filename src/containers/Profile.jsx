@@ -25,6 +25,7 @@ class Profile extends React.Component {
     allLoaded: PropTypes.bool.isRequired,
     toggleAdmin: PropTypes.bool.isRequired,
     delete: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string.isRequired,
   };
 
   async componentDidMount() {
@@ -90,6 +91,9 @@ Change nick
         </div>
         )
      }
+        <div className="errorMessage">
+          {this.props.errorMessage}
+        </div>
         <div className="matchContainer">
           { this.props.matches.map(item => (
             <Match
@@ -126,7 +130,7 @@ const mapStateToProps = state => ({
   page: state.matches.page,
   allLoaded: state.matches.allLoaded,
   profile: state.profile.user,
-  profileError: state.profile.errorMessage,
+  errorMessage: state.auth.errorMessage,
   toggleAdmin: state.auth.toggleAdmin,
 });
 

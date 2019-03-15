@@ -94,8 +94,8 @@ export function postMatch(player1, player2, character1, character2, winner) {
       .then((match) => {
         dispatch(postMatchregisterSuccess(match));
       })
-      .catch(() => {
-        dispatch(postMatchregisterFailure(true));
+      .catch((err) => {
+        dispatch(postMatchregisterFailure(err.response ? err.response.data : 'Something went wrong'));
       });
   };
 }

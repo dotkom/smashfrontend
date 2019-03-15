@@ -17,7 +17,7 @@ function auth(state = initialAuthState, action) {
     case POST_USER_FAILURE:
       return {
         ...state,
-        isLoading: action.isLoading,
+        isLoading: false,
         errorMessage: action.errorMessage,
       };
     case POST_USER_REQUEST:

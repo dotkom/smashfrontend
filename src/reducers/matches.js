@@ -8,7 +8,7 @@ import {
 } from '../actions/matches';
 
 const initialMatchState = {
-  page: 1, matches: [], isLoading: false, allLoaded: false,
+  page: 1, matches: [], isLoading: false, allLoaded: false, errorMessage: '',
 };
 
 function matches(state = initialMatchState, action) {
@@ -16,25 +16,25 @@ function matches(state = initialMatchState, action) {
     case POST_MATCH_FAILURE:
       return {
         ...state,
-        hasErrored: action.hasErrored,
+        errorMessage: action.errorMessage,
       };
     case POST_MATCH_REQUEST:
       return {
         ...state,
-        hasErrored: false,
+        errorMessage: '',
         isLoading: action.isLoading,
       };
     case POST_MATCH_SUCCESS:
       return {
         ...state,
-        hasErrored: false,
+        errorMessage: '',
         allLoaded: action.allLoaded,
         matches: state.matches.concat(action.matches),
       };
     case DELETE_MATCH_SUCCESS:
       return {
         ...state,
-        hasErrored: false,
+        errorMessage: '',
         matches: state.matches.filter(match => match._id !== action.match._id),
 
       };
