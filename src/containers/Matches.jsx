@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/matches.css';
 import PropTypes from 'prop-types';
-import { getAllMatches, deleteMatch, pageReset } from '../actions/matches';
+import {
+  getAllMatches, deleteMatch, pageReset, userDeleteMatch,
+} from '../actions/matches';
 import Match from '../components/Match';
 
 
@@ -13,6 +15,7 @@ class Matches extends React.Component {
     getMatches: PropTypes.func.isRequired,
     matches: PropTypes.array.isRequired,
     deleteMatch: PropTypes.func.isRequired,
+    userDeleteMatch: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     allLoaded: PropTypes.bool.isRequired,
     toggleAdmin: PropTypes.bool.isRequired,
@@ -40,11 +43,18 @@ class Matches extends React.Component {
               character1={item.character1}
               character2={item.character2}
               winner={item.winner}
-              deleteMatch={this.props.deleteMatch}
+              deleteMatch={
+                this.props.user.isAdmin ? this.props.deleteMatch : this.props.userDeleteMatch
+              }
               date={item.date}
-              showAdmin={(this.props.toggleAdmin
-                && this.props.user
-                && this.props.user.isAdmin) || false}
+              showDelete={this.props.toggleAdmin
+                || (
+                  (((new Date()) - new Date(item.date)) < (60 * 60 * 1000))
+                  && (item.player1._id === this.props.user._id
+                  || item.player2._id === this.props.user._id
+                  || item.registeredBy === this.props.user._id)
+                )
+              }
             />
           ))
           }
@@ -69,6 +79,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getMatches: page => dispatch(getAllMatches(page)),
   deleteMatch: id => dispatch(deleteMatch(id)),
+  userDeleteMatch: id => dispatch(userDeleteMatch(id)),
   pageReset: () => dispatch(pageReset()),
 
 

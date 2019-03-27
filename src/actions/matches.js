@@ -114,3 +114,22 @@ export function deleteMatch(id) {
       });
   };
 }
+
+export function userDeleteMatch(id) {
+  return (dispatch) => {
+    dispatch(postMatchLoading(true));
+    return axios.post(`${API_ADDRESS}/match/delete`, {
+      _id: id,
+    })
+      .then((response) => {
+        dispatch(postMatchLoading(false));
+        return response.data;
+      })
+      .then((match) => {
+        dispatch(deleteMatchSuccess(match));
+      })
+      .catch((err) => {
+        dispatch(postMatchFailure(err.response ? err.response.data : 'Something went wrong'));
+      });
+  };
+}

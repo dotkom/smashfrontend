@@ -18,7 +18,7 @@ class Match extends React.Component {
     character1: PropTypes.object.isRequired,
     character2: PropTypes.object.isRequired,
     date: PropTypes.string.isRequired,
-    showAdmin: PropTypes.bool.isRequired,
+    showDelete: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -118,7 +118,7 @@ class Match extends React.Component {
           }
 
         </div>
-        {this.props.showAdmin
+        {this.props.showDelete
           && (
           <div className="adminPanel" ref={(node) => { this.node = node; }}>
             <button type="button" className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
