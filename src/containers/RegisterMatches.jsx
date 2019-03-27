@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/registermatches.css';
 import PropTypes from 'prop-types';
-import { deleteMatch } from '../actions/matches';
+import { deleteMatch, userDeleteMatch } from '../actions/matches';
 import Match from '../components/Match';
 import MatchRegister from '../components/MatchRegister';
 
@@ -11,9 +11,9 @@ class RegisterMatches extends React.Component {
   static propTypes = {
     matches: PropTypes.array.isRequired,
     deleteMatch: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    toggleAdmin: PropTypes.bool.isRequired,
+    userDeleteMatch: PropTypes.func.isRequired,
     errorMessage: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
 
   }
 
@@ -46,9 +46,11 @@ class RegisterMatches extends React.Component {
               character1={item.character1}
               character2={item.character2}
               winner={item.winner}
-              deleteMatch={this.props.deleteMatch}
+              deleteMatch={
+                this.props.user.isAdmin ? this.props.deleteMatch : this.props.userDeleteMatch
+              }
               date={item.date}
-              showAdmin={this.props.toggleAdmin && this.props.user && this.props.user.isAdmin}
+              showDelete
             />
           ))
           }
@@ -69,6 +71,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteMatch: id => dispatch(deleteMatch(id)),
+  userDeleteMatch: id => dispatch(userDeleteMatch(id)),
 
 
 });
