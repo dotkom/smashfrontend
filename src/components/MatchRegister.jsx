@@ -34,11 +34,28 @@ class MatchRegister extends React.Component {
   constructor(props) {
     super(props);
     this.register = this.register.bind(this);
+    this.state = {
+      modalOpen: false,
+    };
+    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
   componentDidMount() {
     this.props.getCharacters();
     this.props.getUsers();
+  }
+
+  closeModal() {
+    this.setState({
+      modalOpen: false,
+    });
+  }
+
+  openModal() {
+    this.setState({
+      modalOpen: true,
+    });
   }
 
   register() {
@@ -70,6 +87,7 @@ class MatchRegister extends React.Component {
     const w = this.props.winner;
 
     this.props.registerMatch(p1, p2, c1, c2, w);
+    this.closeModal();
   }
 
 
@@ -119,10 +137,23 @@ class MatchRegister extends React.Component {
             </div>
           </div>
         </div>
-        <div className="registerButton">
-          <button type="button" onClick={this.register}><div className="buttontext">Register match</div></button>
+        {this.state.modalOpen ? (
 
-        </div>
+          <div className="registerButton">
+            <button type="button" onClick={this.register}><div className="buttontext">Confirm</div></button>
+            <button type="button" onClick={this.closeModal}><div className="buttontext">Cancel</div></button>
+
+          </div>
+
+        ) : (
+
+          <div className="registerButton">
+            <button type="button" onClick={this.openModal}><div className="buttontext">Register match</div></button>
+
+          </div>
+
+        )
+        }
       </div>
     );
   }
