@@ -112,7 +112,7 @@ Change nick
               character2={item.character2}
               winner={item.winner}
               deleteMatch={
-                this.props.user.isAdmin ? this.props.userDeleteMatch : this.props.userDeleteMatch
+                this.props.user.isAdmin ? this.props.deleteMatch : this.props.userDeleteMatch
               }
               date={item.date}
               showDelete={this.props.toggleAdmin
