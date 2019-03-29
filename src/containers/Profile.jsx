@@ -120,7 +120,7 @@ Change nick
                   (((new Date()) - new Date(item.date)) < (60 * 60 * 1000))
                   && (item.player1._id === this.props.user._id
                   || item.player2._id === this.props.user._id
-                  || item.registeredBy === this.props.user._id)
+                  || item.registeredby === this.props.user._id)
                 )
               }
             />
