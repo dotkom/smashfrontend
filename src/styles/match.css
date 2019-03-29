@@ -1,5 +1,6 @@
 .matchWrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 0;
 }
 
 .matchComponent {

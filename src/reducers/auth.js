@@ -5,10 +5,15 @@ import {
   POST_USER_SUCCESS,
   RESET_USER_ERROR,
   TOGGLE_ADMIN,
+  FINISHED_LOADING,
 } from '../actions/auth';
 
 const initialAuthState = {
-  toggleAdmin: false, user: {}, isLoading: false, errorMessage: '',
+  initialLoading: true,
+  toggleAdmin: false,
+  user: {},
+  isLoading: false,
+  errorMessage: '',
 };
 
 
@@ -46,6 +51,11 @@ function auth(state = initialAuthState, action) {
       return {
         ...state,
         toggleAdmin: !state.toggleAdmin,
+      };
+    case FINISHED_LOADING:
+      return {
+        ...state,
+        initialLoading: false,
       };
     default:
       return state;

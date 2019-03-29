@@ -17,6 +17,7 @@ class App extends React.Component {
     postCurrent: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     history: RouterPropTypes.history.isRequired,
+    currentUserLoading: PropTypes.bool.isRequired,
 
   }
 
@@ -32,15 +33,19 @@ class App extends React.Component {
         <div>
           <Navbar />
           <div className="mainContainer">
-            <Switch>
-              <PrivateRoute authed={this.props.user} exact path="/" component={RegisterMatches} />
-              <Route exact path="/leaderboard" component={Leaderboard} />
-              <Route exact path="/matches" component={Matches} />
-              <PrivateRoute authed={this.props.user} exact path="/registermatch" component={RegisterMatches} />
-              <PrivateRoute exact path="/profile" authed={this.props.user} component={Profile} />
-              <Route path="/profile/:id" component={Profile} />
+            {this.props.currentUserLoading ? (
+              <div> Loading </div>
+            ) : (
+              <Switch>
+                <PrivateRoute authed={this.props.user} exact path="/" component={RegisterMatches} />
+                <Route exact path="/leaderboard" component={Leaderboard} />
+                <Route exact path="/matches" component={Matches} />
+                <PrivateRoute authed={this.props.user} exact path="/registermatch" component={RegisterMatches} />
+                <PrivateRoute exact path="/profile" authed={this.props.user} component={Profile} />
+                <Route path="/profile/:id" component={Profile} />
 
-            </Switch>
+              </Switch>
+            )}
           </div>
         </div>
       </ConnectedRouter>
@@ -79,6 +84,7 @@ PrivateRoute.defaultProps = {
 
 const mapStateToProps = state => ({
   user: state.auth.user,
+  currentUserLoading: state.auth.initialLoading,
 });
 
 const mapDispatchToProps = dispatch => ({

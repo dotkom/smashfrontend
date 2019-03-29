@@ -17,6 +17,23 @@
 
 }
 
+.user:first-child .number {
+  color: #C9B037;
+  font-size: 50px;
+  font-weight: bold;
+
+}
+
+.user:nth-child(2) .number {
+  color: #D7D7D7;
+
+}
+
+.user:nth-child(3) .number {
+  color: #AD8A56;
+
+}
+
 .user .rating {
   text-align: center;
 
@@ -26,4 +43,10 @@
   text-align: center;
   font-size: 20px;
 
+}
+
+.user .nick a {
+    text-decoration: none;
+    text-emphasis: none;
+    color: #777788;
 }
