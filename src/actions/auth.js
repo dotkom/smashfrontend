@@ -13,6 +13,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const RESET_USER_ERROR = 'RESET_USER_ERROR';
 export const TOGGLE_ADMIN = 'TOGGLE_ADMIN';
+export const FINISHED_LOADING = 'FINISHED_LOADING';
 
 export function postUserFailure(string) {
   return {
@@ -52,6 +53,12 @@ export function toggleAdmin() {
   };
 }
 
+export function getUserFinished() {
+  return {
+    type: FINISHED_LOADING,
+  };
+}
+
 
 export function postCurrent() {
   return (dispatch) => {
@@ -61,9 +68,11 @@ export function postCurrent() {
       .then((user) => {
         dispatch(postUserSuccess(user || {}));
         dispatch(postUserLoading(false));
+        dispatch(getUserFinished());
       })
       .catch((err) => {
         dispatch(postUserFailure(err.response ? err.response.data : 'Something went wrong'));
+        dispatch(getUserFinished());
       });
   };
 }
