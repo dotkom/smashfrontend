@@ -27,3 +27,9 @@
   font-size: 20px;
 
 }
+
+.user .nick a {
+    text-decoration: none;
+    text-emphasis: none;
+    color: #777788;
+}
