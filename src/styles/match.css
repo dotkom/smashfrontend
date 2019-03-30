@@ -101,11 +101,11 @@ right: 0;
 margin-right: -12px;
 }
 
-.matchWrapper .adminPanel {
+ .deleteButtonContainer {
   margin: auto 15px;
 }
 
-.matchWrapper .adminPanel .deleteButton {
+ .deleteButtonContainer .deleteButton {
   background-color: #dd4444; /* Green */
   border: none;
   color: white;
@@ -119,11 +119,11 @@ margin-right: -12px;
 
 }
 
-.matchWrapper .adminPanel {
+ .deleteButtonContainer {
   position: relative;
 }
 
-.matchWrapper .matchModal {
+ .matchModal {
 
   display: flex;
   justify-content: space-between;
@@ -141,11 +141,11 @@ margin-right: -12px;
 
 }
 
-.matchWrapper .buttons {
+.matchModal .buttons {
   display: flex;
   flex-direction: row;
 }
 
-.matchWrapper .buttons button {
+.matchModal .buttons button {
   margin: 5px;
 }

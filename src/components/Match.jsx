@@ -65,7 +65,7 @@ class Match extends React.Component {
 
   render() {
     return (
-      <div className="matchWrapper">
+      <>
         <div className="outerComponent">
           {this.props.winner === this.props.player1._id
             && (
@@ -118,9 +118,8 @@ class Match extends React.Component {
           }
 
         </div>
-        {this.props.showDelete
-          && (
-          <div className="adminPanel" ref={(node) => { this.node = node; }}>
+        {this.props.showDelete ? (
+          <div className="deleteButtonContainer" ref={(node) => { this.node = node; }}>
             <button type="button" className="deleteButton" onClick={this.modalOpen ? this.closeModal : this.openModal}> Delete </button>
             {this.state.modalOpen
               && (
@@ -134,9 +133,11 @@ class Match extends React.Component {
               )
             }
           </div>
-          )
+        ) : (
+          <span />
+        )
         }
-      </div>
+      </>
     );
   }
 }
