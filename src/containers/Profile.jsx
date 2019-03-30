@@ -5,11 +5,11 @@ import '../styles/profile.css';
 import PropTypes from 'prop-types';
 import RouterPropTypes from 'react-router-prop-types';
 import {
-  getMatches, deleteMatch, pageReset, userDeleteMatch,
+  getMatches, pageReset,
 } from '../actions/matches';
 import { getUser, resetProfile } from '../actions/profile';
 import { changeNick } from '../actions/auth';
-import Match from '../components/Match';
+import MatchContainer from '../components/MatchContainer';
 
 
 class Profile extends React.Component {
@@ -25,10 +25,7 @@ class Profile extends React.Component {
     changeNick: PropTypes.func.isRequired,
     matches: PropTypes.array.isRequired,
     allLoaded: PropTypes.bool.isRequired,
-    toggleAdmin: PropTypes.bool.isRequired,
-    deleteMatch: PropTypes.func.isRequired,
     errorMessage: PropTypes.string.isRequired,
-    userDeleteMatch: PropTypes.func.isRequired,
   };
 
   async componentDidMount() {
@@ -97,36 +94,7 @@ Change nick
         <div className="errorMessage">
           {this.props.errorMessage}
         </div>
-        <div className="matchContainer">
-          { this.props.matches.map(item => (
-            <Match
-              key={item._id}
-              id={item._id}
-              oldrank1={item.oldrank1}
-              oldrank2={item.oldrank2}
-              newrank1={item.newrank1}
-              newrank2={item.newrank2}
-              player1={item.player1}
-              player2={item.player2}
-              character1={item.character1}
-              character2={item.character2}
-              winner={item.winner}
-              deleteMatch={
-                this.props.user.isAdmin ? this.props.deleteMatch : this.props.userDeleteMatch
-              }
-              date={item.date}
-              showDelete={this.props.toggleAdmin
-                || (
-                  (((new Date()) - new Date(item.date)) < (60 * 60 * 1000))
-                  && (item.player1._id === this.props.user._id
-                  || item.player2._id === this.props.user._id
-                  || item.registeredby === this.props.user._id)
-                )
-              }
-            />
-          ))
-          }
-        </div>
+        <MatchContainer />
         { !this.props.allLoaded && this.props.matches.length > 0
           && <button type="button" onClick={() => this.props.getMatches(this.id, this.props.page)}> Get matches </button>
         }
@@ -143,15 +111,12 @@ const mapStateToProps = state => ({
   allLoaded: state.matches.allLoaded,
   profile: state.profile.user,
   errorMessage: state.auth.errorMessage,
-  toggleAdmin: state.auth.toggleAdmin,
 });
 
 const mapDispatchToProps = dispatch => ({
   pageReset: () => dispatch(pageReset()),
   getMatches: (id, page) => dispatch(getMatches(id, page)),
   toHome: () => dispatch(push('/')),
-  deleteMatch: id => dispatch(deleteMatch(id)),
-  userDeleteMatch: id => dispatch(userDeleteMatch(id)),
   getProfile: id => dispatch(getUser(id)),
   resetProfile: () => dispatch(resetProfile()),
   changeNick: string => dispatch(changeNick(string)),
