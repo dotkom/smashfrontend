@@ -21,7 +21,7 @@ class RegisterMatches extends React.Component {
     return (
       <div className="registerMatchesPage">
         <div className="gamerules">
-          Regler: Avtal at det er ranked - 8 minutes - 3 stocks - random stage
+          Best of 1 - Ruleset: Online Ladder
         </div>
         <MatchRegister />
         <div className="errorMessage">
