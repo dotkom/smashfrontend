@@ -43,7 +43,7 @@ class Profile extends React.Component {
     }
     this.id = id;
     this.props.getProfile(id);
-    this.props.getMatches(id, this.props.page);
+    this.props.getMatches(id, 1);
     this.props.getCharacterStats(id);
   }
 
@@ -51,9 +51,8 @@ class Profile extends React.Component {
     if (nextProps.match.params.id !== this.props.match.params.id) {
       const { id } = nextProps.match.params;
       await this.props.pageReset();
-      const { page } = nextProps;
       await this.props.getProfile(id);
-      this.props.getMatches(id, page);
+      this.props.getMatches(id, 1);
       this.props.getCharacterStats(id);
     }
   }
