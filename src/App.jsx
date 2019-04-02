@@ -11,6 +11,7 @@ import Matches from './containers/Matches';
 import RegisterMatches from './containers/RegisterMatches';
 import Leaderboard from './containers/Leaderboard';
 import { postCurrent } from './actions/auth';
+import { getCharacters } from './actions/characters';
 
 class App extends React.Component {
   static propTypes = {
@@ -18,11 +19,13 @@ class App extends React.Component {
     user: PropTypes.object.isRequired,
     history: RouterPropTypes.history.isRequired,
     currentUserLoading: PropTypes.bool.isRequired,
+    getCharacters: PropTypes.func.isRequired,
 
   }
 
 
-  componentWillMount() {
+  async componentWillMount() {
+    await this.props.getCharacters();
     this.props.postCurrent();
   }
 
@@ -89,6 +92,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   postCurrent: () => dispatch(postCurrent()),
+  getCharacters: () => dispatch(getCharacters()),
 });
 
 

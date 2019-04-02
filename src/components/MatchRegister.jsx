@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import {
   postMatch, setWinner, setPlayer1, setPlayer2, setCharacter1, setCharacter2,
 } from '../actions/matchregister';
-import { getCharacters } from '../actions/characters';
 import { getUsers } from '../actions/users';
 import CharacterPicker from './CharacterPicker';
 import UserPicker from './UserPicker';
@@ -13,7 +12,6 @@ import UserPicker from './UserPicker';
 
 class MatchRegister extends React.Component {
   static propTypes = {
-    getCharacters: PropTypes.func.isRequired,
     getUsers: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     player1: PropTypes.string.isRequired,
@@ -42,7 +40,6 @@ class MatchRegister extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCharacters();
     this.props.getUsers();
   }
 
@@ -173,7 +170,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(getUsers()),
-  getCharacters: () => dispatch(getCharacters()),
   setWinner: int => dispatch(setWinner(int)),
   setPlayer1: nick => dispatch(setPlayer1(nick)),
   setPlayer2: nick => dispatch(setPlayer2(nick)),
