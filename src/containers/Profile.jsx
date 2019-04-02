@@ -54,6 +54,7 @@ class Profile extends React.Component {
       const { page } = nextProps;
       await this.props.getProfile(id);
       this.props.getMatches(id, page);
+      this.props.getCharacterStats(id);
     }
   }
 
