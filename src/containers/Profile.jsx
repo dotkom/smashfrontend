@@ -8,6 +8,7 @@ import {
   getMatches, pageReset,
 } from '../actions/matches';
 import { getUser, resetProfile } from '../actions/profile';
+import { getPlayerStats } from '../actions/stats';
 import { changeNick } from '../actions/auth';
 import MatchContainer from '../components/MatchContainer';
 
@@ -26,6 +27,8 @@ class Profile extends React.Component {
     matches: PropTypes.array.isRequired,
     allLoaded: PropTypes.bool.isRequired,
     errorMessage: PropTypes.string.isRequired,
+    getCharacterStats: PropTypes.func.isRequired,
+    characterStats: PropTypes.array.isRequired,
   };
 
   async componentDidMount() {
@@ -41,6 +44,7 @@ class Profile extends React.Component {
     this.id = id;
     this.props.getProfile(id);
     this.props.getMatches(id, this.props.page);
+    this.props.getCharacterStats(id);
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -72,6 +76,17 @@ class Profile extends React.Component {
             <div>{this.props.profile.matches}</div>
             <div>{this.props.profile.wins}</div>
 
+          </div>
+          <div className="playerCharStats">
+            <div className="title"> Most played </div>
+            <div className="characters">
+              {this.props.characterStats.map(char => (
+                <div className="char" key={char.id}>
+                  <img alt="char" src={`/icons/characters/${char.id}.png`} />
+                  <div className="count">{char.count}</div>
+                </div>
+              ))}
+            </div>
           </div>
           {this.props.user && this.props.profile._id === this.props.user._id
           && (
@@ -111,9 +126,11 @@ const mapStateToProps = state => ({
   allLoaded: state.matches.allLoaded,
   profile: state.profile.user,
   errorMessage: state.auth.errorMessage,
+  characterStats: state.stats.stats,
 });
 
 const mapDispatchToProps = dispatch => ({
+  getCharacterStats: id => dispatch(getPlayerStats(id)),
   pageReset: () => dispatch(pageReset()),
   getMatches: (id, page) => dispatch(getMatches(id, page)),
   toHome: () => dispatch(push('/')),
