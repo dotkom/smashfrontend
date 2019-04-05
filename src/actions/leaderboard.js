@@ -67,3 +67,20 @@ export function getLeaderboard(page) {
       });
   };
 }
+
+export function getTinyLeaderboard() {
+  return (dispatch) => {
+    dispatch(postLeaderboardLoading(true));
+    return axios.get(`${API_ADDRESS}/leaderboard/top/1`)
+      .then((response) => {
+        dispatch(postLeaderboardLoading(false));
+        return response.data;
+      })
+      .then((users) => {
+        dispatch(postLeaderboardSuccess(users.slice(0, 5), true));
+      })
+      .catch((err) => {
+        dispatch(postLeaderboardFailure(err.response ? err.response.data : 'Something went wrong'));
+      });
+  };
+}

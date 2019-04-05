@@ -42,9 +42,9 @@ class Profile extends React.Component {
       id = this.props.user._id;
     }
     this.id = id;
+    this.props.getCharacterStats(id);
     this.props.getProfile(id);
     this.props.getMatches(id, 1);
-    this.props.getCharacterStats(id);
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -65,6 +65,20 @@ class Profile extends React.Component {
         && (
         <div>
           <div className="profileNick">{this.props.profile.nick}</div>
+          {this.props.user && this.props.user._id && this.props.profile._id === this.props.user._id
+          && (
+          <div className="changeNick">
+            <input className="nickInput" />
+            <button
+              type="button"
+              onClick={
+              () => this.props.changeNick(document.querySelectorAll('.nickInput')[0].value)}
+            >
+              Change nick
+            </button>
+          </div>
+          )
+        }
 
           <div className="statistics">
             <div>Rank</div>
@@ -78,7 +92,7 @@ class Profile extends React.Component {
 
           </div>
           <div className="playerCharStats">
-            <div className="title"> Most played </div>
+            <div className="title"> Your most played characters </div>
             <div className="characters">
               {this.props.characterStats.map(char => (
                 <div className="char" key={char.id}>
@@ -88,21 +102,7 @@ class Profile extends React.Component {
               ))}
             </div>
           </div>
-          {this.props.user && this.props.profile._id === this.props.user._id
-          && (
-          <div className="changeNick">
-            <input className="nickInput" />
-            <button
-              type="button"
-              onClick={
-              () => this.props.changeNick(document.querySelectorAll('.nickInput')[0].value)}
-            >
-              {' '}
-Change nick
-            </button>
-          </div>
-          )
-        }
+
         </div>
         )
      }

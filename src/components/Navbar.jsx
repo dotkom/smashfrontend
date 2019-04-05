@@ -11,6 +11,8 @@ const Navbar = ({
 }) => (
   <div className="navbar">
     <div className="links">
+
+      <Link to="/"> Home </Link>
       {user._id
       && <Link to="/registermatch"> New match </Link>
       }

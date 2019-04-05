@@ -8,6 +8,7 @@ import RouterPropTypes from 'react-router-prop-types';
 import Profile from './containers/Profile';
 import Navbar from './components/Navbar';
 import Matches from './containers/Matches';
+import Home from './containers/Home';
 import RegisterMatches from './containers/RegisterMatches';
 import Leaderboard from './containers/Leaderboard';
 import { postCurrent } from './actions/auth';
@@ -40,7 +41,7 @@ class App extends React.Component {
               <div> Loading </div>
             ) : (
               <Switch>
-                <PrivateRoute authed={this.props.user} exact path="/" component={RegisterMatches} />
+                <Route exact path="/" component={Home} />
                 <Route exact path="/leaderboard" component={Leaderboard} />
                 <Route exact path="/matches" component={Matches} />
                 <PrivateRoute authed={this.props.user} exact path="/registermatch" component={RegisterMatches} />
