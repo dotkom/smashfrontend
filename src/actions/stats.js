@@ -9,6 +9,7 @@ export const POST_STATS_REQUEST = 'POST_STATS_REQUEST';
 export const POST_STATS_SUCCESS = 'POST_STATS_SUCCESS';
 export const POST_STATS_FAILURE = 'POST_STATS_FAILURE';
 export const DELETE_STATS_SUCCESS = 'DELETE_STATS_SUCCESS';
+export const STATS_RESET = 'STATS_RESET';
 
 export function postStatsFailure(bool) {
   return {
@@ -32,6 +33,12 @@ export function deleteStatsSuccess(stats) {
   return {
     type: DELETE_STATS_SUCCESS,
     stats,
+  };
+}
+
+export function statsReset() {
+  return {
+    type: STATS_RESET,
   };
 }
 

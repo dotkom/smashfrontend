@@ -96,6 +96,23 @@ export function getAllMatches(page) {
   };
 }
 
+export function getTinyMatches() {
+  return (dispatch) => {
+    dispatch(postMatchLoading(true));
+    return axios.get(`${API_ADDRESS}/match/page/1`)
+      .then((response) => {
+        dispatch(postMatchLoading(false));
+        return response.data;
+      })
+      .then((matches) => {
+        dispatch(postMatchSuccess(matches.slice(0, 5), true));
+      })
+      .catch((err) => {
+        dispatch(postMatchFailure(err.response ? err.response.data : 'Something went wrong'));
+      });
+  };
+}
+
 export function deleteMatch(id) {
   return (dispatch) => {
     dispatch(postMatchLoading(true));

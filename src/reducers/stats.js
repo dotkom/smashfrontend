@@ -2,6 +2,7 @@ import {
   POST_STATS_FAILURE,
   POST_STATS_REQUEST,
   POST_STATS_SUCCESS,
+  STATS_RESET,
 } from '../actions/stats';
 
 const initialStatsState = {
@@ -26,6 +27,12 @@ function stats(state = initialStatsState, action) {
         ...state,
         errorMessage: '',
         stats: action.stats,
+      };
+    case STATS_RESET:
+      return {
+        ...state,
+        errorMessage: '',
+        stats: [],
       };
     default:
       return state;

@@ -1,0 +1,78 @@
+.homeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+
+
+.welcome {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+.summary .title {
+  margin: 20px 0 10px 0;
+  font-size: 16px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.homeContainer .summary {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.tinyLeaderboard {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.tinyLeaderboard .labels {
+  margin-top: 10px;
+}
+
+.tiny.matches {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.allCharStats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 10px;
+  font-family: sans-serif;
+}
+
+.allCharStats .title {
+  margin: 20px 0 10px 0;
+  font-size: 16px;
+}
+
+.allCharStats .characters {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.allCharStats .char {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.allCharStats img {
+  width: 80px;
+
+}

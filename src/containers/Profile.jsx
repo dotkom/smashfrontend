@@ -42,9 +42,9 @@ class Profile extends React.Component {
       id = this.props.user._id;
     }
     this.id = id;
+    this.props.getCharacterStats(id);
     this.props.getProfile(id);
     this.props.getMatches(id, 1);
-    this.props.getCharacterStats(id);
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -92,7 +92,7 @@ class Profile extends React.Component {
 
           </div>
           <div className="playerCharStats">
-            <div className="title"> Most played </div>
+            <div className="title"> Your most played characters </div>
             <div className="characters">
               {this.props.characterStats.map(char => (
                 <div className="char" key={char.id}>
