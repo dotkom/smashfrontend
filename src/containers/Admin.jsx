@@ -10,13 +10,11 @@ axios.defaults.crossdomain = true;
 
 
 class Admin extends React.Component {
-  static propTypes = {
-  }
-
   constructor(props) {
     super(props);
     this.state = {
       users: [],
+      errorMessage: '',
     };
     this.getUsers();
   }
@@ -30,6 +28,32 @@ class Admin extends React.Component {
         });
       })
       .catch((err) => {
+        this.setState({
+          errorMessage: err.response.data,
+        });
+      });
+  }
+
+  changeNick(id, nick) {
+    axios.post(`${API_ADDRESS}/admin/user/changenick`, { _id: id, nick })
+      .then(response => response.data)
+      .then((user) => {
+        this.setState((prevState, props) => ({
+          users: prevState.users.map((object) => {
+            if (id === object._id) {
+              const updatedUser = object;
+              updatedUser.nick = user.nick;
+              return updatedUser;
+            }
+            return object;
+          }),
+          errorMessage: '',
+        }));
+      })
+      .catch((err) => {
+        this.setState({
+          errorMessage: err.response.data,
+        });
       });
   }
 
@@ -48,9 +72,13 @@ class Admin extends React.Component {
             }
             return object;
           }),
+          errorMessage: '',
         }));
       })
       .catch((err) => {
+        this.setState({
+          errorMessage: err.response.data,
+        });
       });
   }
 
@@ -67,6 +95,7 @@ class Admin extends React.Component {
             }
             return object;
           }),
+          errorMessage: '',
         }));
       })
       .catch((err) => {
@@ -87,9 +116,13 @@ class Admin extends React.Component {
             }
             return object;
           }),
+          errorMessage: '',
         }));
       })
       .catch((err) => {
+        this.setState({
+          errorMessage: err.response.data,
+        });
       });
   }
 
@@ -106,15 +139,24 @@ class Admin extends React.Component {
             }
             return object;
           }),
+          errorMessage: '',
         }));
       })
       .catch((err) => {
+        this.setState({
+          errorMessage: err.response.data,
+        });
       });
   }
 
   render() {
     return (
       <div className="adminPage">
+        <div className="errorMessage">
+          {' '}
+          {this.state.errorMessage}
+          {' '}
+        </div>
         <div className="userList">
           {this.state.users.map(user => (
             <React.Fragment key={user._id}>
@@ -125,6 +167,8 @@ class Admin extends React.Component {
               <div className="nick">
                 {user.nick}
               </div>
+              <input className={`input${user._id}`} type="text" />
+              <button type="button" onClick={() => this.changeNick(user._id, document.querySelectorAll(`.input${user._id}`)[0].value)}> change nick </button>
               <div className="name">
                 {user.name}
               </div>

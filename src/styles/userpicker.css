@@ -46,7 +46,7 @@
 }
 
 /* width */
-::-webkit-scrollbar {
+.scrollerContainer::-webkit-scrollbar {
   width: 5px;
 }
 .scrollerContainer:hover::-webkit-scrollbar {
@@ -57,12 +57,12 @@
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+.scrollerContainer::-webkit-scrollbar-track {
   background: none;
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+.scrollerContainer::-webkit-scrollbar-thumb {
   background: #556677;
   border-radius: 3px;
 }
