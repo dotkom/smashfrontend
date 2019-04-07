@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/admin.css';
-import PropTypes from 'prop-types';
 import API_ADDRESS from '../config/connections';
 
 

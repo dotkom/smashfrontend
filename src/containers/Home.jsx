@@ -49,8 +49,8 @@ class Home extends React.Component {
             !
           </div>
         )}
+        <div className="title"> The most popular characters </div>
         <div className="allCharStats">
-          <div className="title"> The most popular characters </div>
           <div className="characters">
             {this.props.stats.map(char => (
               <div className="char" key={char.id}>
@@ -61,32 +61,32 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="summary">
-          <div className="tinyLeaderboard">
-            <div className="title">
-              Top 5 leaderboard
-            </div>
-            <div className="labels">
-              <div>#</div>
-              <div>rating</div>
-              <div>nick</div>
-            </div>
-            <div className="userContainer">
-              { this.props.leaderboard.map((item, index) => (
-                <User
-                  key={item._id}
-                  number={index + 1}
-                  nick={item.nick}
-                  id={item._id}
-                  rating={item.rating}
-                />
-              ))
+          <div className="title">
+          Top 5 leaderboard
+          </div>
+          <div className="title">
+                Last 5 matches
+          </div>
+          <div>
+            <div className="tinyLeaderboardContainer">
+              <div className="tinyLeaderboard">
+                <div className="label">#</div>
+                <div className="label">rating</div>
+                <div className="label">nick</div>
+                { this.props.leaderboard.map((item, index) => (
+                  <User
+                    key={item._id}
+                    number={index + 1}
+                    nick={item.nick}
+                    id={item._id}
+                    rating={item.rating}
+                  />
+                ))
             }
+              </div>
             </div>
           </div>
           <div className="matches">
-            <div className="title">
-                Last 5 matches
-            </div>
             <MatchContainer />
           </div>
         </div>

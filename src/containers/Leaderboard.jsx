@@ -25,12 +25,10 @@ class Leaderboard extends React.Component {
   render() {
     return (
       <div className="leaderboardContainer">
-        <div className="labels">
-          <div>#</div>
-          <div>rating</div>
-          <div>nick</div>
-        </div>
-        <div className="userContainer">
+        <div className="leaderboard">
+          <div className="label">#</div>
+          <div className="label">rating</div>
+          <div className="label">nick</div>
           { this.props.users.map((item, index) => (
             <User
               key={item._id}
@@ -41,10 +39,10 @@ class Leaderboard extends React.Component {
             />
           ))
         }
-        </div>
-        {!this.props.allLoaded && this.props.users.length > 0
+          {!this.props.allLoaded && this.props.users.length > 0
         && <button type="button" onClick={() => this.props.getLeaderboard(this.props.page)}> load more </button>
       }
+        </div>
       </div>
     );
   }

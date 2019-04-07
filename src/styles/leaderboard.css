@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 
 }
 
@@ -17,12 +16,20 @@
   cursor: pointer;
 }
 
+.leaderboard {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 50px;
+  grid-row-gap: 15px;
+  text-align: center;
 
-.labels {
-display: grid;
-grid-template-columns: 50px 40px 250px;
-text-align: center;
+}
+
+
+.label {
 font-family: sans-serif;
-color: #777799;
+color: #0060a3;
+font-size: 30px;
+margin-bottom: 10px;
 
 }

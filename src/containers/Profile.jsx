@@ -63,12 +63,14 @@ class Profile extends React.Component {
       <div className="profileContainer">
         {this.props.profile
         && (
-        <div>
+        <div className="playerInfo">
           <div className="profileNick">{this.props.profile.nick}</div>
           {this.props.user && this.props.user._id && this.props.profile._id === this.props.user._id
           && (
           <div className="changeNick">
-            <input className="nickInput" />
+            <div>
+              <input type="text" className="nickInput" />
+            </div>
             <button
               type="button"
               onClick={
@@ -85,14 +87,14 @@ class Profile extends React.Component {
             <div>Rating</div>
             <div>Matches</div>
             <div>Wins</div>
-            <div>{this.props.profile.rank}</div>
-            <div>{this.props.profile.rating && Math.round(this.props.profile.rating)}</div>
-            <div>{this.props.profile.matches}</div>
-            <div>{this.props.profile.wins}</div>
+            <div className="stat">{this.props.profile.rank}</div>
+            <div className="stat">{this.props.profile.rating && Math.round(this.props.profile.rating)}</div>
+            <div className="stat">{this.props.profile.matches}</div>
+            <div className="stat">{this.props.profile.wins}</div>
 
           </div>
           <div className="playerCharStats">
-            <div className="title"> Your most played characters </div>
+            <div className="title"> Most played characters </div>
             <div className="characters">
               {this.props.characterStats.map(char => (
                 <div className="char" key={char.id}>
