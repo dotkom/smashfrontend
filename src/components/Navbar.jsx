@@ -12,7 +12,12 @@ const Navbar = ({
   <div className="navbar">
     <div className="links">
 
-      <Link to="/"> Home </Link>
+      <Link to="/">
+        <div className="homeButton">
+          <img alt="logo" src="./favicon.png" />
+          <div> Home </div>
+        </div>
+      </Link>
       {user._id
       && <Link to="/registermatch"> New match </Link>
       }
