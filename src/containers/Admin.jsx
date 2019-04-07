@@ -116,34 +116,36 @@ class Admin extends React.Component {
   render() {
     return (
       <div className="adminPage">
-        {this.state.users.map(user => (
-          <React.Fragment key={user._id}>
-            <div className="nick">
-              {user.nick}
-            </div>
-            <div className="tags">
-              {user.isAdmin && <div className="admin tag"> admin </div>}
-              {user.isBanned && <div className="banned tag"> banned </div>}
-            </div>
-            <div className="name">
-              {user.name}
-            </div>
-            <div className="email">
-              {user.email}
-            </div>
-            <button type="button" onClick={() => (user.isBanned ? this.unbanUser(user._id) : this.banUser(user._id))}>
-              {' '}
-              {user.isBanned ? 'unban' : 'ban'}
-              {' '}
-            </button>
-            <button type="button" onClick={() => (user.isAdmin ? this.removeAdmin(user._id) : this.makeAdmin(user._id))}>
-              {' '}
-              {user.isAdmin ? 'remove admin' : 'make admin'}
-              {' '}
-            </button>
+        <div className="userList">
+          {this.state.users.map(user => (
+            <React.Fragment key={user._id}>
+              <div className="tags">
+                {user.isAdmin && <div className="admin tag"> admin </div>}
+                {user.isBanned && <div className="banned tag"> banned </div>}
+              </div>
+              <div className="nick">
+                {user.nick}
+              </div>
+              <div className="name">
+                {user.name}
+              </div>
+              <div className="email">
+                {user.email}
+              </div>
+              <button type="button" onClick={() => (user.isBanned ? this.unbanUser(user._id) : this.banUser(user._id))}>
+                {' '}
+                {user.isBanned ? 'unban' : 'ban'}
+                {' '}
+              </button>
+              <button type="button" onClick={() => (user.isAdmin ? this.removeAdmin(user._id) : this.makeAdmin(user._id))}>
+                {' '}
+                {user.isAdmin ? 'remove admin' : 'make admin'}
+                {' '}
+              </button>
 
-          </React.Fragment>
-        ))}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     );
   }
