@@ -1,0 +1,54 @@
+.adminPage {
+  display: flex;
+  justify-content: center;
+}
+
+.userList {
+  display: grid;
+  grid-template-columns: 60px auto auto auto 120px 120px;
+  grid-row-gap: 20px;
+  grid-column-gap: 12px;
+  font-family: sans-serif;
+  align-items: center;
+
+}
+
+.adminPage button {
+  background-color: #0060a3;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 6px 0;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: sans-serif;
+
+}
+
+.adminPage .tags {
+  text-align: center;
+
+}
+
+.adminPage .tag {
+  border-radius: 4px;
+  padding: 3px 0;
+}
+
+.tag.admin {
+  background-color: #44dd44;
+  color: #66ff66;
+
+}
+
+.tag.banned {
+  background-color: #ee3333;
+  color: #ff6699;
+
+}
+
+.adminPage .email {
+  font-size: 13px;
+}

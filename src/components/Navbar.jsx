@@ -22,7 +22,13 @@ const Navbar = ({
     {user._id ? (
       <div className="links">
         {user.isAdmin
-          && <button type="button" className="adminStatusButton" onClick={toggleAdminPanels}>{`admin: ${toggleAdminStatus ? 'on' : 'off'}`}</button>
+          && (
+            <>
+              <button type="button" className="adminStatusButton" onClick={toggleAdminPanels}>{`admin: ${toggleAdminStatus ? 'on' : 'off'}`}</button>
+              <Link to="/admin">Admin</Link>
+
+            </>
+          )
       }
         <Link to="/profile">Profile</Link>
         <button type="button" className="button" onClick={logoutUser}><div className="buttontext">Logout</div></button>
