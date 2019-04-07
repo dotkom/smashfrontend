@@ -9,6 +9,7 @@ import Profile from './containers/Profile';
 import Navbar from './components/Navbar';
 import Matches from './containers/Matches';
 import Home from './containers/Home';
+import Admin from './containers/Admin';
 import RegisterMatches from './containers/RegisterMatches';
 import Leaderboard from './containers/Leaderboard';
 import { postCurrent } from './actions/auth';
@@ -46,6 +47,7 @@ class App extends React.Component {
                 <Route exact path="/matches" component={Matches} />
                 <PrivateRoute authed={this.props.user} exact path="/registermatch" component={RegisterMatches} />
                 <PrivateRoute exact path="/profile" authed={this.props.user} component={Profile} />
+                <PrivateRoute exact path="/admin" admin={this.props.user} component={Admin} />
                 <Route path="/profile/:id" component={Profile} />
 
               </Switch>
