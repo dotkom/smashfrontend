@@ -43,7 +43,7 @@
   display: grid;
   flex: 1;
   grid-template-columns: 2fr auto 2fr;
-  color: #cccccc;
+  color: #ffffff;
   font-family: sans-serif;
 
 }
@@ -54,7 +54,7 @@
   font-size: 20px;
   text-align: center;
   font-style: italic;
-  color: #cccccc;
+  color: #ffffff;
 }
 
 .matchInformation .date {

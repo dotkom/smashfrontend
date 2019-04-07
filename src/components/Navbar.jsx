@@ -14,7 +14,7 @@ const Navbar = ({
 
       <Link to="/">
         <div className="homeButton">
-          <img alt="logo" src="./favicon.png" />
+          <img alt="logo" src="/favicon.png" />
           <div> Home </div>
         </div>
       </Link>

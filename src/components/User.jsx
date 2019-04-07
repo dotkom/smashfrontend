@@ -7,19 +7,18 @@ import '../styles/user.css';
 const User = ({
   number, rating, nick, id,
 }) => (
-  <div className="user">
-    <div className="number">
+  <React.Fragment>
+    <div className="user usernumber">
       {number}
     </div>
-    <div className="rating">
+    <div className="user userrating">
       {Math.round(rating)}
     </div>
-    <div className="nick">
+    <div className="user usernick">
       <Link to={`/profile/${id}`}>{nick}</Link>
     </div>
-    <div />
 
-  </div>
+  </React.Fragment>
 );
 
 User.propTypes = {
