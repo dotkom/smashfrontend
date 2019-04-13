@@ -16,6 +16,7 @@ class CharacterPicker extends React.Component {
     super(props);
     this.state = {
       modalOpen: false,
+      charInput: '',
     };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -66,6 +67,7 @@ class CharacterPicker extends React.Component {
 
   render() {
     return (
+
       <div className="characterPicker" ref={(node) => { this.node = node; }}>
         <button type="button" className="currentCharacter" onClick={this.modalOpen ? this.closeModal : this.openModal}>
           {this.props.currentCharacter !== 0 ? (
@@ -79,11 +81,22 @@ class CharacterPicker extends React.Component {
         {this.state.modalOpen
           && (
           <div className="characterModal">
-            { this.props.characters.map(char => (
-              <button type="button" key={char.id} className="characterButton" onClick={() => this.setCharacter(char.id)}>
-                <img alt="char" title={char.name} src={`/icons/characters/${(char.id === 55 || char.id === 56) ? 54 : char.id}.png`} />
-              </button>
-            ))}
+            <input type="text" value={this.charInput} onChange={event => this.setState({ charInput: event.target.value })} />
+            <div className="characterGrid">
+              { this.props.characters.filter((char) => {
+                if (this.state.charInput === '') {
+                  return true;
+                }
+                if (char.name.toLowerCase().includes(this.state.charInput)) {
+                  return true;
+                }
+                return false;
+              }).map(char => (
+                <button type="button" key={char.id} className="characterButton" onClick={() => this.setCharacter(char.id)}>
+                  <img alt="char" title={char.name} src={`/icons/characters/${(char.id === 55 || char.id === 56) ? 54 : char.id}.png`} />
+                </button>
+              ))}
+            </div>
           </div>
           )
         }
