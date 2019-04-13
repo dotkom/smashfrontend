@@ -74,7 +74,7 @@ class Home extends React.Component {
             <div className="allCharStats">
               <div className="title"> The most popular characters </div>
               <div className="characters">
-                {this.props.stats.map(char => (
+                {this.props.stats.slice(0, 5).map(char => (
                   <div className="char" key={char.id}>
                     <img alt="char" src={`/icons/characters/${char.id}.png`} />
                     <div className="count">{char.count}</div>

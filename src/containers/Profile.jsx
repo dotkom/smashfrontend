@@ -96,7 +96,7 @@ class Profile extends React.Component {
           <div className="playerCharStats">
             <div className="title"> Most played characters </div>
             <div className="characters">
-              {this.props.characterStats.map(char => (
+              {this.props.characterStats.slice(0, 3).map(char => (
                 <div className="char" key={char.id}>
                   <img alt="char" src={`/icons/characters/${char.id}.png`} />
                   <div className="count">{char.count}</div>
