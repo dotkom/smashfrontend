@@ -39,10 +39,10 @@ class Leaderboard extends React.Component {
             />
           ))
         }
-          {!this.props.allLoaded && this.props.users.length > 0
+        </div>
+        {!this.props.allLoaded && this.props.users.length > 0
         && <button type="button" onClick={() => this.props.getLeaderboard(this.props.page)}> load more </button>
       }
-        </div>
       </div>
     );
   }
