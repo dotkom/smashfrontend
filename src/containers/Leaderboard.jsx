@@ -27,8 +27,8 @@ class Leaderboard extends React.Component {
       <div className="leaderboardContainer">
         <div className="leaderboard">
           <div className="label">#</div>
-          <div className="label">rating</div>
-          <div className="label">nick</div>
+          <div className="label">Rating</div>
+          <div className="label">Nick</div>
           { this.props.users.map((item, index) => (
             <User
               key={item._id}

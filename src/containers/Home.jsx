@@ -18,7 +18,6 @@ class Home extends React.Component {
     getMatches: PropTypes.func.isRequired,
     leaderboard: PropTypes.array.isRequired,
     user: PropTypes.object.isRequired,
-    stats: PropTypes.array.isRequired,
     statsReset: PropTypes.func.isRequired,
   }
 
@@ -50,48 +49,29 @@ class Home extends React.Component {
           </div>
         )}
         <div className="summary">
-          <div className="tinyLeaderboardContainer">
-            <div className="title">
-              Top 5 leaderboard
-            </div>
-            <div className="tinyLeaderboard">
-              <div className="label">#</div>
-              <div className="label">rating</div>
-              <div className="label">nick</div>
-              { this.props.leaderboard.map((item, index) => (
-                <User
-                  key={item._id}
-                  number={index + 1}
-                  nick={item.nick}
-                  id={item._id}
-                  rating={item.rating}
-                />
-              ))
+          <div>
+            <div className="tinyLeaderboardContainer">
+              <div className="tinyLeaderboard">
+                <div className="label">#</div>
+                <div className="label">Rating</div>
+                <div className="label">Nick</div>
+                { this.props.leaderboard.map((item, index) => (
+                  <User
+                    key={item._id}
+                    number={index + 1}
+                    nick={item.nick}
+                    id={item._id}
+                    rating={item.rating}
+                  />
+                ))
             }
-            </div>
-          </div>
-          <span>
-            <div className="allCharStats">
-              <div className="title"> The most popular characters </div>
-              <div className="characters">
-                {this.props.stats
-                  .sort((a, b) => b.count - a.count)
-                  .slice(0, 5)
-                  .map(char => (
-                    <div className="char" key={char.id}>
-                      <img alt="char" src={`/icons/characters/${char.id}.png`} />
-                      <div className="count">{char.count}</div>
-                    </div>
-                  ))}
               </div>
             </div>
-          </span>
-        </div>
-        <div className="tiny matches">
-          <div className="title">
-                Last 5 matches
           </div>
-          <MatchContainer />
+          <div className="tiny matches">
+            <MatchContainer />
+          </div>
+
         </div>
       </div>
     );
@@ -101,7 +81,6 @@ class Home extends React.Component {
 const mapStateToProps = state => ({
   leaderboard: state.leaderboard.users,
   user: state.auth.user,
-  stats: state.stats.stats,
 });
 
 const mapDispatchToProps = dispatch => ({
