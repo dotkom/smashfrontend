@@ -51,11 +51,12 @@ class CharacterPicker extends React.Component {
     });
   }
 
-  openModal() {
+  async openModal() {
     document.addEventListener('click', this.handleOutsideClick, false);
-    this.setState({
+    await this.setState({
       modalOpen: true,
     });
+    this.charInput.focus();
   }
 
   handleOutsideClick(e) {
@@ -83,7 +84,7 @@ class CharacterPicker extends React.Component {
         {this.state.modalOpen
           && (
           <div className="characterModal">
-            <input type="text" value={this.charInput} onChange={event => this.setState({ charInput: event.target.value })} />
+            <input type="text" ref={(input) => { this.charInput = input; }} value={this.charInput} onChange={event => this.setState({ charInput: event.target.value })} />
             <div className="characterGrid">
               { this.props.characters.filter((char) => {
                 if (this.state.charInput === '') {
