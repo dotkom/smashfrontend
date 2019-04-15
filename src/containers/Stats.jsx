@@ -72,7 +72,7 @@ class Stats extends React.Component {
             </div>
           </div>
           <div className="mostPlayedStats">
-            <div className="title"> Highest winrates </div>
+            <div className="title"> Highest win rates </div>
             <div className="characters">
               {this.state.mostPlayed
                 .sort((a, b) => b.wins / b.count - a.wins / a.count)
@@ -90,7 +90,7 @@ class Stats extends React.Component {
         </div>
         <div className="characterInfo">
           <div>
-        Winrates for
+        Win rate for
           </div>
           <div className="pickerContainer">
             <CharacterPicker

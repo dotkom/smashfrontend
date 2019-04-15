@@ -17,7 +17,7 @@ const CharacterStat = ({ char }) => (
       </div>
     </div>
     <div className="percentage">
-      {`${(char.wins / char.count * 100).toFixed()}%`}
+      {`${(char.wins / char.count * 100).toFixed()} %`}
     </div>
   </div>
 );
