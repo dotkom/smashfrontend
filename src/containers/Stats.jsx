@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/stats.css';
 import API_ADDRESS from '../config/connections';
 import CharacterPicker from '../components/CharacterPicker';
+import CharacterStatContainer from '../components/CharacterStatContainer';
 
 
 const axios = require('axios');
@@ -16,8 +17,8 @@ class Stats extends React.Component {
     this.changeCharacter = this.changeCharacter.bind(this);
     this.state = {
       mostPlayed: [],
-      winRates: [],
       chosenCharacter: 0,
+      chosenCharacterID: null,
       errorMessage: '',
     };
     this.getMostPlayed();
@@ -39,9 +40,10 @@ class Stats extends React.Component {
   }
 
 
-  changeCharacter(character) {
+  changeCharacter(character, id) {
     this.setState({
       chosenCharacter: character,
+      chosenCharacterID: id,
     });
   }
 
@@ -56,7 +58,7 @@ class Stats extends React.Component {
         </div>
         <div className="stats">
           <div className="mostPlayedStats">
-            <div className="title"> The most popular characters </div>
+            <div className="title"> Most popular characters </div>
             <div className="characters">
               {this.state.mostPlayed
                 .sort((a, b) => b.count - a.count)
@@ -86,11 +88,25 @@ class Stats extends React.Component {
             </div>
           </div>
         </div>
-        <CharacterPicker
-          setCharacter={this.changeCharacter}
-          currentCharacter={this.state.chosenCharacter}
-          localitem="statscharacter"
-        />
+        <div className="characterInfo">
+          <div>
+        Winrates for
+          </div>
+          <div className="pickerContainer">
+            <CharacterPicker
+              setCharacter={this.changeCharacter}
+              currentCharacter={this.state.chosenCharacter}
+              localitem="statscharacter"
+            />
+          </div>
+          <div>
+          against other characters:
+          </div>
+        </div>
+        { this.state.chosenCharacterID && (
+          <CharacterStatContainer character={this.state.chosenCharacterID} />
+
+        )}
       </div>
     );
   }
