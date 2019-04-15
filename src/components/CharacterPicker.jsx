@@ -26,9 +26,9 @@ class CharacterPicker extends React.Component {
 
 
   componentDidMount() {
-    const localcharacter = parseInt(localStorage.getItem(this.props.localitem), 10);
+    const localcharacter = JSON.parse(localStorage.getItem(this.props.localitem));
     if (localcharacter) {
-      this.setCharacter(localcharacter);
+      this.setCharacter(localcharacter.id, localcharacter._id);
     }
   }
 
@@ -36,10 +36,11 @@ class CharacterPicker extends React.Component {
     document.removeEventListener('click', this.handleOutsideClick, false);
   }
 
-  setCharacter(id) {
+  setCharacter(id, _id) {
     this.closeModal();
-    localStorage.setItem(this.props.localitem, id);
-    this.props.setCharacter(id);
+    const obj = { id, _id };
+    localStorage.setItem(this.props.localitem, JSON.stringify(obj));
+    this.props.setCharacter(id, _id);
   }
 
   closeModal() {
@@ -92,7 +93,7 @@ class CharacterPicker extends React.Component {
                 }
                 return false;
               }).map(char => (
-                <button type="button" key={char.id} className="characterButton" onClick={() => this.setCharacter(char.id)}>
+                <button type="button" key={char.id} className="characterButton" onClick={() => this.setCharacter(char.id, char._id)}>
                   <img alt="char" title={char.name} src={`/icons/characters/${(char.id === 55 || char.id === 56) ? 54 : char.id}.png`} />
                 </button>
               ))}
