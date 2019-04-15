@@ -47,6 +47,7 @@ class CharacterPicker extends React.Component {
     document.removeEventListener('click', this.handleOutsideClick, false);
     this.setState({
       modalOpen: false,
+      charInput: '',
     });
   }
 
@@ -88,7 +89,7 @@ class CharacterPicker extends React.Component {
                 if (this.state.charInput === '') {
                   return true;
                 }
-                if (char.name.toLowerCase().includes(this.state.charInput)) {
+                if (char.name.toLowerCase().includes(this.state.charInput.toLowerCase())) {
                   return true;
                 }
                 return false;
