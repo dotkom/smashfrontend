@@ -50,7 +50,7 @@ class CharacterStatContainer extends React.Component {
         {this.state.characters
           .sort((a, b) => b.wins / b.count - a.wins / a.count)
           .map(char => (
-            <CharacterStat char={char} />
+            <CharacterStat key={char.id} char={char} />
           ))}
       </div>
     );
