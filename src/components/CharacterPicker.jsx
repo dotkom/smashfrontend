@@ -56,7 +56,7 @@ class CharacterPicker extends React.Component {
     await this.setState({
       modalOpen: true,
     });
-    this.charInput.focus();
+    this.inputref.focus();
   }
 
   handleOutsideClick(e) {
@@ -84,7 +84,7 @@ class CharacterPicker extends React.Component {
         {this.state.modalOpen
           && (
           <div className="characterModal">
-            <input type="text" ref={(input) => { this.charInput = input; }} value={this.charInput} onChange={event => this.setState({ charInput: event.target.value })} />
+            <input type="text" ref={(input) => { this.inputref = input; }} value={this.charInput} onChange={event => this.setState({ charInput: event.target.value })} />
             <div className="characterGrid">
               { this.props.characters.filter((char) => {
                 if (this.state.charInput === '') {
