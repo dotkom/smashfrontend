@@ -23,6 +23,7 @@ const CharacterStat = ({ char }) => (
 );
 
 CharacterStat.propTypes = {
+  char: PropTypes.object.isRequired,
 };
 
 
