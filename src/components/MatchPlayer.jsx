@@ -10,7 +10,7 @@ const MatchPlayer = ({
   <div className={`${reverse ? 'reverse ' : ''}matchPlayer ${isWinner ? 'winner' : 'loser'}`}>
 
     <div className="iconContainer">
-      <img alt="char" src={`/icons/characters/${icon}.png`} />
+      <img alt="char" src={`/icons/characters/${(icon === 55 || icon === 56) ? 54 : icon}.png`} />
     </div>
     <div className="information">
       <div />

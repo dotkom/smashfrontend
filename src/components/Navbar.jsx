@@ -23,6 +23,7 @@ const Navbar = ({
       }
       <Link to="/matches"> Recent matches </Link>
       <Link to="/leaderboard">Leaderboard</Link>
+      <Link to="/stats">Stats</Link>
     </div>
     {user._id ? (
       <div className="links">

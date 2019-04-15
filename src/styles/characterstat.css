@@ -1,0 +1,27 @@
+.characterStat {
+  display: grid;
+  grid-template-columns: 60px 90px 80px;
+  grid-column-gap: 5px;
+  margin: 30px;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.characterStat .name {
+  font-size: 18px;
+}
+
+.characterStat .percentage {
+  font-size: 25px;
+
+}
+
+.characterStat .matches {
+  font-style: italic;
+}
+
+.characterStat img {
+  height: 60px;
+  width: 60px;
+}
