@@ -30,11 +30,15 @@
 
 
 
+
 .characterModal {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   z-index: 2;
   padding: 10px;
-  top:75px;
+  top:50px;
   left: 27%;
   background: white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -42,7 +46,7 @@
 
 .characterGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
 }
 
@@ -66,4 +70,16 @@
 
 .characterModal img {
   width: 100%;
+}
+
+.characterModal {
+}
+
+.characterModal input {
+  outline: none;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  width: 150px;
+
 }
