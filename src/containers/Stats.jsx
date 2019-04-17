@@ -3,6 +3,7 @@ import '../styles/stats.css';
 import API_ADDRESS from '../config/connections';
 import CharacterPicker from '../components/CharacterPicker';
 import CharacterStatContainer from '../components/CharacterStatContainer';
+import MultiCharStat from '../components/MultiCharStat';
 
 
 const axios = require('axios');
@@ -57,36 +58,19 @@ class Stats extends React.Component {
           {' '}
         </div>
         <div className="stats">
-          <div className="mostPlayedStats">
-            <div className="title"> Most popular characters </div>
-            <div className="characters">
-              {this.state.mostPlayed
-                .sort((a, b) => b.count - a.count)
-                .slice(0, 5)
-                .map(char => (
-                  <div className="char" key={char.id}>
-                    <img alt="char" src={`/icons/characters/${char.id}.png`} />
-                    <div className="count">{char.count}</div>
-                  </div>
-                ))}
-            </div>
-          </div>
-          <div className="mostPlayedStats">
-            <div className="title"> Highest win rates </div>
-            <div className="characters">
-              {this.state.mostPlayed
-                .sort((a, b) => b.wins / b.count - a.wins / a.count)
-                .slice(0, 5)
-                .map(char => (
-                  <div className="char" key={char.id}>
-                    <img alt="char" src={`/icons/characters/${char.id}.png`} />
-                    <div className="count">
-                      {`${((char.wins / char.count) * 100).toFixed(2)}%`}
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
+          <MultiCharStat
+            size={5}
+            sortFunc={(a, b) => b.count - a.count}
+            characters={this.state.mostPlayed}
+            title="Most popular characters"
+          />
+          <MultiCharStat
+            size={5}
+            sortFunc={(a, b) => b.wins / b.count - a.wins / a.count}
+            characters={this.state.mostPlayed}
+            title="Highest win rates"
+            winrate
+          />
         </div>
         <div className="characterInfo">
           <div>
