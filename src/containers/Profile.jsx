@@ -11,6 +11,7 @@ import { getUser, resetProfile } from '../actions/profile';
 import { getPlayerStats } from '../actions/stats';
 import { changeNick } from '../actions/auth';
 import MatchContainer from '../components/MatchContainer';
+import MultiCharStat from '../components/MultiCharStat';
 
 
 class Profile extends React.Component {
@@ -93,20 +94,13 @@ class Profile extends React.Component {
             <div className="stat">{this.props.profile.wins}</div>
 
           </div>
-          <div className="playerCharStats">
-            <div className="title"> Most played characters </div>
-            <div className="characters">
-              {this.props.characterStats
-                .sort((a, b) => b.count - a.count)
-                .slice(0, 3)
-                .map(char => (
-                  <div className="char" key={char.id}>
-                    <img alt="char" src={`/icons/characters/${char.id}.png`} />
-                    <div className="count">{char.count}</div>
-                  </div>
-                ))}
-            </div>
-          </div>
+          <MultiCharStat
+            size={3}
+            sortFunc={(a, b) => b.count - a.count}
+            characters={this.props.characterStats}
+            title="Most played characters"
+          />
+
 
         </div>
         )

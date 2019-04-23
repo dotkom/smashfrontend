@@ -13,51 +13,6 @@
   justify-content: center;
 }
 
-.mostPlayedStats {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 10px 10px 20px 10px;
-  font-family: sans-serif;
-
-  background-color: #ffffff;
-  color: #000000;
-  padding: 15px 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-.mostPlayedStats .title {
-  margin: 0 0 10px 0;
-  font-size: 16px;
-}
-
-.mostPlayedStats .characters {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.mostPlayedStats .char {
-  margin: 0 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
-.mostPlayedStats img {
-  width: 60px;
-
-}
-
-.mostPlayedStats .count {
-  margin-top: 5px;
-  font-size: 14px;
-}
-
 .characterInfo {
   display: flex;
   flex-direction: row;
