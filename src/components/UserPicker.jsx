@@ -23,10 +23,6 @@ class UserPicker extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-
-  }
-
 
   setPlayer(id) {
     this.props.setPlayer(id);
