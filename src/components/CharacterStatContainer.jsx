@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import API_ADDRESS from '../config/connections';
 import CharacterStat from './CharacterStat';
 
-
 const axios = require('axios');
 
 axios.defaults.withCredentials = true;
