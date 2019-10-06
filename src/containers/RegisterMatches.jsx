@@ -12,16 +12,13 @@ class RegisterMatches extends React.Component {
 
   }
 
-  componentDidMount() {
-
-  }
-
 
   render() {
     return (
       <div className="registerMatchesPage">
         <div className="gamerules">
-          Best of 1 - Ruleset: Online Ladder
+          <p><b>Ruleset:</b> Online Ladder</p>
+          <p><b>Best of 1:</b> one match = one registry</p>
         </div>
         <MatchRegister />
         <div className="errorMessage">

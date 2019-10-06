@@ -60,17 +60,57 @@
 }
 
 .matchRegister .button {
-  outline: none;
   cursor: pointer;
-  margin: 12px 10px;
-  border: none;
-  border-radius: 4px;
-  color: #ef2222;
-  background-color: #aa0044;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  border: white solid 2px;
+  background: none;
+  outline: none;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .matchRegister .button.winner {
-  background-color: #00aa44;
-  color: #00ea00;
-  border: none;
+  background: white;
+}
+
+.matchRegister .button.winner::before {
+  content:"";
+  position: absolute;
+  width:3px;
+  height:11px;
+  background-color:#445566;
+  transform: rotate(45deg);
+  left:8px;
+  top:4px;
+
+}
+.matchRegister .button.winner::after {
+  content:"";
+  position: absolute;
+  width:3px;
+  height:5px;
+  background-color:#445566;
+  transform: rotate(-45deg);
+  left:3px;
+  top:8px;
+
+}
+
+.winnerCheckbox {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.matchRegister .buttontext {
+  font-family: sans-serif;
+  margin: 3px;
+  color:white;
+  text-align: center;
+  font-size: 13px;
 }

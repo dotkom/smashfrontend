@@ -94,7 +94,10 @@ class MatchRegister extends React.Component {
         <div className="matchRegister">
           <div className="player1">
             <div className="buttonContainer">
-              <button type="button" className={`button${this.props.winner === 1 ? ' winner' : ''}`} onClick={() => this.props.setWinner(1)}><div className="buttontext">{(this.props.winner === 1 ? ' winner' : 'loser')}</div></button>
+              <div className="winnerCheckbox">
+                <button type="button" className={`button${this.props.winner === 1 ? ' winner' : ''}`} onClick={() => this.props.setWinner(1)}/>
+                <div className="buttontext">winner</div>
+              </div>
 
               <CharacterPicker
                 setCharacter={this.props.setCharacter1}
@@ -127,8 +130,10 @@ class MatchRegister extends React.Component {
                 currentCharacter={this.props.character2}
                 localitem="character2"
               />
-
-              <button type="button" className={`button${this.props.winner === 2 ? ' winner' : ''}`} onClick={() => this.props.setWinner(2)}><div className="buttontext">{(this.props.winner === 2 ? ' winner' : 'loser')}</div></button>
+              <div className="winnerCheckbox">
+                <button type="button" className={`button${this.props.winner === 2 ? ' winner' : ''}`} onClick={() => this.props.setWinner(2)}/>
+                <div className="buttontext">winner</div>
+              </div>
 
 
             </div>
