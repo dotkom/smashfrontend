@@ -27,7 +27,7 @@ class Matches extends React.Component {
       <div className="matchesPage">
         <MatchContainer />
         { !this.props.allLoaded && this.props.matches.length > 0
-          && <button type="button" onClick={() => this.props.getMatches(this.props.page)}> Get matches </button>
+          && <button type="button" onClick={() => this.props.getMatches(this.props.page)}> Load more </button>
         }
       </div>
     );

@@ -1,6 +1,9 @@
 .characterStat {
   display: grid;
-  grid-template-columns: 60px 110px 72px;
+  flex:1;
+  margin-right: auto;
+  margin-left: 0;
+  grid-template-columns: 60px 1fr 72px;
   grid-column-gap: 5px;
   margin: 30px;
   justify-content: center;
@@ -10,6 +13,7 @@
 
 .characterStat .name {
   font-size: 16px;
+  min-width: 5rem;
 }
 
 .characterStat .percentage {
